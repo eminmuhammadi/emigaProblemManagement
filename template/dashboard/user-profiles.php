@@ -17,7 +17,7 @@
                 </div>";
 			}}
 ?>            	
-              <h4 class="card-title"><b>Bütün Problemlər</b></h4>
+              <h4 class="card-title"><b>Bütün İstifadəçilər</b></h4>
               <div class="row">
                 <div class="col-12 table-responsive">
                   <table id="order-listing" class="table">

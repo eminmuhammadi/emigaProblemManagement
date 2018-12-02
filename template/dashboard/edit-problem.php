@@ -10,7 +10,7 @@
     *   Get Problem Information
     */
     $problem_id = $_GET['problem_id'];
-    $get_problem_inf ="SELECT * FROM posts WHERE problem_id='$problem_id' ";  
+    $get_problem_inf ="SELECT department_detail , user_detail , problem_title , problem_description , problem_status , problem_status_description , range_date_end , range_date_start , reg_date , problem_id FROM posts WHERE problem_id='$problem_id' ";  
     $result_department_inf = mysqli_query($connect, $get_problem_inf);  
 
     if(mysqli_num_rows($result_department_inf) > 0){  

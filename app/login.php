@@ -4,7 +4,7 @@
 
   /*Process Login*/
   if(isset($_POST['login'])){     
-    $user_email    = mysqli_real_escape_string($connect, $_POST["email"]); 
+    $user_email    = mysqli_real_escape_string($connect, strtolower($_POST["email"])); 
     $user_password = mysqli_real_escape_string($connect, md5($_POST["password"]));
  
     
@@ -39,7 +39,7 @@
     $_SESSION['user_agent']         = $user_agent; 
     $_SESSION['emiga_logged_verify']= TRUE;
 
-    setcookie("emigaUniqID", $token , time() + (86400 * 1), "/");
+    setcookie("emigaUniqID", $token , time() + (86400 * 7), "/");
 
     /*Go*/
     header("Location: /dashboard/main"); 

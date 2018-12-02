@@ -46,7 +46,7 @@
                     <tbody>
 <?php 
       $_get_user_detail=$_SESSION['user_name']." ".$_SESSION['user_lastname'];
-			$select_posts ="SELECT * FROM posts WHERE user_detail='$_get_user_detail' ORDER BY problem_id DESC";  
+			$select_posts ="SELECT problem_id , department_detail , user_detail , problem_title , problem_status , problem_status_description , range_date_end , range_date_start , reg_date FROM posts WHERE user_detail='$_get_user_detail' ORDER BY problem_id DESC";  
 			$result = mysqli_query($connect, $select_posts);  
 			if(mysqli_num_rows($result) > 0)  {  
 			while($row = mysqli_fetch_array($result)) {

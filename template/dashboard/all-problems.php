@@ -64,28 +64,28 @@
       
           if($_GET['order']=="P"){
 
-      $select_posts ="SELECT * FROM posts WHERE problem_status='P' ORDER BY problem_id DESC";  
+      $select_posts ="SELECT problem_id , department_detail , user_detail , problem_title , problem_status , problem_status_description , range_date_start , range_date_end , reg_date FROM posts WHERE problem_status='P' ORDER BY problem_id DESC";  
       $result = mysqli_query($connect, $select_posts);}
 
 
        else   if($_GET['order']=="C"){
 
-      $select_posts ="SELECT * FROM posts WHERE problem_status='C' ORDER BY problem_id DESC";  
+      $select_posts ="SELECT problem_id , department_detail , user_detail , problem_title , problem_status , problem_status_description , range_date_start , range_date_end , reg_date FROM posts WHERE problem_status='C' ORDER BY problem_id DESC";  
       $result = mysqli_query($connect, $select_posts);}
 
        else    if($_GET['order']=="D"){
-      $select_posts ="SELECT * FROM posts WHERE problem_status='D' ORDER BY problem_id DESC";  
+      $select_posts ="SELECT problem_id , department_detail , user_detail , problem_title , problem_status , problem_status_description , range_date_start , range_date_end , reg_date FROM posts WHERE problem_status='D' ORDER BY problem_id DESC";  
       $result = mysqli_query($connect, $select_posts);}
 
 
       else  if($_GET['order']=="V"){
-      $select_posts ="SELECT * FROM posts WHERE problem_status='V' ORDER BY problem_id DESC";  
+      $select_posts ="SELECT problem_id , department_detail , user_detail , problem_title , problem_status , problem_status_description , range_date_start , range_date_end , reg_date FROM posts WHERE problem_status='V' ORDER BY problem_id DESC";  
       $result = mysqli_query($connect, $select_posts);  }
 
       else{die("Bunu etməyə səlahiyyətiniz yoxdur.");}
     }
     else{
-			$select_posts ="SELECT * FROM posts ORDER BY problem_id DESC";  
+			$select_posts ="SELECT problem_id , department_detail , user_detail , problem_title , problem_status , problem_status_description , range_date_start , range_date_end , reg_date FROM posts ORDER BY problem_id DESC";  
 			$result = mysqli_query($connect, $select_posts);} 
 
 

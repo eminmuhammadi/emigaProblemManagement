@@ -40,7 +40,7 @@
                     </thead>
                     <tbody>
 <?php 
-			$select_departments ="SELECT * FROM departments ORDER BY department_id DESC";  
+			$select_departments ="SELECT department_id , department_title , department_desc FROM departments ORDER BY department_id DESC";  
 			$result = mysqli_query($connect, $select_departments);  
 
 			if(mysqli_num_rows($result) > 0)  {  

@@ -10,7 +10,7 @@ if(!empty($_GET['department_id'])){
 *   Get Department Information
 */
 $department_id = $_GET['department_id'];
-$get_department_inf ="SELECT * FROM departments WHERE department_id='$department_id' ";  
+$get_department_inf ="SELECT department_id , department_title , department_desc FROM departments WHERE department_id='$department_id' ";  
 $result_department_inf = mysqli_query($connect, $get_department_inf);  
     if(mysqli_num_rows($result_department_inf) > 0){  
       while($row = mysqli_fetch_array($result_department_inf)){ 

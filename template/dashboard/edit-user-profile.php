@@ -10,7 +10,7 @@
     *   Get Problem Information
     */
     $user_id = $_GET['user_id'];
-    $get_user_inf ="SELECT * FROM users WHERE user_id='$user_id' ";  
+    $get_user_inf ="SELECT user_name , user_lastname , user_password , user_permission , user_email , user_department_detail FROM users WHERE user_id='$user_id' ";  
     $result_user_inf = mysqli_query($connect, $get_user_inf);  
     if(mysqli_num_rows($result_user_inf) > 0){  
       while($row = mysqli_fetch_array($result_user_inf)){ 
@@ -37,10 +37,10 @@
     *  Edit User
     */
 if(isset($_POST["edit_user"]))  { 
-  $user_email=mysqli_real_escape_string($connect,$_POST["user_email"]);
+  $user_email=mysqli_real_escape_string($connect,strtolower($_POST["user_email"]));
   $user_department_detail=mysqli_real_escape_string($connect,$_POST["user_department_detail"]);
   /* Search email */
-  $search_email ="SELECT * FROM users WHERE user_email='$user_email' && user_id!='$user_id' LIMIT 1";
+  $search_email ="SELECT user_email FROM users WHERE user_email='$user_email' && user_id!='$user_id' LIMIT 1";
   $search_email_result = mysqli_query($connect, $search_email); 
 
 if(mysqli_num_rows($search_email_result) > 0)  {

@@ -2,20 +2,19 @@
 <?php 
 if (!empty($_GET['route'])) {
   if (($_GET['route']=="departments") || ($_GET['route']=="my-problems") || ($_GET['route']=="all-problems")|| ($_GET['route']=="support") ||($_GET['route']=="profiles")){
-     echo "<script type=\"text/javascript\" src=\"/static/pack/data-table.js\"></script>";}}
-?>
-<script type="text/javascript">
+echo "<script type=\"text/javascript\" src=\"/static/pack/data-table.js\"></script>
+<script type=\"text/javascript\">
 (function($) {
   'use strict';
   $(function() {
     $('#order-listing').DataTable({
-      "aLengthMenu": [
+      \"aLengthMenu\": [
         [10, 20, 50, -1],
         [10, 20, 50, "Hamısı"]
       ],
-      "iDisplayLength": 10,
-      "language": {
-        "url":"/static/datatable_az.json"
+      \"iDisplayLength\": 10,
+      \"language\": {
+        \"url\":\"/static/datatable_az.json\"
       }
     });
     $('#order-listing').each(function() {
@@ -28,6 +27,7 @@ if (!empty($_GET['route'])) {
     });
   });
 })(jQuery);
-</script>
+</script>";}}
+?>
 </body>
 </html>

@@ -8,7 +8,7 @@
 
     $first_name = mysqli_real_escape_string($connect, $_POST["fname"]);
     $last_name = mysqli_real_escape_string($connect, $_POST["lname"]);
-    $email = mysqli_real_escape_string($connect, $_POST["email"]); 
+    $email = mysqli_real_escape_string($connect, strtolower($_POST["email"])); 
     $password = mysqli_real_escape_string($connect, $_POST["password"]);
     $password=md5($password);
 

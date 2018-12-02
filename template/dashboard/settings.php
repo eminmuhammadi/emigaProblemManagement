@@ -22,9 +22,9 @@ if(isset($_POST["edit_user"]))  {
   $user_password_re=mysqli_real_escape_string($connect, $_POST["user_password_re"]);
 
   if($user_password==$user_password_re){
-  $user_email=mysqli_real_escape_string($connect,$_POST["user_email"])  ;
+  $user_email=mysqli_real_escape_string($connect,strtolower($_POST["user_email"]))  ;
   /* Search email */
-  $search_email ="SELECT * FROM users WHERE user_email='$user_email' && user_id!='$ses_user_id' LIMIT 1";
+  $search_email ="SELECT user_email , user_id FROM users WHERE user_email='$user_email' && user_id!='$ses_user_id' LIMIT 1";
   $search_email_result = mysqli_query($connect, $search_email); 
 
     if(mysqli_num_rows($search_email_result) > 0)  {

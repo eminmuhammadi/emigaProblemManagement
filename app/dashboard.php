@@ -3,6 +3,18 @@
 	   require_once realpath($_SERVER["DOCUMENT_ROOT"])."/template/head.php";
 	   require_once realpath($_SERVER["DOCUMENT_ROOT"])."/template/navbar.php";
 
+	   /* Security */
+	   $u=$_SESSION['user_id'];
+	   $f_u="SELECT * from users WHERE user_id='$u' LIMIT 1";
+	   $r_u= mysqli_query($connect, $f_u);
+	   if(mysqli_num_rows($r_u) > 0)  {
+	       while($r = mysqli_fetch_array($r_u)){
+	       $t=$r['token'];
+	       if($t!=$_COOKIE['emigaUniqID']){header("Location: /logout");}
+		   }	
+	   }
+
+	   
 	   if(!empty($_GET['route'])){
 
 	   		/*Add Problem*/
@@ -17,8 +29,6 @@
 	   		/*Edit Problems*/
 	   			else if($_GET['route']=="edit-problem"){
 	   				require_once realpath($_SERVER["DOCUMENT_ROOT"])."/template/dashboard/edit-problem.php";}
-
-
 
 	   		/*Add Department*/
 	   			else if($_GET['route']=="add-department" && ($_SESSION['user_permission']=="A" || $_SESSION['user_permission']=="GA" )){

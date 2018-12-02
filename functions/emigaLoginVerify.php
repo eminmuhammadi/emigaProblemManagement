@@ -7,7 +7,7 @@ function emigaToken($length = 32) {
     for ($i = 0; $i < $length; $i++) {
         $randomString .= $characters[rand(0, $charactersLength - 1)];
     }
-    return $randomString;
+    return md5($randomString);
 }
 
 function emigaLoginVerify(){
@@ -15,13 +15,10 @@ function emigaLoginVerify(){
 	if ($emigaFileName=="register.php" || $emigaFileName=="login.php"){}
 
 
-	else{session_start(); 
-	
+	else{
+	session_start(); 
+    session_regenerate_id(true); 
 	if(!$_SESSION['emiga_logged_verify']){ 
-
     header("Location: /login"); 
-	exit; 
-	
-	} 
-	   }
+	exit;}}
 }

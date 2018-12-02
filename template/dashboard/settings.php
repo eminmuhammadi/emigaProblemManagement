@@ -17,6 +17,7 @@ if(isset($_POST["delete_user"])){
 *  Edit User
 */
 if(isset($_POST["edit_user"]))  { 
+  $ses_user_id=$_SESSION['user_id'];  
   $user_password=mysqli_real_escape_string($connect, $_POST["user_password"]);
   $user_password_re=mysqli_real_escape_string($connect, $_POST["user_password_re"]);
 
@@ -32,7 +33,6 @@ if(isset($_POST["edit_user"]))  {
      $user_name=mysqli_real_escape_string($connect, $_POST["user_name"]);
      $user_lastname=mysqli_real_escape_string($connect, $_POST["user_lastname"]);
      $user_password=md5($user_password);
-     $ses_user_id=$_SESSION['user_id'];  
         $update_user =" UPDATE users SET user_name='$user_name' , user_lastname='$user_lastname' ,
         user_email='$user_email',user_password='$user_password' WHERE user_id='$ses_user_id' "; 
         $result_update_user = mysqli_query($connect, $update_user);
@@ -81,7 +81,7 @@ if(isset($_POST["edit_user"]))  {
 
               <div class="form-group">
                       <label>Soy Ad</label>
-              <input required value="<?php echo $_SESSION['user_name'];?>" type="text" name="user_lastname" maxlength="30" class="form-control">
+              <input required value="<?php echo $_SESSION['user_lastname'];?>" type="text" name="user_lastname" maxlength="30" class="form-control">
               </div>
 
               <div class="form-group">

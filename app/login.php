@@ -3,27 +3,28 @@
   require_once realpath($_SERVER["DOCUMENT_ROOT"])."/template/head.php";
 
   /*Process Login*/
-  if(isset($_POST['login'])){ 
-
+  if(isset($_POST['login'])){     
     $user_email    = mysqli_real_escape_string($connect, $_POST["email"]); 
     $user_password = mysqli_real_escape_string($connect, md5($_POST["password"]));
  
     
-    $login ="SELECT * FROM users WHERE user_email='$user_email' AND user_password='$user_password' LIMIT 1";
-    $result = mysqli_query($connect, $login);  
+  $login ="SELECT * FROM users WHERE user_email='$user_email' AND user_password='$user_password' LIMIT 1";
+  $result = mysqli_query($connect, $login);  
 
     if(mysqli_num_rows($result) > 0)  {
 
     while($row = mysqli_fetch_array($result)){
-
-    session_start();
     $u_id   = $row['user_id'];
     $ip     = emigaIpDetector();
+    $token  = emigaToken();
     $user_agent = $_SERVER['HTTP_USER_AGENT'];
     
     $update_user =" UPDATE users SET user_agent='$user_agent' , ip='$ip' , token='$token'  WHERE user_id='$u_id' "; 
     $result_update_user = mysqli_query($connect, $update_user);
-  
+
+    session_start();  
+    session_regenerate_id(true); 
+
     /*Collect Data*/
     $_SESSION['user_id']            = $row['user_id']; 
     $_SESSION['user_name']          = $row['user_name']; 
@@ -34,9 +35,11 @@
     $_SESSION['reg_date']           = $row['reg_date']; 
     $_SESSION['last_logged']        = $row['last_logged']; 
     $_SESSION['ip']                 = $ip;
-    $_SESSION['token']              = $_COOKIE['emigaUniqID']; 
+    $_SESSION['token']              = $token;
     $_SESSION['user_agent']         = $user_agent; 
-    $_SESSION['emiga_logged_verify'] = TRUE;    
+    $_SESSION['emiga_logged_verify']= TRUE;
+
+    setcookie("emigaUniqID", $token , time() + (86400 * 1), "/");
 
     /*Go*/
     header("Location: /dashboard/main"); 

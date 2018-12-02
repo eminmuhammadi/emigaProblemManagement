@@ -27,7 +27,7 @@
                           <th>İstifadəçi</th>
                           <th>Status</th>        
                           <th>Şöbə</th>
-                          <th>Son tarix</th>                            
+                          <th>Daxil olma tarixi</th>                            
                       </tr>
                     </thead>
                     <tbody>

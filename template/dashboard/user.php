@@ -33,7 +33,7 @@
                           <td><?php echo $_SESSION['reg_date'];?></td>                          
                         </tr>                                                             
                         <tr>
-                          <td>Əvvəl daxil olduğun tarix :</td>
+                          <td>Son daxil olma tarixi :</td>
                           <td><?php echo $_SESSION['last_logged'];?></td>                          
                         </tr>     
                          <tr>

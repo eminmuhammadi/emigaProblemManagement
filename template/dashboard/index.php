@@ -10,7 +10,7 @@
 
                       <div class="d-flex justify-content-between border-right card-statistics-item">
                         <div>
-                          <h1>
+                          <h1><a href="/dashboard/all-problems&order=P">
 <?php
         $get_count_P_posts = mysqli_query($connect, 
                 "SELECT problem_status FROM posts WHERE problem_status='P' "
@@ -19,8 +19,8 @@
              if(empty($count)){$count="0";}
              echo $count;
 ?>                            
-                          </h1>
-                          <p class="text-muted mb-0">Gözləmədə olan problemlər</p>
+                          </a></h1>
+                          <p class="text-muted mb-0">Gözləmədə olan problemlər</a></p>
                         </div>
                         <i class="icon-layers text-primary icon-lg"></i>
                       </div>
@@ -48,7 +48,7 @@
                     <div class="col-md-6 col-lg-3">
                       <div class="d-flex justify-content-between border-right card-statistics-item">
                         <div>
-                          <h1>
+                          <h1><a href="/dashboard/all-problems&order=C">
 <?php
         $get_count_C_posts = mysqli_query($connect, 
                 "SELECT problem_status FROM posts WHERE problem_status='C' "
@@ -57,7 +57,7 @@
              if(empty($count)){$count="0";}
              echo $count;
 ?>                              
-                          </h1>
+                          </a></h1>
                           <p class="text-muted mb-0">Ləğv edilmiş problemlər</p>
                         </div>
                         <i class="icon-trash text-danger icon-lg"></i>
@@ -66,7 +66,7 @@
                     <div class="col-md-6 col-lg-3">
                       <div class="d-flex justify-content-between card-statistics-item">
                         <div>
-                          <h1>
+                          <h1><a href="/dashboard/all-problems&order=D">
 <?php
         $get_count_D_posts = mysqli_query($connect, 
                 "SELECT problem_status FROM posts WHERE problem_status='D' "
@@ -75,7 +75,7 @@
              if(empty($count)){$count="0";}
              echo $count;
 ?>                              
-                          </h1>
+                         </a></h1>
                           <p class="text-muted mb-0">Həll edilmiş problemlər</p>
                         </div>
                         <i class="icon-check text-success icon-lg"></i>

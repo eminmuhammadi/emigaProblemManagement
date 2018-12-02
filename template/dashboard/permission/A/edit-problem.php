@@ -64,6 +64,7 @@
               </div> 
 
               <button name="edit_problem" type="submit" class="btn btn-primary mr-2">PROBLEMİ DÜZƏLT</button>
+              <button name="delete_problem" type="submit" class="btn btn-danger">SİL</button>
             </form>
 
                 </div>

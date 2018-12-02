@@ -88,16 +88,12 @@
     /*
     *     Delete GA
     */
-    if($_SESSION['user_permission']=="GA"){
 
           if(isset($_POST['delete_problem'])){ 
                 $delete_problem ="DELETE FROM posts WHERE problem_id='$problem_id' ";  
                 $result_delete_problem = mysqli_query($connect, $delete_problem);
-                echo"<script>window.location.href = \"/dashboard/all-problems&action=problem-deleted\";</script>";     
-          }
-
-
-    }}
+                echo"<script>window.location.href = \"/dashboard/my-problems&action=problem-deleted\";</script>";     
+          }}
 
     /*
     *    Problem id not selected
@@ -123,23 +119,22 @@
                 <div class="card-body">
                   <!-- Content -->
                   <ul class="bullet-line-list">
-                      <h4 class="mb-4">İstifadə qaydaları</h4>
                     <li>
-                      <h6>Problemin adı</h6>
-                      <p class="mb-2">Problemi ifadə edən dəqiq başlıq yazılmalıdır</p>
+                      <h6>Status : <?php
+                 if($problem_status=="C"){$problem_css="danger";$problem_status="Ləğv edildi";}
+            else if($problem_status=="V"){$problem_css="warning";$problem_status="Görüldü";}
+            else if($problem_status=="D"){$problem_css="success";$problem_status="Həll edildi";}
+               else{$problem_css="info";$problem_status="Gözləmədə";}
+
+               echo "<label class=\"badge badge-$problem_css\">$problem_status</label>";
+
+                      ?></h6>
+                      <p class="mb-2"></p>
                     </li>
                     <li>
-                      <h6>Şöbə</h6>
-                      <p class="mb-2">Problemin həlli üçün şöbənin dəqiq seçilməsi vacibdir</p>
-                    </li>
-                     <li>
-                      <h6>Problemin açıqlaması</h6>
-                      <p class="mb-2">Problemi qısa şəkildə izah edin</p>
-                    </li>
-                      <li>
-                      <h6>Həll müddəti</h6>
-                      <p class="mb-2">Problemin aktuallığı vacib olduğu üçün problemin həll edilmə aralığının da seçilməsi vacibdir</p>
-                    </li>                  
+                      <h6>Administratorun cavabı</h6>
+                      <p class="mb-2"><?php echo $problem_status_description;?></p>
+                    </li>                
                   </ul>
 
                 </div>

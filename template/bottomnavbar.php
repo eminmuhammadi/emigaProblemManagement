@@ -16,13 +16,18 @@
               <div class="submenu">
                 <ul class="submenu-item">
                   <li class="nav-item">
-                  	<a class="nav-link" href="/dashboard/add-problem">Problem yarat</a>
+                  	<a class="nav-link" href="/dashboard/add-problem"><i class="icon-plus pr-3 text-dark"></i> Problem yarat</a>
                   </li>
                   <li class="nav-item">
-                    <a class="nav-link" href="/dashboard/my-problems">Mənim Problemlərim</a>
+                    <a class="nav-link" href="/dashboard/my-problems"><i class="icon-layers pr-3 text-dark"></i> Mənim Problemlərim</a>
                   </li>                
+    <?php if ($_SESSION['user_permission']=="A" || $_SESSION['user_permission']=="GA") {           
+        echo "
+            <li class=\"nav-item\">
+              <a href=\"/dashboard/all-problems\" class=\"nav-link\">
 
-
+                <span class=\"menu-title\"><i class=\"icon-loop pr-3 text-dark\"></i> Bütün problemlər</span></a>
+            </li>";}?>  
                 </ul>
               </div>
             </li>
@@ -43,10 +48,10 @@
               <div class=\"submenu\">
                 <ul class=\"submenu-item\">                  
                   <li class=\"nav-item\">
-                    <a class=\"nav-link\" href=\"/dashboard/add-department\">Şöbə yarat</a>
+                    <a class=\"nav-link\" href=\"/dashboard/add-department\"><i class=\"icon-plus pr-3 text-dark\"></i> Şöbə yarat</a>
                   </li>
                   <li class=\"nav-item\">
-                    <a class=\"nav-link\" href=\"/dashboard/departments\">Şöbələr</a>
+                    <a class=\"nav-link\" href=\"/dashboard/departments\"><i class=\"icon-layers pr-3 text-dark\"></i> Şöbələr</a>
                   </li> 
                 </ul>
               </div>

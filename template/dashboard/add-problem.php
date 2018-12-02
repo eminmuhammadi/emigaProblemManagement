@@ -58,12 +58,12 @@ if(isset($_POST['create_problem'])){
 
                <div class="form-group">
                       <label>Problemin Həll edilmə müddətinin başlanması</label>
-                      <input required type="date" name="range_date_start" class="form-control">
+                      <input required value="<?php echo date("Y-m-d");?>" type="date" name="range_date_start" class="form-control">
               </div>
               
               <div class="form-group">
                       <label>Problemin Həll edilmə müddətinin bitməsi</label>
-                      <input required type="date" name="range_date_end" class="form-control">
+                      <input required value="<?php echo date("Y-m-d");?>" type="date" name="range_date_end" class="form-control">
               </div>                           
 
 

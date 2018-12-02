@@ -41,6 +41,7 @@
                       <input value="<?php echo emigaDateFormatter($range_date_end,"setvalue")?>" required type="date" name="range_date_end" class="form-control">
               </div>                           
               <button name="edit_problem" type="submit" class="btn btn-primary mr-2">PROBLEMİ DÜZƏLT</button>
+              <button name="delete_problem" type="submit" class="btn btn-danger">SİL</button>
           </form>
 
                 </div>

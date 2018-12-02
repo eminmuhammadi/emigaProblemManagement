@@ -20,10 +20,10 @@
                     <div class="d-inline-block">
                       <div class="<?php
                       $ram=emigaServerMemory();
-                      if($ram<"49"){
+                      if(($ram<"49")|| ($ram="49")){
                         echo"bg-success";
                       }
-                      else if(($ram>"49") && ($ram<"69")){
+                      else if(($ram>"49") && ($ram<"69") ||($ram="69") ){
                         echo"bg-warning";
                       }
                       else if($ram>"69"){
@@ -48,10 +48,10 @@
                     <div class="d-inline-block">
                       <div class="<?php
                       $cpu=emigaServerCPU();
-                      if($cpu<"0.5"){
+                      if($cpu<"0.5" || ($ram="0.5")){
                         echo"bg-success";
                       }
-                      else if(($cpu>"0.5") && ($cpu<"1")){
+                      else if(($cpu>"0.5") && ($cpu<"1") || ($ram="1")){
                         echo"bg-warning";
                       }
                       else if($cpu>"1"){

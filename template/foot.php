@@ -10,7 +10,7 @@ echo "<script type=\"text/javascript\" src=\"/static/pack/data-table.js\"></scri
     $('#order-listing').DataTable({
       \"aLengthMenu\": [
         [10, 20, 50, -1],
-        [10, 20, 50, "Hamısı"]
+        [10, 20, 50, \"Hamısı\"]
       ],
       \"iDisplayLength\": 10,
       \"language\": {

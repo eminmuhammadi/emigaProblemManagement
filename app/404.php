@@ -1,0 +1,1 @@
+<?php echo "Xəta 404 - Bağışla gördüyün səhifə mövcud deyil";

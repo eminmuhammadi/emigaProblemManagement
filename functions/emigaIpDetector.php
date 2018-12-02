@@ -15,5 +15,5 @@ if (isset($_SERVER["HTTP_CF_CONNECTING_IP"])){
     {$ip = $forward;}
     else{$ip = $remote;}
     return $ip;
-}//End zaliUserIP
+}
 ?>

@@ -23,10 +23,10 @@
                       if($ram<"49"){
                         echo"bg-success";
                       }
-                      if(($ram>"49") && ($ram<"69")){
+                      else if(($ram>"49") && ($ram<"69")){
                         echo"bg-warning";
                       }
-                      if($ram>"69"){
+                      else if($ram>"69"){
                         echo"bg-danger";
                       }
                       ?> px-4 py-2 rounded">
@@ -51,10 +51,10 @@
                       if($cpu<"0.5"){
                         echo"bg-success";
                       }
-                      if(($cpu>"0.5") && ($cpu<"1")){
+                      else if(($cpu>"0.5") && ($cpu<"1")){
                         echo"bg-warning";
                       }
-                      if($cpu>"1"){
+                      else if($cpu>"1"){
                         echo"bg-danger";
                       }
                       ?> px-4 py-2 rounded">

@@ -32,7 +32,7 @@
     if(isset($_POST["delete_user"])){   
       $delete_user ="DELETE FROM users WHERE user_id='$user_id' ";  
       $result_delete_user = mysqli_query($connect, $delete_user);
-      header("Location: /dashboard/user-profiles&action=user-deleted");exit();} 
+      header("Location: /dashboard/profiles&action=user-deleted");exit();} 
     /*
     *  Edit User
     */
@@ -48,10 +48,11 @@ if(mysqli_num_rows($search_email_result) > 0)  {
     else{
      $user_name=mysqli_real_escape_string($connect, $_POST["user_name"]);
      $user_lastname=mysqli_real_escape_string($connect, $_POST["user_lastname"]);
+     $user_permission=mysqli_real_escape_string($connect, $_POST["user_permission"]);
      $user_password=md5($user_password);
      $ses_user_id=$_SESSION['user_id'];  
         $update_user =" UPDATE users SET user_name='$user_name' , user_lastname='$user_lastname' ,
-        user_email='$user_email' ,user_department_detail='$user_department_detail' WHERE user_id='$user_id' "; 
+        user_email='$user_email' ,user_department_detail='$user_department_detail' , user_permission='$user_permission' WHERE user_id='$user_id' "; 
         $result_update_user = mysqli_query($connect, $update_user);
     }
 }} 
@@ -102,7 +103,35 @@ if(mysqli_num_rows($search_email_result) > 0)  {
       echo "<option value=\"$department_title\">$department_title</option>";}}
 ?>
                     </select>
-             </div>              
+             </div> 
+              <div class="form-group">
+                   <label for="exampleFormControlSelect1">İstifadəçinin statusu</label>
+                    <select required name="user_permission" class="form-control form-control-lg">
+                  <?php 
+                  if ($user_permission=="U") {
+                    echo "
+                    <option selected value=\"U\">İstifadəçi</option>
+                    <option value=\"A\">Administratort</option>
+                    <option value=\"GA\">Böyük Administrator</option>
+                    ";
+                  }
+                  else if ($user_permission=="A") {
+                    echo "
+                    <option value=\"U\">İstifadəçi</option>
+                    <option selected value=\"A\">Administratort</option>
+                    <option value=\"GA\">Böyük Administrator</option>
+                    ";
+                  }
+                  else if ($user_permission=="GA") {
+                    echo "
+                    <option value=\"U\">İstifadəçi</option>
+                    <option value=\"A\">Administratort</option>
+                    <option selected value=\"GA\">Böyük Administrator</option>
+                    ";
+                  }
+                  ?> 
+                    </select>
+             </div>                     
         <button name="edit_user" type="submit" class="btn btn-primary mr-2">HESABI DÜZƏLT</button>
         <button name="delete_user" type="submit" class="btn btn-danger">HESABI SİL</button>
           </form>

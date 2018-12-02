@@ -4,7 +4,7 @@
 	/*Database*/
 	require_once realpath($_SERVER["DOCUMENT_ROOT"])."/config/emigaDB.php";
 
-	ini_set('display_errors', '0');
+	ini_set('display_errors', '1');
 	if(!isset($_COOKIE['emigaUniqID'])) {
 	setcookie("emigaUniqID",emigaToken(), time() + (86400 * 7), "/");}
 
@@ -56,7 +56,7 @@
 	   		/*Support*/
 	   			else if($_GET['route']=="support"){$title="Xidməti dəstək &mdash; ".$powered;}
 	   		/*User all profiles*/	
-				else if($_GET['route']=="user-profiles"){$title="Bütün istifadəçilər &mdash; ".$powered;}
+				else if($_GET['route']=="profiles"){$title="Bütün istifadəçilər &mdash; ".$powered;}
 			/*Edit user profiles*/
 				else if($_GET['route']=="edit-user-profile"){$title="İstifadəçinin məlumatlarını düzəlt &mdash; ".$powered;}
 

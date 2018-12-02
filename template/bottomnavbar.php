@@ -29,7 +29,7 @@
   <?php if ($_SESSION['user_permission']=="A" || $_SESSION['user_permission']=="GA") {           
         echo "
             <li class=\"nav-item\">
-              <a href=\"/dashboard/user-profiles\" class=\"nav-link\">
+              <a href=\"/dashboard/profiles\" class=\"nav-link\">
                 <i class=\"link-icon icon-people\"></i>
                 <span class=\"menu-title\">Profillər</span></a>
             </li>";}?>           

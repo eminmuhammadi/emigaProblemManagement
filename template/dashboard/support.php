@@ -4,19 +4,66 @@
         <div class="content-wrapper">
           <div class="row">
 <!--  --------------- -->
-            <div class="box col-lg-3">
+            <div class="box col-lg-6">
                 <div class="card">
                 	<div class="card-body">
-                		<div class="card-title"><h4>RAM (<small>maks. 100%</small>)</h4></div>
-                      	<div id="g5" class="gauge"></div>
+              <div class="row">      
+               <div class="col-lg-12">     
+                <h4 class="card-title mb-0">RAM</h4>
+                  <div class="d-flex justify-content-between align-items-center">
+                    <div class="d-inline-block pt-3">
+                      <div class="d-md-flex">
+                        <h2 class="mb-0"><?php echo emigaServerMemory();?>%</h2>
+                      </div>
+                      <small class="text-gray">maksimum 100%.</small>
                     </div>
+                    <div class="d-inline-block">
+                      <div class="<?php
+                      $ram=emigaServerMemory();
+                      if($ram<"50"){
+                        echo"bg-success";
+                      }
+                      if(($ram>"51") && ($ram<"69")){
+                        echo"bg-warning";
+                      }
+                      if($ram>"70"){
+                        echo"bg-danger";
+                      }
+                      ?> px-4 py-2 rounded">
+                        <i class="icon-speedometer text-white icon-lg"></i>
+                      </div>
+                    </div>
+                  </div>
                 </div>
-            </div>
-            <div class="box col-lg-3">
-                <div class="card">
-                	<div class="card-body">
-                		<div class="card-title"><h4>CPU (<small>3 GHz</small>)</h4></div>                	
-                      	<div id="g6" class="gauge"></div>
+
+
+               <div class="col-lg-12 mt-5">     
+                <h4 class="card-title mb-0">CPU</h4>
+                  <div class="d-flex justify-content-between align-items-center">
+                    <div class="d-inline-block pt-3">
+                      <div class="d-md-flex">
+                        <h2 class="mb-0"><?php echo emigaServerCpu();?> GHz</h2>
+                      </div>
+                    </div>
+                    <div class="d-inline-block">
+                      <div class="<?php
+                      $cpu=emigaServerCPU();
+                      if($cpu<"0.5"){
+                        echo"bg-success";
+                      }
+                      if(($cpu>"0.51") && ($cpu<"1")){
+                        echo"bg-warning";
+                      }
+                      if($cpu>"1.01"){
+                        echo"bg-danger";
+                      }
+                      ?> px-4 py-2 rounded">
+                        <i class="icon-speedometer text-white icon-lg"></i>
+                      </div>
+                    </div>
+                  </div>
+                </div>                
+              </div>    
                     </div>
                 </div>
             </div>

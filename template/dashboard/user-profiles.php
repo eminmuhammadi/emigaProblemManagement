@@ -44,7 +44,7 @@
       $last_logged        = $row["last_logged"];
                  if($user_permission=="U"){$status="İstifadəçi";}
             else if($user_permission=="A"){$status="Administratort";}
-            else if($user_permission=="GA"){$status="Böyük Adminstratort";}
+            else if($user_permission=="GA"){$status="Böyük Administrator";}
 			echo "
       <tr>
           <td>$user_id</td>

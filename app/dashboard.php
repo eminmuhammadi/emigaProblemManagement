@@ -38,7 +38,7 @@
 	   			else if($_GET['route']=="user"){
 	   				require_once realpath($_SERVER["DOCUMENT_ROOT"])."/template/dashboard/user.php";}
 	   		/*User All Profile*/
-	   			else if($_GET['route']=="user-profiles" && ($_SESSION['user_permission']=="A" || $_SESSION['user_permission']=="GA")){
+	   			else if($_GET['route']=="profiles" && ($_SESSION['user_permission']=="A" || $_SESSION['user_permission']=="GA")){
 	   				require_once realpath($_SERVER["DOCUMENT_ROOT"])."/template/dashboard/user-profiles.php";}	
 	   		/*Edit User All Profile*/
 	   			else if($_GET['route']=="edit-user-profile" && $_SESSION['user_permission']=="GA"){

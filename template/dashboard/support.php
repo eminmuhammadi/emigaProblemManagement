@@ -20,13 +20,13 @@
                     <div class="d-inline-block">
                       <div class="<?php
                       $ram=emigaServerMemory();
-                      if($ram<"50"){
+                      if($ram<"49"){
                         echo"bg-success";
                       }
-                      if(($ram>"51") && ($ram<"69")){
+                      if(($ram>"49") && ($ram<"69")){
                         echo"bg-warning";
                       }
-                      if($ram>"70"){
+                      if($ram>"69"){
                         echo"bg-danger";
                       }
                       ?> px-4 py-2 rounded">
@@ -51,10 +51,10 @@
                       if($cpu<"0.5"){
                         echo"bg-success";
                       }
-                      if(($cpu>"0.51") && ($cpu<"1")){
+                      if(($cpu>"0.5") && ($cpu<"1")){
                         echo"bg-warning";
                       }
-                      if($cpu>"1.01"){
+                      if($cpu>"1"){
                         echo"bg-danger";
                       }
                       ?> px-4 py-2 rounded">

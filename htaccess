@@ -1,0 +1,9 @@
+Options +FollowSymLinks
+RewriteEngine On
+Header set +Developer "Emin Muhammadi"
+Options -Indexes
+RewriteCond %{SCRIPT_FILENAME} !-d
+RewriteCond %{SCRIPT_FILENAME} !-f
+RewriteCond %{THE_REQUEST} /app/([^\s?]*) [NC]
+RewriteRule ^ %1 [L,NE,R=302]
+RewriteRule ^((?!app/).*)$ app/$1 [L,NC]

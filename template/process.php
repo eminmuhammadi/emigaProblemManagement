@@ -45,6 +45,10 @@
 			/*Departments*/
 	   			else if($_GET['route']=="departments"){$title="Şöbələr &mdash; ".$powered;}
 
+		/*Notifications*/
+	   			else if($_GET['route']=="notifications"){$title="Bildirişlər &mdash; ".$powered;}
+	   	/*Edit Notifications*/
+	   			else if($_GET['route']=="edit-notification"){$title="Bildirişi düzəlt &mdash; ".$powered;}
 
 	   		/*Main*/
 	   			else if($_GET['route']=="main"){$title="Əsas Panel &mdash; ".$powered;}

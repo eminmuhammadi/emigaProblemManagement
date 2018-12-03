@@ -37,7 +37,14 @@
               <a href=\"/dashboard/profiles\" class=\"nav-link\">
                 <i class=\"link-icon icon-people\"></i>
                 <span class=\"menu-title\">Profillər</span></a>
-            </li>";}?>           
+            </li>";}?>        
+   <?php if ($_SESSION['user_permission']=="A" || $_SESSION['user_permission']=="GA") {           
+        echo "
+            <li class=\"nav-item\">
+              <a href=\"/dashboard/notifications\" class=\"nav-link\">
+                <i class=\"link-icon icon-bell\"></i>
+                <span class=\"menu-title\">Bildirişlər</span></a>
+            </li>";}?>                 
   <?php if ($_SESSION['user_permission']=="A" || $_SESSION['user_permission']=="GA") {           
         echo "
             <li class=\"nav-item\">                   

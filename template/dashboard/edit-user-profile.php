@@ -118,7 +118,7 @@ if(mysqli_num_rows($search_email_result) > 0)  {
                   else if ($user_permission=="A") {
                     echo "
                     <option value=\"U\">İstifadəçi</option>
-                    <option selected value=\"A\">Administratort</option>
+                    <option selected value=\"A\">Administrator</option>
                     <option value=\"GA\">Böyük Administrator</option>
                     ";
                   }

@@ -9,6 +9,8 @@ RewriteRule ^login$          login.php 	   [L]
 RewriteRule ^register$       register.php  [L]
 RewriteRule ^logout$         logout.php    [L]
 RewriteRule ^404$         	 404.php    [L]
+RewriteRule ^system$         system.php    [L]
+
 
 ErrorDocument 404 /404
 

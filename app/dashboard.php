@@ -40,6 +40,12 @@
 	   			else if($_GET['route']=="departments" && ($_SESSION['user_permission']=="A" || $_SESSION['user_permission']=="GA" )){
 	   				require_once realpath($_SERVER["DOCUMENT_ROOT"])."/template/dashboard/departments.php";}
 
+	   		/*Notifications*/
+	   			else if($_GET['route']=="notifications"){
+	   				require_once realpath($_SERVER["DOCUMENT_ROOT"])."/template/dashboard/notifications.php";}
+	   		/*Notifications*/
+	   			else if($_GET['route']=="edit-notification"){
+	   				require_once realpath($_SERVER["DOCUMENT_ROOT"])."/template/dashboard/edit-notification.php";}
 
 	   		/*Main*/
 	   			else if($_GET['route']=="main"){

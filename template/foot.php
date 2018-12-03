@@ -1,7 +1,7 @@
 <script src="/<?php echo $_COOKIE['emigaUniqID'] ;?>-app.js"></script>
 <?php 
 if (!empty($_GET['route'])) {
-  if (($_GET['route']=="departments") || ($_GET['route']=="my-problems") || ($_GET['route']=="all-problems")|| ($_GET['route']=="support") ||($_GET['route']=="profiles")){
+  if (($_GET['route']=="departments") || ($_GET['route']=="my-problems") || ($_GET['route']=="all-problems")|| ($_GET['route']=="support") ||($_GET['route']=="profiles") || ($_GET['route']=="notifications") || ($_GET['route']=="edit-notification")){
 echo "<script type=\"text/javascript\" src=\"/static/pack/data-table.js\"></script>
 <script type=\"text/javascript\">
 (function($) {
@@ -27,7 +27,7 @@ echo "<script type=\"text/javascript\" src=\"/static/pack/data-table.js\"></scri
     });
   });
 })(jQuery);
-</script>";}}
-?>
+</script>";}
+require_once realpath($_SERVER["DOCUMENT_ROOT"])."/template/notifications.php";}?>
 </body>
 </html>

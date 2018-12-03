@@ -133,7 +133,7 @@ if(mysqli_num_rows($search_email_result) > 0)  {
                     </select>
              </div>                     
         <button name="edit_user" type="submit" class="btn btn-primary mr-2">HESABI DÜZƏLT</button>
-        <button name="delete_user" type="submit" class="btn btn-danger">HESABI SİL</button>
+        <button name="delete_user" onclick="return confirm('Silmək istədiyini təsdiqləyirsən?');" type="submit" class="btn btn-danger">HESABI SİL</button>
           </form>
 
                 </div>

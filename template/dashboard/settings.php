@@ -95,7 +95,7 @@ if(isset($_POST["edit_user"]))  {
               </div>
 
         <button name="edit_user" type="submit" class="btn btn-primary mr-2">HESABI DÜZƏLT</button>
-        <button name="delete_user" type="submit" class="btn btn-danger">HESABI SİL</button>
+        <button name="delete_user" type="submit" onclick="return confirm('Silmək istədiyini təsdiqləyirsən?');" class="btn btn-danger">HESABI SİL</button>
           </form>
 
                 </div>

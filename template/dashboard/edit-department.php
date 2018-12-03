@@ -51,7 +51,7 @@ else{die("Heç bir şöbə seçilmədi.");}
                       <input required value="<?php echo $get_department_desc?>" type="text" name="department_description" class="form-control" placeholder="Şöbə haqqında məlumatı daxil edin">
               </div>
               <button name="edit_department" type="submit" class="btn btn-primary mr-2">ŞÖBƏNI DÜZƏLT</button>
-              <button name="delete_department" type="submit" class="btn btn-danger">SİL</button>
+              <button name="delete_department" onclick="return confirm('Silmək istədiyini təsdiqləyirsən?');" type="submit" class="btn btn-danger">SİL</button>
           </form>
 
                 </div>

@@ -10,7 +10,7 @@
     *   Get Problem Information
     */
     $problem_id = $_GET['problem_id'];
-    $get_problem_inf ="SELECT department_detail , user_detail , problem_title , problem_description , problem_status , problem_status_description , range_date_end , range_date_start , reg_date , problem_id FROM posts WHERE problem_id='$problem_id' ";  
+    $get_problem_inf ="SELECT department_detail , user_detail , problem_title , problem_description , problem_status , problem_admin , problem_status_description , range_date_end , range_date_start , reg_date , problem_id FROM posts WHERE problem_id='$problem_id' ";  
     $result_department_inf = mysqli_query($connect, $get_problem_inf);  
 
     if(mysqli_num_rows($result_department_inf) > 0){  
@@ -24,6 +24,7 @@
         $problem_status_description = $row["problem_status_description"];
         $range_date_start    = $row["range_date_start"];
         $range_date_end      = $row["range_date_end"];
+        $problem_admin       = $row["problem_admin"];
         $reg_date            = $row["reg_date"];
 
 
@@ -76,24 +77,35 @@
         $range_date_end=mysqli_real_escape_string($connect, $_POST["range_date_end"]);
         $problem_status=mysqli_real_escape_string($connect, $_POST["problem_status"]);
         $problem_status_description=mysqli_real_escape_string($connect, $_POST["problem_status_description"]);
+        $problem_admin=$_SESSION['user_name']." ".$_SESSION['user_lastname'];
         $reg_date=mysqli_real_escape_string($connect, $_POST["reg_date"]);
 
-        $update_problem =" UPDATE posts SET problem_title='$problem_title' , department_detail='$department_detail' , problem_description='$problem_description' , range_date_start='$range_date_start', range_date_end='$range_date_end', problem_status='$problem_status', problem_status_description='$problem_status_description', reg_date='$reg_date' WHERE problem_id='$problem_id' "; 
+        $update_problem =" UPDATE posts SET problem_title='$problem_title' , department_detail='$department_detail' , problem_description='$problem_description' , range_date_start='$range_date_start', range_date_end='$range_date_end', problem_status='$problem_status', problem_status_description='$problem_status_description', problem_admin='$problem_admin', reg_date='$reg_date' WHERE problem_id='$problem_id' "; 
 
           $result_problem_inf = mysqli_query($connect, $update_problem);
-          echo"<script>window.location.href = \"/dashboard/edit-problem&problem_id=$problem_id\";</script>";    
+               header("Location: /dashboard/edit-problem&problem_id=".$problem_id);
+    
       }
 
     }
     /*
-    *     Delete GA
+    *     Delete GA AND U
     */
-
+      if($_SESSION['user_permission']=="GA"){
           if(isset($_POST['delete_problem'])){ 
                 $delete_problem ="DELETE FROM posts WHERE problem_id='$problem_id' ";  
                 $result_delete_problem = mysqli_query($connect, $delete_problem);
-                echo"<script>window.location.href = \"/dashboard/my-problems&action=problem-deleted\";</script>";     
-          }}
+                header("Location: /dashboard/all-problems&action=problem-deleted");
+
+          }}  
+      if($_SESSION['user_permission']=="U"){
+          if(isset($_POST['delete_problem'])){ 
+                $delete_problem ="DELETE FROM posts WHERE problem_id='$problem_id' ";  
+                $result_delete_problem = mysqli_query($connect, $delete_problem);
+                header("Location: /dashboard/my-problems&action=problem-deleted");
+
+          }}            
+        }
 
     /*
     *    Problem id not selected
@@ -105,14 +117,11 @@
     *    User permission for processing
     */
     if($_SESSION['user_permission']=="U"){
-    require_once realpath($_SERVER["DOCUMENT_ROOT"])."/template/dashboard/permission/U/edit-problem.php";
-    }
+    require_once realpath($_SERVER["DOCUMENT_ROOT"])."/template/dashboard/permission/U/edit-problem.php";}
     else if($_SESSION['user_permission']=="A"){
-    require_once realpath($_SERVER["DOCUMENT_ROOT"])."/template/dashboard/permission/A/edit-problem.php";
-    }
+    require_once realpath($_SERVER["DOCUMENT_ROOT"])."/template/dashboard/permission/A/edit-problem.php";}
     else if($_SESSION['user_permission']=="GA"){
-    require_once realpath($_SERVER["DOCUMENT_ROOT"])."/template/dashboard/permission/GA/edit-problem.php";
-    }
+    require_once realpath($_SERVER["DOCUMENT_ROOT"])."/template/dashboard/permission/GA/edit-problem.php";}
 ?>
             <div class="col-md-4 grid-margin stretch-card">
               <div class="card">
@@ -130,6 +139,10 @@
 
                       ?></h6>
                       <p class="mb-2"></p>
+                    </li>
+                    <li>
+                      <h6>Administrator</h6>
+                      <p class="mb-2"><?php echo $problem_admin;?></p>
                     </li>
                     <li>
                       <h6>Administratorun cavabı</h6>

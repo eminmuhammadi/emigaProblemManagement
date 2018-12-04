@@ -1,5 +1,4 @@
-  <div class="container-scroller">
-
+<div class="container-scroller">
  <nav class="navbar horizontal-layout col-lg-12 col-12 p-0">
       <div class="nav-top flex-grow-1">
         <div class="container d-flex flex-row h-100 align-items-center">

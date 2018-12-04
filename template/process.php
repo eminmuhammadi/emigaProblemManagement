@@ -1,4 +1,4 @@
-<?php
+<?php  
 	/*Library*/
 	require_once realpath($_SERVER["DOCUMENT_ROOT"])."/lib/emigaLib.php";
 	/*Database*/

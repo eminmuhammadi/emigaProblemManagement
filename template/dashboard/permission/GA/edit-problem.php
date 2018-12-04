@@ -1,4 +1,4 @@
-            <div class="col-md-8 grid-margin stretch-card">
+     <div class="col-md-8 grid-margin stretch-card">
               <div class="card">
                 <div class="card-body">
                   <h4 class="mb-1 card-title"><b>Problemi düzəlt</b></h4>

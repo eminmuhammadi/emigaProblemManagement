@@ -1,5 +1,4 @@
-      <div class="nav-bottom">
-
+    <div class="nav-bottom">
         <div class="container">
           <ul class="nav page-navigation">
             <li class="nav-item">

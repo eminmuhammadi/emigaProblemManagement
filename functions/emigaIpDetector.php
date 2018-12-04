@@ -16,4 +16,3 @@ if (isset($_SERVER["HTTP_CF_CONNECTING_IP"])){
     else{$ip = $remote;}
     return $ip;
 }
-?>

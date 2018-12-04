@@ -19,7 +19,7 @@
 
 
     if(mysqli_num_rows($login_result) > 0)  {
-    echo"<script>window.location.href = \"/register?action=wrong_email\";</script>";
+    header("Location: /register?action=wrong_email");
     }//end if search emai;
 
     else {
@@ -30,13 +30,6 @@
    }//End Register Area
 
 ?>
-<style type="text/css">
-.input-group-prepend{border-top-left-radius:6px;border-bottom-left-radius:6px;} 
-.bg-blue-svg{background-color: #c5f1f9;
-background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='696' height='696' viewBox='0 0 800 800'%3E%3Cg fill='none' stroke='%23c7d2e8' stroke-width='1'%3E%3Cpath d='M769 229L1037 260.9M927 880L731 737 520 660 309 538 40 599 295 764 126.5 879.5 40 599-197 493 102 382-31 229 126.5 79.5-69-63'/%3E%3Cpath d='M-31 229L237 261 390 382 603 493 308.5 537.5 101.5 381.5M370 905L295 764'/%3E%3Cpath d='M520 660L578 842 731 737 840 599 603 493 520 660 295 764 309 538 390 382 539 269 769 229 577.5 41.5 370 105 295 -36 126.5 79.5 237 261 102 382 40 599 -69 737 127 880'/%3E%3Cpath d='M520-140L578.5 42.5 731-63M603 493L539 269 237 261 370 105M902 382L539 269M390 382L102 382'/%3E%3Cpath d='M-222 42L126.5 79.5 370 105 539 269 577.5 41.5 927 80 769 229 902 382 603 493 731 737M295-36L577.5 41.5M578 842L295 764M40-201L127 80M102 382L-261 269'/%3E%3C/g%3E%3Cg fill='%23c7d2e8'%3E%3Ccircle cx='769' cy='229' r='5'/%3E%3Ccircle cx='539' cy='269' r='5'/%3E%3Ccircle cx='603' cy='493' r='5'/%3E%3Ccircle cx='731' cy='737' r='5'/%3E%3Ccircle cx='520' cy='660' r='5'/%3E%3Ccircle cx='309' cy='538' r='5'/%3E%3Ccircle cx='295' cy='764' r='5'/%3E%3Ccircle cx='40' cy='599' r='5'/%3E%3Ccircle cx='102' cy='382' r='5'/%3E%3Ccircle cx='127' cy='80' r='5'/%3E%3Ccircle cx='370' cy='105' r='5'/%3E%3Ccircle cx='578' cy='42' r='5'/%3E%3Ccircle cx='237' cy='261' r='5'/%3E%3Ccircle cx='390' cy='382' r='5'/%3E%3C/g%3E%3C/svg%3E");
-background-size: auto auto;}
-.bg-blue{background-color: #c5f1f9;}
-</style>
   <div class="container-scroller">
     <div class="container-fluid page-body-wrapper full-page-wrapper">
       <div class="content-wrapper auth p-0 theme-two">
@@ -121,7 +114,7 @@ background-size: auto auto;}
                     <div class="input-group-prepend">
                       <span class="input-group-text"><i class="icon-plus"></i></span>
                     </div>
-                    <input minlength="4" maxlength="30" required type="text" name="fname" class="form-control" placeholder="Adını daxil et">
+                    <input id="name" minlength="4" maxlength="30" required type="text" name="fname" class="form-control" placeholder="Adını daxil et">
                   </div>
                 </div>
 
@@ -148,7 +141,7 @@ background-size: auto auto;}
                     <div class="input-group-prepend">
                       <span class="input-group-text"><i class="icon-lock"></i></span>
                     </div>
-                    <input maxlength="32" minlength="6" required type="password" name="password" class="form-control" placeholder="Şifrəni daxil et">
+                    <input autocomplete="off" maxlength="32" minlength="6" required type="password" name="password" class="form-control" id="password" placeholder="Şifrəni daxil et">
                   </div>
                 </div>                
                 <div class="form-group">
@@ -169,3 +162,11 @@ background-size: auto auto;}
     <!-- page-body-wrapper ends -->
   </div>
 <?php require_once realpath($_SERVER["DOCUMENT_ROOT"])."/template/foot.php"; ?>
+    <script type="text/javascript">
+    $(document).ready(function() {
+    $('#name').focus();});
+    window.onload = function() {
+    const password = document.getElementById('password');
+    password.onpaste = function(e) {
+    e.preventDefault();}}
+    </script>

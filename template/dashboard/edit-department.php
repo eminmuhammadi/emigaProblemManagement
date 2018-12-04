@@ -28,8 +28,8 @@ if(isset($_POST["delete_department"])){
 *  Edit Department
 */
 if(isset($_POST["edit_department"]))  { 
-  $department_name=mysqli_real_escape_string($connect, $_POST["department_name"]);
-  $department_description=mysqli_real_escape_string($connect, $_POST["department_description"]);  
+  $department_name=mysqli_real_escape_string($connect, strip_tags($_POST["department_name"]));
+  $department_description=mysqli_real_escape_string($connect, strip_tags($_POST["department_description"]));  
   $update_department =" UPDATE departments SET department_title='$department_name' , department_desc='$department_description' WHERE department_id='$department_id' "; 
   $result_department_inf = mysqli_query($connect, $update_department);
     echo"<script>window.location.href = \"/dashboard/edit-department&department_id=$department_id\";</script>";}}//end empty

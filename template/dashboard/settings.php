@@ -18,11 +18,11 @@ if(isset($_POST["delete_user"])){
 */
 if(isset($_POST["edit_user"]))  { 
   $ses_user_id=$_SESSION['user_id'];  
-  $user_password=mysqli_real_escape_string($connect, $_POST["user_password"]);
-  $user_password_re=mysqli_real_escape_string($connect, $_POST["user_password_re"]);
+  $user_password=mysqli_real_escape_string($connect, strip_tags($_POST["user_password"]));
+  $user_password_re=mysqli_real_escape_string($connect, strip_tags($_POST["user_password_re"]));
 
   if($user_password==$user_password_re){
-  $user_email=mysqli_real_escape_string($connect,strtolower($_POST["user_email"]))  ;
+  $user_email=mysqli_real_escape_string($connect,strtolower(strip_tags($_POST["user_email"])));
   /* Search email */
   $search_email ="SELECT user_email , user_id FROM users WHERE user_email='$user_email' && user_id!='$ses_user_id' LIMIT 1";
   $search_email_result = mysqli_query($connect, $search_email); 
@@ -30,8 +30,8 @@ if(isset($_POST["edit_user"]))  {
     if(mysqli_num_rows($search_email_result) > 0)  {
     header("Location: /dashboard/profile/settings&action=email-wrong");exit();}
     else{
-     $user_name=mysqli_real_escape_string($connect, $_POST["user_name"]);
-     $user_lastname=mysqli_real_escape_string($connect, $_POST["user_lastname"]);
+     $user_name=mysqli_real_escape_string($connect, strip_tags($_POST["user_name"]));
+     $user_lastname=mysqli_real_escape_string($connect, strip_tags($_POST["user_lastname"]));
      $user_password=md5($user_password);
         $update_user =" UPDATE users SET user_name='$user_name' , user_lastname='$user_lastname' ,
         user_email='$user_email',user_password='$user_password' WHERE user_id='$ses_user_id' "; 
@@ -86,12 +86,12 @@ if(isset($_POST["edit_user"]))  {
 
               <div class="form-group">
                       <label>Şifrə</label>
-              <input required  minlength="6" maxlength="32" type="password" name="user_password" class="form-control">
+              <input autocomplete="off"  required  minlength="6" maxlength="32" type="password" name="user_password" class="form-control">
               </div>
 
               <div class="form-group">
                       <label>Şifrəni təsdiqlə</label>
-              <input required  minlength="6" maxlength="32" type="password" name="user_password_re" class="form-control">
+              <input autocomplete="off"  required  minlength="6" maxlength="32" type="password" name="user_password_re" class="form-control">
               </div>
 
         <button name="edit_user" type="submit" class="btn btn-primary mr-2">HESABI DÜZƏLT</button>

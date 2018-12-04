@@ -47,11 +47,11 @@
 
         if(isset($_POST['edit_problem'])){
 
-        $problem_title=mysqli_real_escape_string($connect, $_POST["problem_title"]);
-        $department_detail=mysqli_real_escape_string($connect, $_POST["department_detail"]);
-        $problem_description=mysqli_real_escape_string($connect, $_POST["problem_description"]);
-        $range_date_start=mysqli_real_escape_string($connect, $_POST["range_date_start"]);
-        $range_date_end=mysqli_real_escape_string($connect, $_POST["range_date_end"]);
+        $problem_title=mysqli_real_escape_string($connect, strip_tags($_POST["problem_title"]));
+        $department_detail=mysqli_real_escape_string($connect, strip_tags($_POST["department_detail"]));
+        $problem_description=mysqli_real_escape_string($connect, strip_tags($_POST["problem_description"]));
+        $range_date_start=mysqli_real_escape_string($connect, strip_tags($_POST["range_date_start"]));
+        $range_date_end=mysqli_real_escape_string($connect, strip_tags($_POST["range_date_end"]));
         
 
         $update_problem =" UPDATE posts SET problem_title='$problem_title' , department_detail='$department_detail' , problem_description='$problem_description' , range_date_start='$range_date_start', range_date_end='$range_date_end' WHERE problem_id='$problem_id' "; 
@@ -70,15 +70,15 @@
 
       if(isset($_POST['edit_problem'])){ 
           
-        $problem_title=mysqli_real_escape_string($connect, $_POST["problem_title"]);
-        $department_detail=mysqli_real_escape_string($connect, $_POST["department_detail"]);
-        $problem_description=mysqli_real_escape_string($connect, $_POST["problem_description"]);
-        $range_date_start=mysqli_real_escape_string($connect, $_POST["range_date_start"]);
-        $range_date_end=mysqli_real_escape_string($connect, $_POST["range_date_end"]);
-        $problem_status=mysqli_real_escape_string($connect, $_POST["problem_status"]);
-        $problem_status_description=mysqli_real_escape_string($connect, $_POST["problem_status_description"]);
+        $problem_title=mysqli_real_escape_string($connect, strip_tags($_POST["problem_title"]));
+        $department_detail=mysqli_real_escape_string($connect, strip_tags($_POST["department_detail"]));
+        $problem_description=mysqli_real_escape_string($connect, strip_tags($_POST["problem_description"]));
+        $range_date_start=mysqli_real_escape_string($connect, strip_tags($_POST["range_date_start"]));
+        $range_date_end=mysqli_real_escape_string($connect, strip_tags($_POST["range_date_end"]));
+        $problem_status=mysqli_real_escape_string($connect, strip_tags($_POST["problem_status"]));
+        $problem_status_description=mysqli_real_escape_string($connect, strip_tags($_POST["problem_status_description"]));
         $problem_admin=$_SESSION['user_name']." ".$_SESSION['user_lastname'];
-        $reg_date=mysqli_real_escape_string($connect, $_POST["reg_date"]);
+        $reg_date=mysqli_real_escape_string($connect, strip_tags($_POST["reg_date"]));
 
         $update_problem =" UPDATE posts SET problem_title='$problem_title' , department_detail='$department_detail' , problem_description='$problem_description' , range_date_start='$range_date_start', range_date_end='$range_date_end', problem_status='$problem_status', problem_status_description='$problem_status_description', problem_admin='$problem_admin', reg_date='$reg_date' WHERE problem_id='$problem_id' "; 
 

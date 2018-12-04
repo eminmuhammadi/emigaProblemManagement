@@ -1,4 +1,3 @@
-<?php require_once realpath($_SERVER["DOCUMENT_ROOT"])."/template/process.php"; ?>
 <!DOCTYPE html>
 <html>
 <head>
@@ -6,6 +5,9 @@
 </head>
 <body>
 <?php 
+		session_start();
+		session_destroy();
+
 		unset($_SESSION["user_name"]);
 		unset($_SESSION["user_email"]);
 		unset($_SESSION["user_lastname"]);

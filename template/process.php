@@ -1,4 +1,17 @@
-<?php  
+<?php
+		
+		/*
+		*   Disable directly 
+		*/
+		if (basename($_SERVER['PHP_SELF']) == basename(__FILE__)) { 
+			header('HTTP/1.0 403 Forbidden');};
+		/*
+		*	Security
+		*/	
+		header('X-Frame-Options: SAMEORIGIN');
+
+
+
 	/*Library*/
 	require_once realpath($_SERVER["DOCUMENT_ROOT"])."/lib/emigaLib.php";
 	/*Database*/
@@ -69,4 +82,3 @@
 		}
 
 	}
-?>

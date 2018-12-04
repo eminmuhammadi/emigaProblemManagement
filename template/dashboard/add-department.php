@@ -1,8 +1,8 @@
 <?php
 if(isset($_POST['create_department'])){ 
 
-    $department_name    = mysqli_real_escape_string($connect, $_POST["department_name"]); 
-    $department_description = mysqli_real_escape_string($connect,$_POST["department_description"]);
+    $department_name    = mysqli_real_escape_string($connect, strip_tags($_POST["department_name"])); 
+    $department_description = mysqli_real_escape_string($connect,strip_tags($_POST["department_description"]));
  
     
     $add_department ="INSERT INTO departments (department_title , department_desc) VALUES ('".$department_name."' , '".$department_description."' )";

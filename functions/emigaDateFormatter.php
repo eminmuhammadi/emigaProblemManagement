@@ -5,4 +5,3 @@
             else if($f=="setvalue"){$date=date("Y-m-d", strtotime($date));}
             return $date;    
       }
-?>

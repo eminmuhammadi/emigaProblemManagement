@@ -33,7 +33,7 @@
                   <i class="icon-bell mx-0"></i>
                   <span class="count bg-danger text-white mb-2" style="font-size:12px;width:12px;height:12px;"></span>
                 </a> 
-                <div class="pt-3 dropdown-menu dropdown-menu-right navbar-dropdown preview-list" aria-labelledby="messageDropdown">
+                <div class="pt-3 dropdown-menu notification dropdown-menu-right navbar-dropdown preview-list" aria-labelledby="messageDropdown">
                 </div>
               </li>
 

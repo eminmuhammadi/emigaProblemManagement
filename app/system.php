@@ -96,9 +96,9 @@ if(!empty($_GET['process'])){
 
 		if(isset($_POST["subject"])){
 		$con = mysqli_connect("localhost", "emiga", "emiga", "emigaproject");
-	    $subject = mysqli_real_escape_string($con, $_POST["subject"]);
-        $comment = mysqli_real_escape_string($con, $_POST["comment"]);
-        $permission = mysqli_real_escape_string($con, $_POST["user_permission"]);
+	    $subject = mysqli_real_escape_string($con, strip_tags($_POST["subject"]));
+        $comment = mysqli_real_escape_string($con, strip_tags($_POST["comment"]));
+        $permission = mysqli_real_escape_string($con, strip_tags($_POST["user_permission"]));
         $query = " INSERT INTO notf(notf_subject, notf_text , notf_permission) VALUES ('$subject', '$comment' , '$permission')";
  		mysqli_query($con, $query);
 		}

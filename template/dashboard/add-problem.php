@@ -2,12 +2,12 @@
 if(isset($_POST['create_problem'])){ 
 
     $user_detail = $_SESSION['user_name']." ".$_SESSION['user_lastname'];
-    $user_detail = mysqli_real_escape_string($connect, $user_detail); 
-    $problem_title = mysqli_real_escape_string($connect, $_POST["problem_title"]); 
-    $department_detail = mysqli_real_escape_string($connect,$_POST["department_detail"]);
-    $problem_description = mysqli_real_escape_string($connect, $_POST["problem_description"]); 
-    $range_date_start = mysqli_real_escape_string($connect,$_POST["range_date_start"]); 
-    $range_date_end = mysqli_real_escape_string($connect, $_POST["range_date_end"]); 
+    $user_detail = mysqli_real_escape_string($connect, strip_tags($user_detail)); 
+    $problem_title = mysqli_real_escape_string($connect, strip_tags($_POST["problem_title"])); 
+    $department_detail = mysqli_real_escape_string($connect,strip_tags($_POST["department_detail"]));
+    $problem_description = mysqli_real_escape_string($connect, strip_tags($_POST["problem_description"])); 
+    $range_date_start = mysqli_real_escape_string($connect,strip_tags($_POST["range_date_start"])); 
+    $range_date_end = mysqli_real_escape_string($connect, strip_tags($_POST["range_date_end"])); 
 
 
 

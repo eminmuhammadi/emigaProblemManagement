@@ -37,8 +37,8 @@
     *  Edit User
     */
 if(isset($_POST["edit_user"]))  { 
-  $user_email=mysqli_real_escape_string($connect,strtolower($_POST["user_email"]));
-  $user_department_detail=mysqli_real_escape_string($connect,$_POST["user_department_detail"]);
+  $user_email=mysqli_real_escape_string($connect,strtolower(strip_tags($_POST["user_email"])));
+  $user_department_detail=mysqli_real_escape_string($connect,strip_tags($_POST["user_department_detail"]));
   /* Search email */
   $search_email ="SELECT user_email FROM users WHERE user_email='$user_email' && user_id!='$user_id' LIMIT 1";
   $search_email_result = mysqli_query($connect, $search_email); 
@@ -46,9 +46,9 @@ if(isset($_POST["edit_user"]))  {
 if(mysqli_num_rows($search_email_result) > 0)  {
     header("Location: /dashboard/edit-user-profile&user_id=$user_id&action=email-wrong");exit();}
     else{
-     $user_name=mysqli_real_escape_string($connect, $_POST["user_name"]);
-     $user_lastname=mysqli_real_escape_string($connect, $_POST["user_lastname"]);
-     $user_permission=mysqli_real_escape_string($connect, $_POST["user_permission"]);
+     $user_name=mysqli_real_escape_string($connect, strip_tags($_POST["user_name"]));
+     $user_lastname=mysqli_real_escape_string($connect, strip_tags($_POST["user_lastname"]));
+     $user_permission=mysqli_real_escape_string($connect, strip_tags($_POST["user_permission"]));
      $user_password=md5($user_password);
      $ses_user_id=$_SESSION['user_id'];  
         $update_user =" UPDATE users SET user_name='$user_name' , user_lastname='$user_lastname' ,

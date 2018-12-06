@@ -10,12 +10,12 @@ if(!empty($_GET['process'])){
 
 
 		if(isset($_POST['view'])){
-		$con = mysqli_connect("localhost", "emiga", "emiga", "emigaproject");
+    require_once realpath($_SERVER["DOCUMENT_ROOT"])."/config/emigaDB.php";
 
 
 				if($_POST["view"] != ''){
     			$update_query = "UPDATE notf SET notf_status = 1 WHERE notf_status=0";
-    			mysqli_query($con, $update_query);}
+    			mysqli_query($connect, $update_query);}
 
     	if (!empty($_GET['limit'])) {
     			$limit=$_GET['limit'];
@@ -32,7 +32,7 @@ if(!empty($_GET['process'])){
     			
     				
 
-			$result = mysqli_query($con, $query);
+			$result = mysqli_query($connect, $query);
 			$output = '';
 
 
@@ -73,7 +73,7 @@ if(!empty($_GET['process'])){
 
 
 				$status_query = "SELECT * FROM notf WHERE notf_status=0";
-				$result_query = mysqli_query($con, $status_query);
+				$result_query = mysqli_query($connect, $status_query);
 				$count = mysqli_num_rows($result_query);	
 
 					$data = array(
@@ -92,15 +92,15 @@ if(!empty($_GET['process'])){
 *    Notification Insert
 */
 
-	else if ($_GET['process']=="notf_insert"){
+	else if ($_GET['process']=="notf_insert" && ($_SESSION['user_permission']=="A" || $_SESSION['user_permission']=="GA")){
 
 		if(isset($_POST["subject"])){
-		$con = mysqli_connect("localhost", "emiga", "emiga", "emigaproject");
-	    $subject = mysqli_real_escape_string($con, strip_tags($_POST["subject"]));
-        $comment = mysqli_real_escape_string($con, strip_tags($_POST["comment"]));
-        $permission = mysqli_real_escape_string($con, strip_tags($_POST["user_permission"]));
+		require_once realpath($_SERVER["DOCUMENT_ROOT"])."/config/emigaDB.php";
+	    $subject = mysqli_real_escape_string($connect, strip_tags($_POST["subject"]));
+        $comment = mysqli_real_escape_string($connect, strip_tags($_POST["comment"]));
+        $permission = mysqli_real_escape_string($connect, strip_tags($_POST["user_permission"]));
         $query = " INSERT INTO notf(notf_subject, notf_text , notf_permission) VALUES ('$subject', '$comment' , '$permission')";
- 		mysqli_query($con, $query);
+ 		mysqli_query($connect, $query);
 		}
 
 	}

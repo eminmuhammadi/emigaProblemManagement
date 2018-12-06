@@ -17,7 +17,7 @@
 	/*Database*/
 	require_once realpath($_SERVER["DOCUMENT_ROOT"])."/config/emigaDB.php";
 
-	ini_set('display_errors', '0');
+	ini_set('display_errors', '1');
 	if(!isset($_COOKIE['emigaUniqID'])) {
 	setcookie("emigaUniqID",emigaToken(), time() + (86400 * 7), "/");}
 
@@ -27,58 +27,58 @@
 	/*Cache*/
 	emigaCacheStart('1','1');
 	
-	$powered="Emiga Problem Management";
+	$powered="AzMIU &mdash; IKT Mərkəzi";
 
 	if ($emigaFileName=="login.php"){
-		$title="Daxil ol &mdash; ".$powered;}
+		$title="Daxil ol | ".$powered;}
 
 	else if($emigaFileName=="register.php"){
-		$title="Qeydiyyatdan keç &mdash; ".$powered;}
+		$title="Qeydiyyatdan keç | ".$powered;}
 
 	else if($emigaFileName=="index.php"){
-		$title="Əsas səhifə &mdash; ".$powered;}
+		$title="Əsas səhifə | ".$powered;}
 
 	else if($emigaFileName=="dashboard.php"){
 		
 		if(!empty($_GET['route'])){
 
 			/*Add Problem*/
-	   			if($_GET['route']=="add-problem"){$title="Problem Əlavə et &mdash; ".$powered;}
+	   			if($_GET['route']=="add-problem"){$title="Problem Əlavə et | ".$powered;}
 	   		/*My Problem*/
-	   			else if($_GET['route']=="my-problems"){$title="Mənim problemlərim &mdash; ".$powered;}
+	   			else if($_GET['route']=="my-problems"){$title="Mənim problemlərim | ".$powered;}
 	   		/*Problems*/
-	   			else if($_GET['route']=="all-problems"){$title="Problemlər &mdash; ".$powered;}
+	   			else if($_GET['route']=="all-problems"){$title="Problemlər | ".$powered;}
 	   		/*Edit Problems*/
-	   			else if($_GET['route']=="edit-problem"){$title="Problemi düzəlt &mdash; ".$powered;}
+	   			else if($_GET['route']=="edit-problem"){$title="Problemi düzəlt | ".$powered;}
 
 	   		/*Add Department*/
-	   			else if($_GET['route']=="add-department"){$title="Şöbə əlavə et &mdash; ".$powered;}
+	   			else if($_GET['route']=="add-department"){$title="Şöbə əlavə et | ".$powered;}
 			/*Edit Department*/
-	   			else if($_GET['route']=="edit-department"){$title="Şöbəni düzəlt &mdash; ".$powered;}
+	   			else if($_GET['route']=="edit-department"){$title="Şöbəni düzəlt | ".$powered;}
 			/*Departments*/
 	   			else if($_GET['route']=="departments"){$title="Şöbələr &mdash; ".$powered;}
 
 		/*Notifications*/
-	   			else if($_GET['route']=="notifications"){$title="Bildirişlər &mdash; ".$powered;}
+	   			else if($_GET['route']=="notifications"){$title="Bildirişlər | ".$powered;}
 	   	/*Edit Notifications*/
-	   			else if($_GET['route']=="edit-notification"){$title="Bildirişi düzəlt &mdash; ".$powered;}
+	   			else if($_GET['route']=="edit-notification"){$title="Bildirişi düzəlt | ".$powered;}
 
 	   		/*Main*/
-	   			else if($_GET['route']=="main"){$title="Əsas Panel &mdash; ".$powered;}
+	   			else if($_GET['route']=="main"){$title="Əsas Panel | ".$powered;}
 	   		/*User Profile*/
-	   			else if($_GET['route']=="user"){$title="Mənim kabinetim &mdash; ".$powered;}
+	   			else if($_GET['route']=="user"){$title="Mənim kabinetim | ".$powered;}
 	   		/*User Settings*/
-	   			else if($_GET['route']=="profile/settings"){$title="Tənzimləmələr &mdash; ".$powered;}
+	   			else if($_GET['route']=="profile/settings"){$title="Tənzimləmələr | ".$powered;}
 	   		/*Support*/
-	   			else if($_GET['route']=="support"){$title="Xidməti dəstək &mdash; ".$powered;}
+	   			else if($_GET['route']=="support"){$title="Xidməti dəstək | ".$powered;}
 	   		/*User all profiles*/	
-				else if($_GET['route']=="profiles"){$title="Bütün istifadəçilər &mdash; ".$powered;}
+				else if($_GET['route']=="profiles"){$title="Bütün istifadəçilər | ".$powered;}
 			/*Edit user profiles*/
-				else if($_GET['route']=="edit-user-profile"){$title="İstifadəçinin məlumatlarını düzəlt &mdash; ".$powered;}
+				else if($_GET['route']=="edit-user-profile"){$title="İstifadəçinin məlumatlarını düzəlt | ".$powered;}
 
 		}else{
 
-			$title="404 Xəta &mdash; ".$powered;
+			$title="404 Xəta | ".$powered;
 		}
 
 	}

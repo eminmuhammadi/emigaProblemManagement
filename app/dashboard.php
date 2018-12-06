@@ -24,27 +24,27 @@
 	   			else if($_GET['route']=="my-problems"){
 	   				require_once realpath($_SERVER["DOCUMENT_ROOT"])."/template/dashboard/my-problems.php";}
 	   		/*Problems*/
-	   			else if($_GET['route']=="all-problems" && ($_SESSION['user_permission']=="A" || $_SESSION['user_permission']=="GA" )){
+	   			else if($_GET['route']=="all-problems" && ($_SESSION['user_permission']=="GA") ){
 	   				require_once realpath($_SERVER["DOCUMENT_ROOT"])."/template/dashboard/all-problems.php";}
 	   		/*Edit Problems*/
 	   			else if($_GET['route']=="edit-problem"){
 	   				require_once realpath($_SERVER["DOCUMENT_ROOT"])."/template/dashboard/edit-problem.php";}
 
 	   		/*Add Department*/
-	   			else if($_GET['route']=="add-department" && ($_SESSION['user_permission']=="A" || $_SESSION['user_permission']=="GA" )){
+	   			else if($_GET['route']=="add-department" && ($_SESSION['user_permission']=="GA")){
 	   				require_once realpath($_SERVER["DOCUMENT_ROOT"])."/template/dashboard/add-department.php";}
 			/*Edit Department*/
-	   			else if($_GET['route']=="edit-department" && ($_SESSION['user_permission']=="A" || $_SESSION['user_permission']=="GA" )){
+	   			else if($_GET['route']=="edit-department" && ($_SESSION['user_permission']=="GA")){
 	   				require_once realpath($_SERVER["DOCUMENT_ROOT"])."/template/dashboard/edit-department.php";}
 			/*Departments*/
-	   			else if($_GET['route']=="departments" && ($_SESSION['user_permission']=="A" || $_SESSION['user_permission']=="GA" )){
+	   			else if($_GET['route']=="departments" && ($_SESSION['user_permission']=="GA") ){
 	   				require_once realpath($_SERVER["DOCUMENT_ROOT"])."/template/dashboard/departments.php";}
 
 	   		/*Notifications*/
-	   			else if($_GET['route']=="notifications"){
+	   			else if($_GET['route']=="notifications" && ($_SESSION['user_permission']=="A" || $_SESSION['user_permission']=="GA")){
 	   				require_once realpath($_SERVER["DOCUMENT_ROOT"])."/template/dashboard/notifications.php";}
 	   		/*Notifications*/
-	   			else if($_GET['route']=="edit-notification"){
+	   			else if($_GET['route']=="edit-notification" &&  ($_SESSION['user_permission']=="A" || $_SESSION['user_permission']=="GA")){
 	   				require_once realpath($_SERVER["DOCUMENT_ROOT"])."/template/dashboard/edit-notification.php";}
 
 	   		/*Main*/
@@ -54,7 +54,7 @@
 	   			else if($_GET['route']=="user"){
 	   				require_once realpath($_SERVER["DOCUMENT_ROOT"])."/template/dashboard/user.php";}
 	   		/*User All Profile*/
-	   			else if($_GET['route']=="profiles" && ($_SESSION['user_permission']=="A" || $_SESSION['user_permission']=="GA")){
+	   			else if($_GET['route']=="profiles" && ($_SESSION['user_permission']=="GA") ){
 	   				require_once realpath($_SERVER["DOCUMENT_ROOT"])."/template/dashboard/user-profiles.php";}	
 	   		/*Edit User All Profile*/
 	   			else if($_GET['route']=="edit-user-profile" && $_SESSION['user_permission']=="GA"){

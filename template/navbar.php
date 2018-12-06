@@ -4,28 +4,17 @@
         <div class="container d-flex flex-row h-100 align-items-center">
           <div class="text-center navbar-brand-wrapper d-flex align-items-center">
 
-            <a class="navbar-brand brand-logo" href="/dashboard/main">
-                   <!-- Mini Logo <img src="" alt=""/>--> <b>EmiGa Problem Management</b>
+            <a class="navbar-brand brand-logo" href="/dashboard/main" style="color:#fff;border-bottom:2px solid #f9f9f9;border-bottom-left-radius:10px;border-bottom-right-radius:10px;">
+                  <b>𝔸𝕫𝕄𝕀𝕌  &mdash; 𝕀𝕂𝕋 𝕄ə𝕣𝕜ə𝕫𝕚</b>
             </a>
 
-            <a class="navbar-brand brand-logo-mini" href="/dashboard/main">
-                   <!-- Big Logo <img src="" alt=""/>-->  <b>EPM</b>
+            <a class="navbar-brand brand-logo-mini" href="/dashboard/main" style="color:#fff;border-bottom:2px solid #f9f9f9;border-bottom-left-radius:10px;border-bottom-right-radius:10px;">
+                   <b>𝔸𝕫𝕄𝕀𝕌  &mdash; 𝕀𝕂𝕋</b>
             </a>
 
           </div>
           <div class="navbar-menu-wrapper d-flex align-items-center justify-content-between flex-grow-1"> 
-            <form class="search-field d-none d-md-flex" action="#">
-              <div class="form-group mb-0">
-                <div class="input-group">
-                  <div class="input-group-prepend">
-                    <span class="input-group-text"><i class="icon-magnifier"></i></span>
-                  </div>
-                  <input type="text" class="form-control" placeholder="axtarmaq üçün...">
-                </div>
-              </div>
-            </form>
             <ul class="navbar-nav navbar-nav-right mr-0 ml-auto">
-
 
 
               <li class="nav-item dropdown">
@@ -37,14 +26,10 @@
                 </div>
               </li>
 
-
-  
-
-
               <!-- User Settings -->           
               <li class="nav-item nav-profile dropdown">
                 <a class="nav-link dropdown-toggle" href="#" data-toggle="dropdown" id="profileDropdown">
-                  <img src="https://via.placeholder.com/39x39" alt="profile"/>
+                  <i class="icon-user" style="font-weight:900;font-size:22px;"></i>
                   <span class="nav-profile-name"><?php echo $_SESSION['user_name']." ".$_SESSION['user_lastname'];?></span>
                 </a>
                 <div class="dropdown-menu dropdown-menu-right navbar-dropdown" aria-labelledby="profileDropdown">
@@ -59,11 +44,9 @@
                   </a>
                 </div>
               </li>
-
-
-
+              
             <button class="navbar-toggler align-self-center" type="button" data-toggle="minimize">
-              <span class="icon-menu" style="color:white;margin-right:2px;"></span>
+              <span class="icon-menu" style="color:white;margin-right:8px;"></span>
             </button>
             </ul>
           </div>

@@ -1,42 +1,60 @@
 <?php
 if(isset($_POST['create_department'])){ 
+      /*
+       *  POST
+       */ 
+      $department_name    = mysqli_real_escape_string($connect, strip_tags($_POST["department_name"])); 
+      $department_description = mysqli_real_escape_string($connect,strip_tags($_POST["department_description"]));
+      $department_room    = mysqli_real_escape_string($connect, strip_tags($_POST["department_room"])); 
+      $department_space    = mysqli_real_escape_string($connect, strip_tags($_POST["department_space"])); 
 
-    $department_name    = mysqli_real_escape_string($connect, strip_tags($_POST["department_name"])); 
-    $department_description = mysqli_real_escape_string($connect,strip_tags($_POST["department_description"]));
- 
-    
-    $add_department ="INSERT INTO departments (department_title , department_desc) VALUES ('".$department_name."' , '".$department_description."' )";
-    $result = mysqli_query($connect, $add_department);  
+      /*
+       *   SQL
+       */
 
-    header("Location: /dashboard/departments&action=department-added"); 
+        $add_department ="INSERT INTO departments (department_title , department_desc , department_room , department_space) VALUES ('".$department_name."' , '".$department_description."', '".$department_room."' , '".$department_space."' )";
+        $result = mysqli_query($connect, $add_department);  
 
-}
-?>
-<!-- Start Template -->
+      /* ~GO~ */  
+      header("Location: /dashboard/departments&action=department-added"); 
+}?>
+
 <div class="container-fluid page-body-wrapper">
       <div class="main-panel">
         <div class="content-wrapper">
           <div class="row">
-<!--  --------------- -->
 
 
-            <div class="col-md-8 grid-margin stretch-card">
-              <div class="card">
-                <div class="card-body">
-                  <h4 class="mb-1 card-title"><b>Şöbə Yarat</b></h4>
-                  <p class="mb-4 card-description">Şöbəni yaratmaq üçün aşağıdakı xanaları doldurun</p>
+        <div class="col-md-8 grid-margin stretch-card">
+            <div class="card">
+            <div class="card-body">
+                     <h4 class="mb-1 card-title"><b>Şöbə Yarat</b></h4>
+                      <p class="mb-4 card-description">Şöbəni yaratmaq üçün aşağıdakı xanaları doldurun</p>
 
-          <form class="forms-sample" method="POST">
-              <div class="form-group">
+                <form class="forms-sample" method="POST">
+
+                <div class="form-group">
                       <label>Şöbənin adı</label>
                       <input required maxlength="60" type="text" name="department_name" class="form-control" placeholder="Şöbənin adını daxil edin">
-              </div>
-              <div class="form-group">
+                </div>
+
+                <div class="form-group">
+                      <label>Şöbənin korpusu</label>
+                      <input required maxlength="60" type="text" name="department_space" class="form-control" placeholder="Şöbənin korpusunu daxil edin">
+                </div>
+
+                <div class="form-group">
+                      <label>Şöbənin otağı</label>
+                      <input required maxlength="60" type="text" name="department_room" class="form-control" placeholder="Şöbənin otağını daxil edin">
+                </div> 
+
+                <div class="form-group">
                       <label>Şöbə haqqında məlumat</label>
-                      <input required type="text" name="department_description" class="form-control" placeholder="Şöbə haqqında məlumatı daxil edin">
-              </div>
-              <button name="create_department" type="submit" class="btn btn-primary mr-2">ŞÖBƏ YARAT</button>
-          </form>
+                      <textarea required type="text" rows="5" name="department_description" class="form-control" placeholder="Şöbə haqqında məlumatı daxil edin"></textarea>
+                </div>      
+
+                <button name="create_department" type="submit" class="btn btn-primary mr-2">ŞÖBƏ YARAT</button>
+                </form>
 
                 </div>
               </div>
@@ -44,9 +62,9 @@ if(isset($_POST['create_department'])){
 
 
 
-            <div class="col-md-4 grid-margin stretch-card">
-              <div class="card">
-                <div class="card-body">
+    <div class="col-md-4 grid-margin stretch-card">
+          <div class="card">
+          <div class="card-body">
                   <!-- Content -->
                   <ul class="bullet-line-list">
                       <h4 class="mb-4">İstifadə qaydaları</h4>
@@ -57,15 +75,18 @@ if(isset($_POST['create_department'])){
                     <li>
                       <h6>Şöbə haqqında məlumat</h6>
                       <p class="mb-2">Qısa şəkildə şöbəni izah edin</p>
-                    </li>                 
+                    </li>     
+                     <li>
+                      <h6>Şöbənin korpusu və otağı</h6>
+                      <p class="mb-2">Şöbənin məntəqəsini təyin edir</p>
+                    </li>                                
                   </ul>
-                </div>
-              </div>
-            </div>
+           </div>
+          </div>
+    </div>
 
-<!-- Start Template -->
+
           </div> <!-- Row --> 
         </div><!-- Content Wrapper -->
       </div><!-- Main Panel -->    
-  </div> <!-- Container -->    
-<!--  --------------- -->
+  </div> <!-- Container -->

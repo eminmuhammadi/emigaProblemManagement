@@ -1,7 +1,9 @@
 <div class="container-scroller">
+
     <div class="container-fluid page-body-wrapper full-page-wrapper">
       <div class="content-wrapper d-flex align-items-center text-center error-page bg-primary">
-        <div class="row flex-grow">
+      <div class="row flex-grow">
+
           <div class="col-lg-7 mx-auto text-white">
             <div class="row align-items-center d-flex flex-row">
               <div class="col-lg-6 text-lg-right pr-lg-4">
@@ -18,7 +20,8 @@
               </div>
             </div>
           </div>
-        </div>
+
+      </div>
       </div>
     </div>
   </div>

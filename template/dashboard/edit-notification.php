@@ -1,9 +1,9 @@
-<!-- Start Template -->
 <div class="container-fluid page-body-wrapper">
       <div class="main-panel">
         <div class="content-wrapper">
           <div class="row">
-<!--  --------------- -->
+
+
       <div class="col-md-8">
           <div class="card">
             <div class="card-body">
@@ -65,7 +65,7 @@ $result_notf_inf = mysqli_query($connect, $get_notf_inf);
 if(isset($_POST["delete_notf"])){       
   $delete_notf ="DELETE FROM notf WHERE notf_id='$notf_id' ";  
   $result_delete_notf = mysqli_query($connect, $delete_notf);
-  echo"<script>window.location.href = \"/dashboard/notifications&action=notification-deleted\";</script>";} 
+  header("Location: /dashboard/notifications&action=notification-deleted");} 
 /*
 *  Edit Department
 */
@@ -76,7 +76,7 @@ if(isset($_POST["edit_notf"]))  {
   
   $update_department =" UPDATE notf SET notf_permission='$notf_permission' , notf_subject='$notf_subject' , notf_text='$notf_text' WHERE notf_id='$notf_id' "; 
   $result_department_inf = mysqli_query($connect, $update_department);
-    echo"<script>window.location.href = \"/dashboard/edit-notification&notf_id=$notf_id\";</script>";}}//end empty
+    header("Location: /dashboard/edit-notification&notf_id=$notf_id");}}//end empty
 else{die("Heç bir bildiriş seçilmədi.");}
 ?>
 
@@ -84,7 +84,7 @@ else{die("Heç bir bildiriş seçilmədi.");}
    <form class="form-sample" method="post">
     <div class="form-group">
      <label>Bildirişin başlığı</label>
-     <input  value="<?php echo $notf_subject;?>" type="text" name="notf_subject" class="form-control">
+     <input  required value="<?php echo $notf_subject;?>" type="text" name="notf_subject" class="form-control">
     </div>
     <div class="form-group">
     <select class="form-control"id="edit_notf" name="notf_permission">
@@ -117,7 +117,7 @@ else{die("Heç bir bildiriş seçilmədi.");}
     </div>
     <div class="form-group">
      <label>Bildiriş</label>
-     <textarea name="notf_text" class="form-control" rows="5"><?php echo $notf_text;?></textarea>
+     <textarea name="notf_text" required class="form-control" rows="5"><?php echo $notf_text;?></textarea>
     </div>
     <div class="form-group">
      <input type="submit" name="edit_notf" class="btn btn-info" value="DÜZƏLT" />
@@ -127,9 +127,8 @@ else{die("Heç bir bildiriş seçilmədi.");}
 
       </div>  
 
-<!-- Start Template -->
+
           </div> <!-- Row --> 
         </div><!-- Content Wrapper -->
       </div><!-- Main Panel -->    
   </div> <!-- Container -->    
-<!--  --------------- -->

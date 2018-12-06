@@ -15,12 +15,12 @@
               <div class="submenu">
                 <ul class="submenu-item">
                   <li class="nav-item">
-                  	<a class="nav-link" href="/dashboard/add-problem"><i class="icon-plus pr-3 text-dark"></i> Problem yarat</a>
+                  	<a class="nav-link" href="/dashboard/add-problem"><i class="icon-plus pr-3 text-dark"></i> Problemini yaz</a>
                   </li>
                   <li class="nav-item">
-                    <a class="nav-link" href="/dashboard/my-problems"><i class="icon-layers pr-3 text-dark"></i> Mənim Problemlərim</a>
+                    <a class="nav-link" href="/dashboard/my-problems"><i class="icon-layers pr-3 text-dark"></i> Mənim <?php if ($_SESSION['user_permission']=="U"){echo "problemlərim";}else{echo "İşlərim";}?></a>
                   </li>                
-    <?php if ($_SESSION['user_permission']=="A" || $_SESSION['user_permission']=="GA") {           
+    <?php if ($_SESSION['user_permission']=="GA") {           
         echo "
             <li class=\"nav-item\">
               <a href=\"/dashboard/all-problems\" class=\"nav-link\">
@@ -30,21 +30,21 @@
                 </ul>
               </div>
             </li>
-  <?php if ($_SESSION['user_permission']=="A" || $_SESSION['user_permission']=="GA") {           
+  <?php if ($_SESSION['user_permission']=="GA") {           
         echo "
             <li class=\"nav-item\">
               <a href=\"/dashboard/profiles\" class=\"nav-link\">
                 <i class=\"link-icon icon-people\"></i>
                 <span class=\"menu-title\">Profillər</span></a>
             </li>";}?>        
-   <?php if ($_SESSION['user_permission']=="A" || $_SESSION['user_permission']=="GA") {           
+   <?php if ($_SESSION['user_permission']=="GA") {           
         echo "
             <li class=\"nav-item\">
               <a href=\"/dashboard/notifications\" class=\"nav-link\">
                 <i class=\"link-icon icon-bell\"></i>
                 <span class=\"menu-title\">Bildirişlər</span></a>
             </li>";}?>                 
-  <?php if ($_SESSION['user_permission']=="A" || $_SESSION['user_permission']=="GA") {           
+  <?php if ($_SESSION['user_permission']=="GA") {           
         echo "
             <li class=\"nav-item\">                   
               <a href=\"javascript:void(0)\" class=\"nav-link\">

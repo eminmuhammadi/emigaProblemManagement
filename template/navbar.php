@@ -5,11 +5,11 @@
           <div class="text-center navbar-brand-wrapper d-flex align-items-center">
 
             <a class="navbar-brand brand-logo" href="/dashboard/main" style="color:#fff;border-bottom:2px solid #f9f9f9;border-bottom-left-radius:10px;border-bottom-right-radius:10px;">
-                  <b>𝔸𝕫𝕄𝕀𝕌  &mdash; 𝕀𝕂𝕋 𝕄ə𝕣𝕜ə𝕫𝕚</b>
+                  <b>AzMIU  &mdash; İKT Mərkəzi</b>
             </a>
 
             <a class="navbar-brand brand-logo-mini" href="/dashboard/main" style="color:#fff;border-bottom:2px solid #f9f9f9;border-bottom-left-radius:10px;border-bottom-right-radius:10px;">
-                   <b>𝔸𝕫𝕄𝕀𝕌  &mdash; 𝕀𝕂𝕋</b>
+                   <b>AzMIU  &mdash; İKTM</b>
             </a>
 
           </div>

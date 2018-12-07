@@ -9,14 +9,13 @@ if(isset($_POST['create_problem'])){
        $problem_title = mysqli_real_escape_string($connect, strip_tags($_POST["problem_title"])); 
        $department_detail = mysqli_real_escape_string($connect,strip_tags($_POST["department_detail"]));
        $problem_description = mysqli_real_escape_string($connect, strip_tags($_POST["problem_description"])); 
-      $problem_phone = mysqli_real_escape_string($connect,strip_tags($_POST["problem_phone"]));
       $problem_mobile = mysqli_real_escape_string($connect, strip_tags($_POST["problem_mobile"])); 
 
     /*
     *  SQL  
     */  
 
-    $add_problem ="INSERT INTO posts (user_detail , problem_title , department_detail , problem_description , problem_mobile , problem_phone) VALUES ('".$user_detail."' , '".$problem_title."' , '".$department_detail."' , '".$problem_description."' , '".$problem_mobile."', '".$problem_phone."')";
+    $add_problem ="INSERT INTO posts (user_detail , user_id , problem_title , department_detail , problem_description , problem_mobile) VALUES ('".$user_detail."' , '".$_SESSION['user_id']."' , '".$problem_title."' , '".$department_detail."' , '".$problem_description."' , '".$problem_mobile."')";
     $result = mysqli_query($connect, $add_problem);
 
     /* ~GO~ */  
@@ -74,14 +73,15 @@ if(isset($_POST['create_problem'])){
 
 
               <div class="form-group">
-                      <label>Mobil Telefonu</label>
+                      <label>Telefon</label>
                           <input class="form-control" 
-                           oninput="javascript: if (this.value.length > this.maxLength) this.value = this.value.slice(0, this.maxLength);"
-                          type="number" maxlength="12" name="problem_mobile" placeholder="994500000000">
-                      <label class="mt-3">Ev Telefonu</label>                       
-                          <input class="form-control"
-                          oninput="javascript: if (this.value.length > this.maxLength) this.value = this.value.slice(0, this.maxLength);"
-                             type = "number" name="problem_phone" placeholder="994500000000" maxlength="12">
+                                   oninput="javascript: if (this.value.length > this.maxLength) this.value = this.value.slice(0, this.maxLength);"
+                                   type="number" 
+                                   value="<?php echo $_SESSION['user_mobile'];?>" 
+                                   maxlength="12" 
+                                   name="problem_mobile" 
+                                   placeholder="994500000000"
+                          >
               </div>
               <button name="create_problem" type="submit" class="btn btn-primary mr-2">PROBLEMİNİ YAZ</button>
                           <div style="height:40px;"></div>

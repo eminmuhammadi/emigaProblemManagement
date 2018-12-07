@@ -19,7 +19,7 @@
                 </div>";
       }}
 ?>              
-              <h4 class="card-title"><b>Bildirişlər</b></h4>
+              <h4 class="card-title"><b>Bildirişlər (ÜNVANLANMAMIŞ)</b></h4>
               <div class="row">
                 <div class="col-12 table-responsive">
                   <table id="order-listing" class="table">
@@ -31,7 +31,7 @@
                     </thead>
                     <tbody>
 <?php 
-      $select_notf ="SELECT notf_id , notf_text , notf_subject ,notf_permission FROM notf ORDER BY notf_id DESC";  
+      $select_notf ="SELECT notf_id , notf_text , notf_subject ,notf_permission FROM notf WHERE user_id IS NULL ORDER BY notf_id DESC ";  
       $result = mysqli_query($connect, $select_notf);  
 
       if(mysqli_num_rows($result) > 0)  {  

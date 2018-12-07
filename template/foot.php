@@ -1,7 +1,7 @@
 <script src="/<?php echo $_COOKIE['emigaUniqID'] ;?>-app.js"></script>
 <?php 
 if (!empty($_GET['route'])) {
-  if (($_GET['route']=="departments") || ($_GET['route']=="my-problems") || ($_GET['route']=="all-problems")|| ($_GET['route']=="support") ||($_GET['route']=="profiles") || ($_GET['route']=="notifications") || ($_GET['route']=="edit-notification")){
+  if (($_GET['route']=="departments") || ($_GET['route']=="my-problems") || ($_GET['route']=="all-problems")|| ($_GET['route']=="support") ||($_GET['route']=="profiles") || ($_GET['route']=="notifications") || ($_GET['route']=="edit-notification") || ($_GET['route']=="deleted-problems") || ($_GET['route']=="my-tasks")){
 echo "<script type=\"text/javascript\" src=\"/static/pack/data-table.js\"></script>
 <script type=\"text/javascript\">
 (function($) {
@@ -30,7 +30,7 @@ echo "<script type=\"text/javascript\" src=\"/static/pack/data-table.js\"></scri
 </script>";}
 require_once realpath($_SERVER["DOCUMENT_ROOT"])."/template/notifications.php";}
 
- if($_GET['route']=="edit-problem"){
+ if((!empty($_GET['route'])) && ($_GET['route']=="edit-problem")){
     if ( ($problem_status!="P") && ($_SESSION['user_permission']=="U" || $_SESSION['user_permission']=="A") ) {
             if($problem_status=="C"){$problem_css="danger";$problem_status="Ləğv edildi";}
             else if($problem_status=="V"){$problem_css="warning";$problem_status="Görüldü";}
@@ -43,11 +43,8 @@ require_once realpath($_SERVER["DOCUMENT_ROOT"])."/template/notifications.php";}
           $(\"#check2\").prop('disabled', true);
           $(\"input\").prop('disabled', true);
           $(\"textarea\").prop('disabled', true);
-          $(\"#welcome\").html(\"Admin tərəfindən cavab gəldiyinə görə problemi düzəltmək artıq mümkün deyil.\");
-          $(\"#title\").html(\"<b>Problem #$problem_id</b> <button class='btn btn-sm btn-primary float-right d-print-none' id='print'><i class='icon-book-open'></i> Çap et</button>\");
-          $(\"#print\").click(function(){
-          window.print();
-          });
+          $(\"#welcome\").html(\"Admin tərəfindən cavab gəldiyinə (və ya problemin statusunun dəyişildiyinə) görə problemi düzəltmək artıq mümkün deyil.\");
+          $(\"#title\").html(\"<b>Problem #$problem_id</b>\");
 
           $(\"#buttons\").html(\" \");
           $(`#admin_response`).html(`
@@ -81,5 +78,10 @@ require_once realpath($_SERVER["DOCUMENT_ROOT"])."/template/notifications.php";}
     }
   } 
 ?>
+<script type="text/javascript">
+          $("#print").click(function(){
+          window.print();
+          });  
+</script>
 </body>
 </html>

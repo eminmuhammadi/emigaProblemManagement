@@ -28,16 +28,22 @@
 ?>            	
             <div class="row mb-5"> 
               <div class="col-12 col-lg-8">
-                  <h4 class=""><b>Mənim yazdığım problemlər</b></h4>
+                  <h4 class=""><b>Mənim <?php
+                    if ($_SESSION['user_permission']=="U") {
+                      echo "problemlərim";
+                    }
+                    else{echo "işlərim <h1 class=\"badge badge-primary\"><b> Şöbə : ".$_SESSION["user_department_detail"]."</b></h1>";}
+
+                  ?></b></h4>
               </div>
               <div class="col-12 col-lg-4">
               <select class="form-control" onchange="this.options[this.selectedIndex].value && (window.location = this.options[this.selectedIndex].value);">
                        <option selected disabled hidden value="">Filtrlə</option>
-                       <option value="/dashboard/my-problems">Hamısı</option>
-                       <option value="/dashboard/my-problems&order=P">Gözləmədə olan</option>
-                       <option value="/dashboard/my-problems&order=C">Ləğv edilən</option>
-                       <option value="/dashboard/my-problems&order=D">Həll edilən</option>
-                       <option value="/dashboard/my-problems&order=V">Görülən</option>
+                       <option value="/dashboard/my-tasks">Hamısı</option>
+                       <option value="/dashboard/my-tasks&order=P">Gözləmədə olan</option>
+                       <option value="/dashboard/my-tasks&order=C">Ləğv edilən</option>
+                       <option value="/dashboard/my-tasks&order=D">Həll edilən</option>
+                       <option value="/dashboard/my-tasks&order=V">Görülən</option>
               </select>
                 </div>    
               </div>  
@@ -57,20 +63,24 @@
                     <tbody>
 <?php 
 
-    $user_d=$_SESSION['user_id'];
+    $user_d=$_SESSION['user_name']." ".$_SESSION['user_lastname'];
+    $user_department=$_SESSION['user_department_detail'];
 
 if (!empty($_GET['order'])) { 
 
       /*
-       *   MY PROBLEMS (USER SIDE)
+       *   MY WORKS (ADMIN SIDE)
        */
+
+      if($_SESSION['user_permission']=="GA" || $_SESSION['user_permission']=="A" ){
+
           if($_GET['order']=="P"){
 
           /*
           *  SQL
           */ 
 
-          $select_posts ="SELECT problem_id ,   department_detail , user_detail , problem_title , problem_status , reg_date FROM posts WHERE problem_status='P' && user_id='$user_d' ORDER BY problem_id DESC";  
+          $select_posts ="SELECT problem_id , department_detail , user_detail , problem_title , problem_status , reg_date FROM posts WHERE problem_status='P' && department_detail='$user_department' ORDER BY problem_id DESC";  
            $result = mysqli_query($connect, $select_posts);}
 
 
@@ -80,7 +90,7 @@ if (!empty($_GET['order'])) {
           *  SQL
           */ 
 
-          $select_posts ="SELECT problem_id ,   department_detail , user_detail , problem_title , problem_status , reg_date  FROM posts WHERE problem_status='C' && user_id='$user_d' ORDER BY problem_id DESC";  
+          $select_posts ="SELECT problem_id ,   department_detail , user_detail , problem_title , problem_status , reg_date  FROM posts WHERE problem_status='C' && department_detail='$user_department' ORDER BY problem_id DESC";  
           $result = mysqli_query($connect, $select_posts);}
 
           else    if($_GET['order']=="D"){
@@ -89,7 +99,7 @@ if (!empty($_GET['order'])) {
           *  SQL
           */ 
 
-          $select_posts ="SELECT problem_id ,   department_detail , user_detail , problem_title , problem_status , reg_date  FROM posts WHERE problem_status='D' && user_id='$user_d' ORDER BY problem_id DESC";  
+          $select_posts ="SELECT problem_id ,   department_detail , user_detail , problem_title , problem_status , reg_date  FROM posts WHERE problem_status='D' && department_detail='$user_department' ORDER BY problem_id DESC";  
           $result = mysqli_query($connect, $select_posts);}
 
 
@@ -98,7 +108,7 @@ if (!empty($_GET['order'])) {
           /*
           *  SQL
           */  
-         $select_posts ="SELECT problem_id ,  department_detail , user_detail , problem_title , problem_status , reg_date FROM posts WHERE problem_status='V' && user_id='$user_d' ORDER BY problem_id DESC";  
+         $select_posts ="SELECT problem_id ,  department_detail , user_detail , problem_title , problem_status , reg_date FROM posts WHERE problem_status='V' && department_detail='$user_department' ORDER BY problem_id DESC";  
           $result = mysqli_query($connect, $select_posts);  }
 
           /* ~ Permission denied ~*/
@@ -107,12 +117,16 @@ if (!empty($_GET['order'])) {
              }
 
 
+         }
 }
 
 
 else{
-      $select_posts ="SELECT problem_id ,   department_detail , user_detail , problem_title , problem_status , reg_date FROM posts WHERE user_id='$user_d' ORDER BY problem_id DESC";
-      $result = mysqli_query($connect, $select_posts);
+
+
+      $select_posts ="SELECT problem_id ,   department_detail , user_detail , problem_title , problem_status , reg_date FROM posts WHERE department_detail='$user_department' ORDER BY problem_id DESC";
+      $result = mysqli_query($connect, $select_posts);      
+
 } 
 
 

@@ -63,6 +63,11 @@
 	   	/*Edit Notifications*/
 	   			else if($_GET['route']=="edit-notification"){$title="Bildirişi düzəlt | ".$powered;}
 
+		/*Deleted problems*/
+	   			else if($_GET['route']=="deleted-problems"){$title="Silinmiş Problmelər | ".$powered;}
+	   	/*Edit Deleted problems*/
+	   			else if($_GET['route']=="edit-deleted-problem"){$title="Silinmiş Problmeləri düzəlt | ".$powered;}
+
 	   		/*Main*/
 	   			else if($_GET['route']=="main"){$title="Əsas Panel | ".$powered;}
 	   		/*User Profile*/

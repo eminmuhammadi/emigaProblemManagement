@@ -29,6 +29,11 @@
 	   		/*Edit Problems*/
 	   			else if($_GET['route']=="edit-problem"){
 	   				require_once realpath($_SERVER["DOCUMENT_ROOT"])."/template/dashboard/edit-problem.php";}
+	   		/*My Tasks*/
+	   			else if($_GET['route']=="my-tasks"){
+	   				require_once realpath($_SERVER["DOCUMENT_ROOT"])."/template/dashboard/my-tasks.php";}
+
+
 
 	   		/*Add Department*/
 	   			else if($_GET['route']=="add-department" && ($_SESSION['user_permission']=="GA")){
@@ -41,11 +46,18 @@
 	   				require_once realpath($_SERVER["DOCUMENT_ROOT"])."/template/dashboard/departments.php";}
 
 	   		/*Notifications*/
-	   			else if($_GET['route']=="notifications" && ($_SESSION['user_permission']=="A" || $_SESSION['user_permission']=="GA")){
+	   			else if($_GET['route']=="notifications" && ($_SESSION['user_permission']=="GA")){
 	   				require_once realpath($_SERVER["DOCUMENT_ROOT"])."/template/dashboard/notifications.php";}
-	   		/*Notifications*/
-	   			else if($_GET['route']=="edit-notification" &&  ($_SESSION['user_permission']=="A" || $_SESSION['user_permission']=="GA")){
+	   		/*Edit Notifications*/
+	   			else if($_GET['route']=="edit-notification" &&  ($_SESSION['user_permission']=="GA")){
 	   				require_once realpath($_SERVER["DOCUMENT_ROOT"])."/template/dashboard/edit-notification.php";}
+
+	   		/*Deleted Problems*/
+	   			else if($_GET['route']=="deleted-problems" && ($_SESSION['user_permission']=="GA")){
+	   				require_once realpath($_SERVER["DOCUMENT_ROOT"])."/template/dashboard/deleted-problems.php";}
+	   		/*Edit deleted Problems*/
+	   			else if($_GET['route']=="edit-deleted-problem" &&  ($_SESSION['user_permission']=="GA")){
+	   				require_once realpath($_SERVER["DOCUMENT_ROOT"])."/template/dashboard/edit-deleted-problems.php";}
 
 	   		/*Main*/
 	   			else if($_GET['route']=="main"){

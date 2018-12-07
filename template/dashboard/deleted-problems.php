@@ -1,10 +1,9 @@
-<!-- Start Template -->
     <div class="container-fluid page-body-wrapper">
       <div class="main-panel">
         <div class="content-wrapper">
           <div class="card">
             <div class="card-body">
-<!--  --------------- -->              
+
 <?php
 	if(!empty($_GET['action'])){
 			if($_GET['action']=="problem-added"){
@@ -25,28 +24,28 @@
                              </button>
                 </div>";
 			}}
-?>            	
+?>         
             <div class="row mb-5"> 
               <div class="col-12 col-lg-8">
-                  <h4 class=""><b>Mənim yazdığım problemlər</b></h4>
+                  <h4 class=""><b>Silinmiş Problemlər</b></h4>
               </div>
               <div class="col-12 col-lg-4">
               <select class="form-control" onchange="this.options[this.selectedIndex].value && (window.location = this.options[this.selectedIndex].value);">
                        <option selected disabled hidden value="">Filtrlə</option>
-                       <option value="/dashboard/my-problems">Hamısı</option>
-                       <option value="/dashboard/my-problems&order=P">Gözləmədə olan</option>
-                       <option value="/dashboard/my-problems&order=C">Ləğv edilən</option>
-                       <option value="/dashboard/my-problems&order=D">Həll edilən</option>
-                       <option value="/dashboard/my-problems&order=V">Görülən</option>
+                       <option value="/dashboard/deleted-problems">Hamısı</option>
+                       <option value="/dashboard/deleted-problems&order=P">Gözləmədə olan</option>
+                       <option value="/dashboard/deleted-problems&order=C">Ləğv edilən</option>
+                       <option value="/dashboard/deleted-problems&order=D">Həll edilən</option>
+                       <option value="/dashboard/deleted-problems&order=V">Görülən</option>
               </select>
-                </div>    
+                </div>   	
               </div>  
               <div class="row">
                 <div class="col-12 table-responsive">
-                <table id="order-listing" class="table">
+                  <table id="order-listing" class="table">
                     <thead>
                       <tr>
-                          <th>#</th>                        
+                          <th>#</th>                      	
                           <th>Adı</th>
                           <th>İstifadəçi</th>
                           <th>Şöbə</th>                                      
@@ -56,21 +55,15 @@
                     </thead>
                     <tbody>
 <?php 
-
-    $user_d=$_SESSION['user_id'];
-
-if (!empty($_GET['order'])) { 
-
-      /*
-       *   MY PROBLEMS (USER SIDE)
-       */
+if (!empty($_GET['order'])) {
+      
           if($_GET['order']=="P"){
 
           /*
           *  SQL
           */ 
 
-          $select_posts ="SELECT problem_id ,   department_detail , user_detail , problem_title , problem_status , reg_date FROM posts WHERE problem_status='P' && user_id='$user_d' ORDER BY problem_id DESC";  
+          $select_posts ="SELECT problem_id , department_detail , user_detail , problem_title , problem_status , reg_date FROM del_posts WHERE problem_status='P' ORDER BY problem_id DESC";  
            $result = mysqli_query($connect, $select_posts);}
 
 
@@ -80,7 +73,7 @@ if (!empty($_GET['order'])) {
           *  SQL
           */ 
 
-          $select_posts ="SELECT problem_id ,   department_detail , user_detail , problem_title , problem_status , reg_date  FROM posts WHERE problem_status='C' && user_id='$user_d' ORDER BY problem_id DESC";  
+          $select_posts ="SELECT problem_id , department_detail , user_detail , problem_title , problem_status , reg_date  FROM del_posts WHERE problem_status='C' ORDER BY problem_id DESC";  
           $result = mysqli_query($connect, $select_posts);}
 
           else    if($_GET['order']=="D"){
@@ -89,7 +82,7 @@ if (!empty($_GET['order'])) {
           *  SQL
           */ 
 
-          $select_posts ="SELECT problem_id ,   department_detail , user_detail , problem_title , problem_status , reg_date  FROM posts WHERE problem_status='D' && user_id='$user_d' ORDER BY problem_id DESC";  
+          $select_posts ="SELECT problem_id , department_detail , user_detail , problem_title , problem_status , reg_date  FROM del_posts WHERE problem_status='D' ORDER BY problem_id DESC";  
           $result = mysqli_query($connect, $select_posts);}
 
 
@@ -98,10 +91,10 @@ if (!empty($_GET['order'])) {
           /*
           *  SQL
           */  
-         $select_posts ="SELECT problem_id ,  department_detail , user_detail , problem_title , problem_status , reg_date FROM posts WHERE problem_status='V' && user_id='$user_d' ORDER BY problem_id DESC";  
+         $select_posts ="SELECT problem_id , department_detail , user_detail , problem_title , problem_status , reg_date FROM del_posts  WHERE problem_status='V' ORDER BY problem_id DESC";  
           $result = mysqli_query($connect, $select_posts);  }
 
-          /* ~ Permission denied ~*/
+
          else{
                 die("Bunu etməyə səlahiyyətiniz yoxdur.");
              }
@@ -109,11 +102,14 @@ if (!empty($_GET['order'])) {
 
 }
 
-
 else{
-      $select_posts ="SELECT problem_id ,   department_detail , user_detail , problem_title , problem_status , reg_date FROM posts WHERE user_id='$user_d' ORDER BY problem_id DESC";
-      $result = mysqli_query($connect, $select_posts);
-} 
+
+      /*
+       *  SQL
+      */
+
+			$select_posts ="SELECT problem_id , department_detail , user_detail , problem_title , problem_status , reg_date FROM del_posts  ORDER BY problem_id DESC";
+			$result = mysqli_query($connect, $select_posts);} 
 
 
       if(mysqli_num_rows($result) > 0)  {  
@@ -141,16 +137,14 @@ else{
       echo "
       <tr>
           <td>$problem_id</td>
-          <td><a href=\"/dashboard/edit-problem&problem_id=$problem_id\">$problem_title</a></td>
+          <td><a href=\"/dashboard/edit-deleted-problem&problem_id=$problem_id\">$problem_title</a></td>
           <td>$user_detail</td>
           <td>$department_detail</td>
           <td><label class=\"badge badge-$problem_css\">$problem_status</label></td> 
           <td>$reg_date</td>                                                       
       </tr>
-      ";}
+      ";}} 
 
-
-} 
 ?>
                     </tbody>
                   </table>

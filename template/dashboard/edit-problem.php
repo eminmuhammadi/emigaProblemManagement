@@ -23,7 +23,6 @@ if(!empty($_GET['problem_id'])){
         while($row = mysqli_fetch_array($result)) { 
 
             $problem_mobile=$row['problem_mobile'];
-            $problem_phone=$row['problem_phone'];
             $department_detail=$row['department_detail'];
             $user_detail=$row['user_detail'];
             $problem_title=$row['problem_title'];
@@ -32,12 +31,20 @@ if(!empty($_GET['problem_id'])){
             $problem_status_description=$row['problem_status_description'];
             $problem_admin=$row['problem_admin'];
             $reg_date=$row['reg_date'];
+            $user_id=$row['user_id'];
   
 
         }
       }
-      else {die("Heç bir problem tapılmadı .");}
 
+    else {die("Heç bir problem tapılmadı .");}
+/*
+*   Verifying User ID to access this property
+*/
+
+if (($user_id!=$_SESSION['user_id']) && ($_SESSION['user_permission']=="U")) {
+      die("Bu problem sizin tərəfinizdən yaradılmayıb.");
+    } 
 
 
 
@@ -48,8 +55,7 @@ if(!empty($_GET['problem_id'])){
             /*
              *   POST
              */
-          $problem_mobile   = mysqli_real_escape_string($connect, strip_tags($_POST["problem_mobile"]));
-          $problem_phone   = mysqli_real_escape_string($connect, strip_tags($_POST["problem_phone"]));
+          $problem_mobile= mysqli_real_escape_string($connect, strip_tags($_POST["problem_mobile"]));
           $department_detail= mysqli_real_escape_string($connect, strip_tags($_POST["department_detail"]));
           $problem_title    = mysqli_real_escape_string($connect, strip_tags($_POST["problem_title"]));
           $problem_description = mysqli_real_escape_string($connect, strip_tags($_POST["problem_description"]));
@@ -74,11 +80,16 @@ if(!empty($_GET['problem_id'])){
           if(isset($_POST["delete_problem"])){
 
 
+          $insert_del_problem="INSERT INTO del_posts (department_detail , user_detail , problem_mobile , problem_title , problem_description , problem_status , problem_admin , problem_status_description) VALUES ('".$department_detail."' , '".$user_detail."' , '".$problem_mobile."' , '".$problem_title."' , '".$problem_description."', '".$problem_status."', '".$problem_admin."', '".$problem_status_description."')";
+
+          $result_insert_del_problem = mysqli_query($connect, $insert_del_problem);
+
+
           $delete_problem ="DELETE FROM posts WHERE problem_id='$problem_id' ";  
           $result_delete_problem = mysqli_query($connect, $delete_problem);
 
           // GO
-          header("Location: /dashboard/all-problems&action=problem-deleted");
+          header("Location: /dashboard/deleted-problems&action=problem-deleted");
 
           }  
 
@@ -96,7 +107,6 @@ if(!empty($_GET['problem_id'])){
              *   POST
              */
           $problem_mobile   = mysqli_real_escape_string($connect, strip_tags($_POST["problem_mobile"]));
-          $problem_phone   = mysqli_real_escape_string($connect, strip_tags($_POST["problem_phone"]));
           $department_detail= mysqli_real_escape_string($connect, strip_tags($_POST["department_detail"]));
           $problem_title    = mysqli_real_escape_string($connect, strip_tags($_POST["problem_title"]));
           $problem_description = mysqli_real_escape_string($connect, strip_tags($_POST["problem_description"]));
@@ -116,7 +126,7 @@ if(!empty($_GET['problem_id'])){
           if(isset($_POST["delete_problem"])){
 
 
-          $insert_del_problem="INSERT INTO del_posts (department_detail , user_detail , problem_mobile , problem_phone , problem_title , problem_description , problem_status , problem_admin , problem_status_description) VALUES ('".$department_detail."' , '".$user_detail."' , '".$problem_mobile."' , '".$problem_phone."'  , '".$problem_title."' , '".$problem_description."', '".$problem_status."', '".$problem_admin."', '".$problem_status_description."')";
+          $insert_del_problem="INSERT INTO del_posts (department_detail , user_detail , problem_mobile , problem_title , problem_description , problem_status , problem_admin , problem_status_description) VALUES ('".$department_detail."' , '".$user_detail."' , '".$problem_mobile."' , '".$problem_title."' , '".$problem_description."', '".$problem_status."', '".$problem_admin."', '".$problem_status_description."')";
 
           $result_insert_del_problem = mysqli_query($connect, $insert_del_problem);
 
@@ -143,7 +153,6 @@ if(!empty($_GET['problem_id'])){
              *   POST
              */
           $problem_mobile   = mysqli_real_escape_string($connect, strip_tags($_POST["problem_mobile"]));
-          $problem_phone   = mysqli_real_escape_string($connect, strip_tags($_POST["problem_phone"]));
           $department_detail= mysqli_real_escape_string($connect, strip_tags($_POST["department_detail"]));
           $problem_title    = mysqli_real_escape_string($connect, strip_tags($_POST["problem_title"]));
           $problem_description = mysqli_real_escape_string($connect, strip_tags($_POST["problem_description"]));
@@ -166,7 +175,7 @@ if(!empty($_GET['problem_id'])){
 
           if(isset($_POST["delete_problem"])){
 
-          $insert_del_problem="INSERT INTO del_posts (department_detail , user_detail , problem_mobile , problem_phone , problem_title , problem_description , problem_status , problem_admin , problem_status_description) VALUES ('".$department_detail."' , '".$user_detail."' , '".$problem_mobile."' , '".$problem_phone."'  , '".$problem_title."' , '".$problem_description."', '".$problem_status."', '".$problem_admin."', '".$problem_status_description."')";
+          $insert_del_problem="INSERT INTO del_posts (department_detail , user_detail , problem_mobile , problem_title , problem_description , problem_status , problem_admin , problem_status_description) VALUES ('".$department_detail."' , '".$user_detail."' , '".$problem_mobile."' , '".$problem_title."' , '".$problem_description."', '".$problem_status."', '".$problem_admin."', '".$problem_status_description."')";
 
           $result_insert_del_problem = mysqli_query($connect, $insert_del_problem);
 
@@ -199,7 +208,29 @@ else{ die("Heç bir problem seçilmədi");}
      <div class="col-md-8 grid-margin stretch-card">
               <div class="card">
                 <div class="card-body">
+<?php
+  if(!empty($_GET['action'])){
+      if($_GET['action']=="send-notf"){
+        echo "                       
+        <div class=\"alert alert-success alert-dismissible fade show\" role=\"alert\">
+                          <strong><i class=\"icon-note\"></i></strong> Bildiriş göndərildi.
+                            <button type=\"button\" class=\"close\" data-dismiss=\"alert\" aria-label=\"Bağla\">
+                          <span aria-hidden=\"true\">&times;</span>
+                             </button>
+                </div>";
+      }}
+?>          <div class="row mb-2"> 
+                <div class="col-8">
                   <h4 class="mb-1 card-title" id="title"><b>Problemi düzəlt</b></h4>
+                </div>  
+
+                <div class="col-4">
+                  <?php
+                  if ( ($problem_status!="P") && ($_SESSION['user_permission']=="U" || $_SESSION['user_permission']=="A") ) {  echo"                
+                  <button class='btn mr-2 btn-sm btn-primary float-right d-print-none' id='print'><i class='icon-book-open' onclick=\"print()\"></i> Çap et</button> ";}
+                  ?>
+                </div>
+            </div>  
                   <p class="mb-4 card-description" id="welcome">Problemi düzəltmək üçün aşağıdakı xanaları doldurun</p>
 
           <form class="forms-sample" method="POST">
@@ -232,14 +263,10 @@ else{ die("Heç bir problem seçilmədi");}
               </div>
 
               <div class="form-group">
-                      <label>Mobil Telefonu</label>
+                      <label>Telefon</label>
                           <input id="check" class="form-control" 
                            oninput="javascript: if (this.value.length > this.maxLength) this.value = this.value.slice(0, this.maxLength);"
                           type="number" maxlength="12" name="problem_mobile" placeholder="994500000000" value="<?php echo $problem_mobile;?>">
-                      <label class="mt-3">Ev Telefonu</label>                       
-                          <input id="check" class="form-control"
-                          oninput="javascript: if (this.value.length > this.maxLength) this.value = this.value.slice(0, this.maxLength);"
-                             type = "number" name="problem_phone" placeholder="994500000000" maxlength="12"  value="<?php echo $problem_phone;?>">
               </div>
                
               <?php 
@@ -249,8 +276,44 @@ else{ die("Heç bir problem seçilmədi");}
  
 
             <div id="buttons">
-              <button name="edit_problem" id="check" <?php echo "onclick=\"return confirm('Əgər statusu dəyişsən bir daha redaktə edə bilməyəcəyini təsdiqləyirsən?');\"";?> type="submit" class="btn btn-primary mr-2">PROBLEMİ DÜZƏLT</button>
+              <button name="edit_problem" id="check" <?php if($_SESSION['user_permission']=="A"){echo "onclick=\"return confirm('Əgər statusu dəyişsən bir daha redaktə edə bilməyəcəyini təsdiqləyirsən?');\"";}?> type="submit" class="btn btn-primary mr-2">PROBLEMİ DÜZƏLT</button>
               <button name="delete_problem" id="check" onclick="return confirm('Silmək istədiyini təsdiqləyirsən?');"  type="submit" class="btn btn-danger">SİL</button>
+              <?php
+
+                  if ($_SESSION['user_permission']=="GA" || $_SESSION['user_permission']=="A") {
+                  
+                    if(isset($_POST['send_notf'])){
+
+                      if ($problem_status=="P") {$status="Gözləmədə";}
+                      else if ($problem_status=="V") {$status="Görüldü";}
+                      else if ($problem_status=="D") {$status="Həll edildi";}
+                      else if ($problem_status=="C") {$status="Ləğv edildi";}
+
+
+                      $subject=$problem_title." [ ".$status." ]";
+                      $message=$problem_status_description;
+
+                      $get_user_permission="SELECT user_permission FROM users WHERE user_id='$user_id' LIMIT 1";
+                      $r_get_user_permission = mysqli_query($connect, $get_user_permission);  
+
+                      if(mysqli_num_rows($r_get_user_permission) > 0)  {  
+                        while($row = mysqli_fetch_array($r_get_user_permission)) { 
+                          $permission=$row['user_permission'];
+                        }
+                      }
+
+                     $query = " INSERT INTO notf(notf_subject, notf_text , notf_permission , user_id) VALUES ('$subject', '$message' , '$permission' , '$user_id')";
+                      mysqli_query($connect, $query);
+
+                      header("Location: /dashboard/edit-problem&problem_id=$problem_id&action=send-notf");
+
+                    } 
+                    echo "
+                      <button onclick=\"return confirm('Bildiriş göndərmək istəyirsən ?');\" name=\"send_notf\" class=\"btn btn-md float-right btn-info\"><i class=\"icon-bell\"></i> Bildiriş Göndər</button>
+                        ";
+                  }
+
+              ?>
             </div>  
           </form>
 
@@ -267,12 +330,14 @@ else{ die("Heç bir problem seçilmədi");}
             <div class="col-md-4 grid-margin stretch-card">
               <div class="card">
                 <div class="card-body">
-
-                <?php if($problem_status!="P"){
+                <?php 
+          if( ($problem_status!="P") && ($_SESSION['user_permission']!="GA")) {
                     echo "<div id=\"admin_response\"></div>";
-                }
-                else{
-                echo `
+          }
+
+
+          else{
+                echo '
                   <ul class="bullet-line-list">
                       <h4 class="mb-4">İstifadə qaydaları</h4>
                     <li>
@@ -283,8 +348,9 @@ else{ die("Heç bir problem seçilmədi");}
                       <h6>Ad və SoyAdın daxil edilməsi</h6>
                       <p class="mb-2">ad və soyad ayrılıqda hər biri minimum 4 simvoldan ibarət olmalıdır</p>
                     </li>                                                     
-                  </ul>`;
-                }?>
+                  </ul>';
+          }?>
+
                 </div>
               </div>
             </div>

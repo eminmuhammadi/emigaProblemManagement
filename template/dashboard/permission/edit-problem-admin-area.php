@@ -72,4 +72,4 @@
               <div class="form-group">
                       <label>Problemin Qeydiyyata düşmə tarixi</label>
                       <input id="reg_date" value="<?php echo emigaDateFormatter($reg_date,"setvalue")?>" required type="date" name="reg_date" class="form-control">
-              </div> 
+              </div>

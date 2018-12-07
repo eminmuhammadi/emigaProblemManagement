@@ -12,9 +12,15 @@
 <div class="col-md-12 grid-margin stretch-card">
               <div class="card bg-white card-update">
                 <div class="card-body">
-                  <div class="d-flex border-light-white pb-4 update-item">
-                    <div class="img-lg rounded-circle img-bordered mr-4 bg-dark"/></div>
-                    <div>
+                  <div class="d-flex border-light-white update-item">
+                    <div class="mr-4" style="display: none !important;">
+                        <div class="d-inline-block">
+                            <div class="bg-dark px-2 py-2 rounded-circle p-3"> 
+                              <i class="icon-user text-white icon-lg"></i> 
+                            </div> 
+                        </div>
+                    </div> 
+<div>
             <h1 class="font-weight-medium d-flex"><?php echo $_SESSION['user_name']." ".$_SESSION['user_lastname'];?>
                       </h1>
                       <h4><?php echo $status?></h4>

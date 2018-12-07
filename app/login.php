@@ -37,6 +37,8 @@
     $_SESSION['ip']                 = $ip;
     $_SESSION['token']              = $token;
     $_SESSION['user_agent']         = $user_agent; 
+    $_SESSION['user_mobile']        = $row['user_mobile']; 
+    $_SESSION['user_phone']         = $row['user_phone']; 
     $_SESSION['emiga_logged_verify']= TRUE;
 
     setcookie("emigaUniqID", $token , time() + (86400 * 7), "/");

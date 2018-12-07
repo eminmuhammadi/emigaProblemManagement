@@ -18,15 +18,30 @@
                   	<a class="nav-link" href="/dashboard/add-problem"><i class="icon-plus pr-3 text-dark"></i> Problemini yaz</a>
                   </li>
                   <li class="nav-item">
-                    <a class="nav-link" href="/dashboard/my-problems"><i class="icon-layers pr-3 text-dark"></i> Mənim <?php if ($_SESSION['user_permission']=="U"){echo "problemlərim";}else{echo "İşlərim";}?></a>
-                  </li>                
+                    <a class="nav-link" href="/dashboard/my-problems"><i class="icon-layers pr-3 text-dark"></i> Mənim yazdığım problemlər</a>
+                  </li>        
+    <?php if ($_SESSION['user_permission']!="U") {           
+        echo "
+            <li class=\"nav-item\">
+              <a href=\"/dashboard/my-tasks\" class=\"nav-link\">
+
+                <span class=\"menu-title\"><i class=\"icon-support pr-3 text-dark\"></i> Mənim işlərim</span></a>
+            </li>
+            ";}?> 
+
     <?php if ($_SESSION['user_permission']=="GA") {           
         echo "
             <li class=\"nav-item\">
               <a href=\"/dashboard/all-problems\" class=\"nav-link\">
 
                 <span class=\"menu-title\"><i class=\"icon-loop pr-3 text-dark\"></i> Bütün problemlər</span></a>
-            </li>";}?>  
+            </li>
+            <li class=\"nav-item\">
+              <a href=\"/dashboard/deleted-problems\" class=\"nav-link\">
+
+                <span class=\"menu-title\"><i class=\"icon-trash pr-3 text-dark\"></i> Silinmiş problemlər</span></a>
+            </li>
+            ";}?>  
                 </ul>
               </div>
             </li>

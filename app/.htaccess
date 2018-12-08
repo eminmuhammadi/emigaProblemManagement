@@ -10,6 +10,7 @@ RewriteRule ^register$       register.php  [L]
 RewriteRule ^logout$         logout.php    [L]
 RewriteRule ^404$         	 404.php    [L]
 RewriteRule ^system$         system.php    [L]
+RewriteRule ^verify$         verify.php    [L]
 
 
 ErrorDocument 404 /404

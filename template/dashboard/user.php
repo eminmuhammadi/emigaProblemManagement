@@ -35,6 +35,10 @@
                           <td><?php echo $_SESSION['user_department_detail'];?></td>                          
                         </tr> 
                         <tr>
+                          <td>Telefon :</td>
+                          <td><?php echo "+".$_SESSION['user_mobile'];?></td>                          
+                        </tr>                          
+                        <tr>
                           <td>Qeydiyyat tarixi :</td>
                           <td><?php echo $_SESSION['reg_date'];?></td>                          
                         </tr>                                                             
@@ -51,7 +55,7 @@
                           <td><?php echo $_SESSION['user_agent'];?></td>                          
                         </tr>                        
                       </tbody>
-                  </table>
+          </table>
     <p class="text-dark"><i class="icon-note"></i> Verilənlərdə dəyişiklik edilən zaman problem yaranarsa <a href="/logout">çıxış edin</a></p>                  
                     </div>
                   </div>      

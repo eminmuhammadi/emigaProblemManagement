@@ -5,14 +5,22 @@
 
 	   /* Security */
 	   $u=$_SESSION['user_id'];
-	   $f_u="SELECT * from users WHERE user_id='$u' LIMIT 1";
+	   $f_u="SELECT token , verified from users WHERE user_id='$u' LIMIT 1";
 	   $r_u= mysqli_query($connect, $f_u);
 	   if(mysqli_num_rows($r_u) > 0)  {
 	       while($r = mysqli_fetch_array($r_u)){
 	       $t=$r['token'];
+	       $v=$r['verified'];
+	       if($v=="0"){header("Location: /verify?status=0");exit();}
 	       if($t!=$_COOKIE['emigaUniqID']){header("Location: /logout");}
 		   }	
 	   }
+	   		else{
+
+	   				/* If deleted user */
+					header("Location: /logout");
+
+	  		}
 
 	   
 	   if(!empty($_GET['route'])){

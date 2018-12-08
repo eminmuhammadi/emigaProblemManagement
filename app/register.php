@@ -114,7 +114,7 @@
                     <div class="input-group-prepend">
                       <span class="input-group-text"><i class="icon-plus"></i></span>
                     </div>
-                    <input id="name" minlength="4" maxlength="30" required type="text" name="fname" class="form-control" placeholder="Adını daxil et">
+                    <input id="name" minlength="3" maxlength="30" required type="text" name="fname" class="form-control" placeholder="Adını daxil et">
                   </div>
                 </div>
 
@@ -123,7 +123,7 @@
                     <div class="input-group-prepend">
                       <span class="input-group-text"><i class="icon-plus"></i></span>
                     </div>
-                    <input minlength="4" maxlength="30" required type="text" name="lname" class="form-control" placeholder="Soy adını daxil et">
+                    <input minlength="3" maxlength="30" required type="text" name="lname" class="form-control" placeholder="Soy adını daxil et">
                   </div>
                 </div>
 

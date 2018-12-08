@@ -23,7 +23,6 @@ if(!empty($_GET['problem_id'])){
         while($row = mysqli_fetch_array($result)) { 
 
             $problem_mobile=$row['problem_mobile'];
-            $problem_phone=$row['problem_phone'];
             $department_detail=$row['department_detail'];
             $user_detail=$row['user_detail'];
             $problem_title=$row['problem_title'];
@@ -101,14 +100,10 @@ else{ die("Heç bir problem seçilmədi");}
               </div>
 
               <div class="form-group">
-                      <label>Mobil Telefonu</label>
+                      <label>Telefon</label>
                           <input disabled id="check" class="form-control" 
                            oninput="javascript: if (this.value.length > this.maxLength) this.value = this.value.slice(0, this.maxLength);"
                           type="number" maxlength="12" name="problem_mobile" placeholder="994500000000" value="<?php echo $problem_mobile;?>">
-                      <label class="mt-3">Ev Telefonu</label>                       
-                          <input disabled id="check" class="form-control"
-                          oninput="javascript: if (this.value.length > this.maxLength) this.value = this.value.slice(0, this.maxLength);"
-                             type = "number" name="problem_phone" placeholder="994500000000" maxlength="12"  value="<?php echo $problem_phone;?>">
               </div>
                
              <h4 class="mb-1 mt-5 card-title"><b>Administrator hissəsi</b></h4>

@@ -19,7 +19,7 @@
 
 	ini_set('display_errors', '1');
 	if(!isset($_COOKIE['emigaUniqID'])) {
-	setcookie("emigaUniqID",emigaToken(), time() + (86400 * 7), "/");}
+	setcookie("emigaUniqID",emigaToken(), time() + (86400 * 30), "/");}
 
 	/*Login System*/
 	emigaLoginVerify();

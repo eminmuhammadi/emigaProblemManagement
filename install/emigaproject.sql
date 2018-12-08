@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: localhost
--- Generation Time: Dec 08, 2018 at 02:38 AM
+-- Generation Time: Dec 09, 2018 at 02:57 AM
 -- Server version: 10.1.36-MariaDB
 -- PHP Version: 7.2.11
 
@@ -103,7 +103,7 @@ CREATE TABLE `users` (
   `user_lastname` varchar(30) COLLATE utf8_bin NOT NULL,
   `user_password` varchar(32) COLLATE utf8_bin NOT NULL,
   `user_permission` varchar(3) COLLATE utf8_bin NOT NULL DEFAULT 'U',
-  `user_email` mediumtext COLLATE utf8_bin NOT NULL,
+  `user_email` varchar(256) COLLATE utf8_bin NOT NULL,
   `user_mobile` varchar(16) COLLATE utf8_bin DEFAULT NULL,
   `user_department_detail` varchar(60) COLLATE utf8_bin DEFAULT '~',
   `reg_date` timestamp NULL DEFAULT CURRENT_TIMESTAMP,
@@ -127,7 +127,8 @@ ALTER TABLE `del_posts`
 -- Indexes for table `departments`
 --
 ALTER TABLE `departments`
-  ADD PRIMARY KEY (`department_id`);
+  ADD PRIMARY KEY (`department_id`),
+  ADD UNIQUE KEY `department_title` (`department_title`);
 
 --
 -- Indexes for table `notf`

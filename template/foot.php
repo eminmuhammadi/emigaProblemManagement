@@ -1,4 +1,4 @@
-<script src="/<?php echo $_COOKIE['emigaUniqID'] ;?>-app.js"></script>
+<script src="/static/app.js"></script>
 <?php 
 if (!empty($_GET['route'])) {
   if (($_GET['route']=="departments") || ($_GET['route']=="my-problems") || ($_GET['route']=="all-problems")|| ($_GET['route']=="support") ||($_GET['route']=="profiles") || ($_GET['route']=="notifications") || ($_GET['route']=="edit-notification") || ($_GET['route']=="deleted-problems") || ($_GET['route']=="my-tasks")){

@@ -46,6 +46,12 @@ if (($user_id!=$_SESSION['user_id']) && ($_SESSION['user_permission']=="U")) {
       die("Bu problem sizin tərəfinizdən yaradılmayıb.");
     } 
 
+/*
+*   Verifying A department detail to access this property
+*/
+if (($department_detail!=$_SESSION['user_department_detail']) && ($_SESSION['user_permission']=="A")) {
+      die("Bu problem sizin şöbəyə aid deyil.");
+    } 
 
 
     if ($_SESSION['user_permission']=="GA"){

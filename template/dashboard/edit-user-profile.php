@@ -10,15 +10,16 @@
     *   Get Problem Information
     */
     $user_id = $_GET['user_id'];
-    $get_user_inf ="SELECT user_name , user_lastname , user_password , user_permission , user_email , user_department_detail FROM users WHERE user_id='$user_id' ";  
+    $get_user_inf ="SELECT user_name , user_lastname , user_password , user_permission , user_email , user_department_detail , user_mobile FROM users WHERE user_id='$user_id' ";  
     $result_user_inf = mysqli_query($connect, $get_user_inf);  
     if(mysqli_num_rows($result_user_inf) > 0){  
       while($row = mysqli_fetch_array($result_user_inf)){ 
         $user_name   = $row["user_name"];
-        $user_lastname         = $row["user_lastname"];
-        $user_password       = $row["user_password"];
+        $user_lastname   = $row["user_lastname"];
+        $user_password   = $row["user_password"];
         $user_permission = $row["user_permission"];
         $user_email      = $row["user_email"];
+        $user_mobile     = $row["user_mobile"];        
         $user_department_detail = $row["user_department_detail"];
         }
     }
@@ -49,10 +50,12 @@ if(mysqli_num_rows($search_email_result) > 0)  {
      $user_name=mysqli_real_escape_string($connect, strip_tags($_POST["user_name"]));
      $user_lastname=mysqli_real_escape_string($connect, strip_tags($_POST["user_lastname"]));
      $user_permission=mysqli_real_escape_string($connect, strip_tags($_POST["user_permission"]));
+     $user_mobile=mysqli_real_escape_string($connect, strip_tags($_POST["user_mobile"]));     
      $user_password=md5($user_password);
      $ses_user_id=$_SESSION['user_id'];  
+     $t=emigaToken();
         $update_user =" UPDATE users SET user_name='$user_name' , user_lastname='$user_lastname' ,
-        user_email='$user_email' ,user_department_detail='$user_department_detail' , user_permission='$user_permission' WHERE user_id='$user_id' "; 
+        user_email='$user_email' ,user_department_detail='$user_department_detail' ,  user_mobile='$user_mobile', user_permission='$user_permission' , token='$t' WHERE user_id='$user_id' "; 
         $result_update_user = mysqli_query($connect, $update_user);
     }
 }} 
@@ -104,6 +107,19 @@ if(mysqli_num_rows($search_email_result) > 0)  {
 ?>
                     </select>
              </div> 
+
+                    <div class="form-group">
+                      <label>İstifadəçinin Telefonu</label>
+                          <input required class="form-control" 
+                                   oninput="javascript: if (this.value.length > this.maxLength) this.value = this.value.slice(0, this.maxLength);"
+                                   type="number" 
+                                   maxlength="12" 
+                                   value="<?php echo $user_mobile;?>" 
+                                   name="user_mobile" 
+                                   placeholder="994500000000">
+                    </div>
+
+
               <div class="form-group">
                    <label for="exampleFormControlSelect1">İstifadəçinin statusu</label>
                     <select required name="user_permission" class="form-control form-control-lg">

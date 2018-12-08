@@ -98,7 +98,7 @@
                <?php 
                   if (empty($_GET['action'])) {
                   echo "
-                        <h3 class=\"mr-auto\">Salam! gəl başlayaq</h3>
+                        <h3 class=\"mr-auto\">Salam 👋 gəl başlayaq</h3>
                         <p class=\"mb-5 mr-auto\">Daxil olmaq üçün bütün xanaları doldur.</p>";}
                   else{
                     if($_GET['action']=="wrong_information"){

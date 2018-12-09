@@ -18,8 +18,10 @@ if(isset($_POST['create_problem'])){
     $add_problem ="INSERT INTO posts (user_detail , user_id , problem_title , department_detail , problem_description , problem_mobile) VALUES ('".$user_detail."' , '".$_SESSION['user_id']."' , '".$problem_title."' , '".$department_detail."' , '".$problem_description."' , '".$problem_mobile."')";
     $result = mysqli_query($connect, $add_problem);
 
-    /* ~GO~ */  
-    header("Location: /dashboard/my-problems&action=problem-added");}
+    /* ~GO~ */        
+    $d=$_SERVER['HTTP_USER_AGENT'];
+    $id=$_COOKIE['emigaUniqID'];
+    header("Location: /dashboard/my-problems&action=problem-added&id=$id&d=$d");}
 ?>
 <div class="container-fluid page-body-wrapper">
       <div class="main-panel">

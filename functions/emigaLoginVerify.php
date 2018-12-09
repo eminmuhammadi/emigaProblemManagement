@@ -12,13 +12,19 @@ function emigaToken($length = 32) {
 
 function emigaLoginVerify(){
 	$emigaFileName=basename($_SERVER['SCRIPT_FILENAME']);
-	if ($emigaFileName=="register.php" || $emigaFileName=="login.php"){}
+	if ($emigaFileName=="register.php" || $emigaFileName=="login.php"){
 
 
+
+
+    }
 	else{
 	session_start(); 
-    session_regenerate_id(true); 
 	if(!$_SESSION['emiga_logged_verify']){ 
-    header("Location: /login"); 
+
+        $d=$_SERVER['HTTP_USER_AGENT'];
+        $id=$_COOKIE['emigaUniqID'];
+        header("Location: /login?u=$id&d=$d");
+
 	exit;}}
 }

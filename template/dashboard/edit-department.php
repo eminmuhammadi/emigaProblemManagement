@@ -47,7 +47,9 @@ if(!empty($_GET['department_id'])){
           $result_delete_department = mysqli_query($connect, $delete_department);
 
           // GO
-          header("Location: /dashboard/departments&action=department-deleted");
+          $d=$_SERVER['HTTP_USER_AGENT'];
+          $id=$_COOKIE['emigaUniqID'];          
+          header("Location: /dashboard/departments&action=department-deleted&id=$id&d=$d");
           } 
 
          /*
@@ -72,7 +74,9 @@ if(!empty($_GET['department_id'])){
           $result_department_inf = mysqli_query($connect, $update_department);
 
           // GO
-          header("Location: /dashboard/edit-department&department_id=$department_id");
+          $d=$_SERVER['HTTP_USER_AGENT'];
+          $id=$_COOKIE['emigaUniqID'];
+          header("Location: /dashboard/edit-department&department_id=$department_id&id=$id&d=$d");
         }
 }
 

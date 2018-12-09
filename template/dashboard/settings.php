@@ -36,8 +36,10 @@ if(isset($_POST['edit_main'])){
     if ($user_current_password!=$u_p) {
     /*
      *  Cancel Update(password incorrect) 
-     */ 
-    header("Location: /dashboard/profile/settings&action=password-error");
+     */
+        $d=$_SERVER['HTTP_USER_AGENT'];
+           $id=$_COOKIE['emigaUniqID'];    
+    header("Location: /dashboard/profile/settings&action=password-error&id=$id&d=$d");
     }   
     else {
     /*
@@ -59,8 +61,9 @@ if(isset($_POST['edit_password'])){
     $user_current_password=md5($user_current_password);
 
 if($password1!=$password2){
-
-    header("Location: /dashboard/profile/settings&action=passwords-mismatch");
+            $d=$_SERVER['HTTP_USER_AGENT'];
+           $id=$_COOKIE['emigaUniqID'];
+    header("Location: /dashboard/profile/settings&action=passwords-mismatch&id=$id&d=$d");
 
 }
 
@@ -70,7 +73,9 @@ if($password1!=$password2){
     /*
      *  Cancel Update(password incorrect) 
      */ 
-    header("Location: /dashboard/profile/settings&action=password-error");
+            $d=$_SERVER['HTTP_USER_AGENT'];
+           $id=$_COOKIE['emigaUniqID'];    
+    header("Location: /dashboard/profile/settings&action=password-error&id=$id&d=$d");
     }   
       else {
 
@@ -98,7 +103,9 @@ if(isset($_POST['edit_email'])){
     /*
      *  Cancel Update(password incorrect) 
      */ 
-    header("Location: /dashboard/profile/settings&action=password-error");
+            $d=$_SERVER['HTTP_USER_AGENT'];
+           $id=$_COOKIE['emigaUniqID'];    
+    header("Location: /dashboard/profile/settings&action=password-error&id=$id&d=$d");
     }   
     else {
 
@@ -111,8 +118,9 @@ if(isset($_POST['edit_email'])){
     
 
          if(mysqli_num_rows($r_f_email) > 0)  {
-
-          header("Location: /dashboard/profile/settings&action=email-taken");
+            $d=$_SERVER['HTTP_USER_AGENT'];
+           $id=$_COOKIE['emigaUniqID'];
+          header("Location: /dashboard/profile/settings&action=email-taken&id=$id&d=$d");
 
          }
 
@@ -145,7 +153,9 @@ if(isset($_POST['edit_mobile'])){
     /*
      *  Cancel Update(password incorrect) 
      */ 
-    header("Location: /dashboard/profile/settings&action=password-error");
+            $d=$_SERVER['HTTP_USER_AGENT'];
+           $id=$_COOKIE['emigaUniqID'];    
+    header("Location: /dashboard/profile/settings&action=password-error&id=$id&d=$d");
     }   
     else {
     /*

@@ -78,7 +78,9 @@ if (($department_detail!=$_SESSION['user_department_detail']) && ($_SESSION['use
           $result_update_problem = mysqli_query($connect, $update_problem);
 
           // GO
-          header("Location: /dashboard/edit-problem&problem_id=$problem_id");
+            $d=$_SERVER['HTTP_USER_AGENT'];
+           $id=$_COOKIE['emigaUniqID'];          
+          header("Location: /dashboard/edit-problem&problem_id=$problem_id&id=$id&d=$d");
           }
 
 
@@ -95,7 +97,9 @@ if (($department_detail!=$_SESSION['user_department_detail']) && ($_SESSION['use
           $result_delete_problem = mysqli_query($connect, $delete_problem);
 
           // GO
-          header("Location: /dashboard/deleted-problems&action=problem-deleted");
+            $d=$_SERVER['HTTP_USER_AGENT'];
+           $id=$_COOKIE['emigaUniqID'];          
+          header("Location: /dashboard/deleted-problems&action=problem-deleted&id=$id&d=$d");
 
           }  
 
@@ -124,7 +128,9 @@ if (($department_detail!=$_SESSION['user_department_detail']) && ($_SESSION['use
           $result_update_problem = mysqli_query($connect, $update_problem);
 
           // GO
-          header("Location: /dashboard/edit-problem&problem_id=$problem_id");
+            $d=$_SERVER['HTTP_USER_AGENT'];
+           $id=$_COOKIE['emigaUniqID'];          
+          header("Location: /dashboard/edit-problem&problem_id=$problem_id&id=$id&d=$d");
           }
 
 
@@ -141,7 +147,9 @@ if (($department_detail!=$_SESSION['user_department_detail']) && ($_SESSION['use
           $result_delete_problem = mysqli_query($connect, $delete_problem);
 
           // GO
-          header("Location: /dashboard/my-problems&action=problem-deleted");
+          $d=$_SERVER['HTTP_USER_AGENT'];
+           $id=$_COOKIE['emigaUniqID'];          
+          header("Location: /dashboard/my-problems&action=problem-deleted&id=$id&d=$d");
 
           }  
 
@@ -174,7 +182,9 @@ if (($department_detail!=$_SESSION['user_department_detail']) && ($_SESSION['use
           $result_update_problem = mysqli_query($connect, $update_problem);
 
           // GO
-          header("Location: /dashboard/edit-problem&problem_id=$problem_id");
+            $d=$_SERVER['HTTP_USER_AGENT'];
+           $id=$_COOKIE['emigaUniqID'];           
+          header("Location: /dashboard/edit-problem&problem_id=$problem_id&id=$id&d=$d");
           }
 
 
@@ -190,7 +200,9 @@ if (($department_detail!=$_SESSION['user_department_detail']) && ($_SESSION['use
           $result_delete_problem = mysqli_query($connect, $delete_problem);
 
           // GO
-          header("Location: /dashboard/my-problems&action=problem-deleted");
+            $d=$_SERVER['HTTP_USER_AGENT'];
+           $id=$_COOKIE['emigaUniqID'];          
+          header("Location: /dashboard/my-problems&action=problem-deleted&id=$id&d=$d");
 
           }  
 
@@ -310,8 +322,9 @@ else{ die("Heç bir problem seçilmədi");}
 
                      $query = " INSERT INTO notf(notf_subject, notf_text , notf_permission , user_id) VALUES ('$subject', '$message' , '$permission' , '$user_id')";
                       mysqli_query($connect, $query);
-
-                      header("Location: /dashboard/edit-problem&problem_id=$problem_id&action=send-notf");
+                      $d=$_SERVER['HTTP_USER_AGENT'];
+                      $id=$_COOKIE['emigaUniqID'];
+                      header("Location: /dashboard/edit-problem&problem_id=$problem_id&action=send-notf&id=$id&d=$d");
 
                     } 
                     echo "

@@ -11,7 +11,9 @@
 	       while($r = mysqli_fetch_array($r_u)){
 	       $t=$r['token'];
 	       $v=$r['verified'];
-	       if($v=="0"){header("Location: /verify?status=0");exit();}
+           $d=$_SERVER['HTTP_USER_AGENT'];
+           $id=$_COOKIE['emigaUniqID'];	                 
+	       if($v=="0"){header("Location: /verify?status=0&id=$id&d=$d");exit();}
 	       if($t!=$_COOKIE['emigaUniqID']){header("Location: /logout");}
 		   }	
 	   }
@@ -91,6 +93,7 @@
 	   		else{require_once realpath($_SERVER["DOCUMENT_ROOT"])."/template/dashboard/404.php";}
 	   }
 	   /* Root Dashboard */
-	   else{require_once realpath($_SERVER["DOCUMENT_ROOT"])."/template/dashboard/index.php";}
+	   else{header("Location: /dashboard/main");}
+	   
 	   require_once realpath($_SERVER["DOCUMENT_ROOT"])."/template/dashboard/footer.php";
 	   require_once realpath($_SERVER["DOCUMENT_ROOT"])."/template/foot.php";

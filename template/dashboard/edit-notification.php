@@ -65,7 +65,9 @@ $result_notf_inf = mysqli_query($connect, $get_notf_inf);
 if(isset($_POST["delete_notf"])){       
   $delete_notf ="DELETE FROM notf WHERE notf_id='$notf_id' ";  
   $result_delete_notf = mysqli_query($connect, $delete_notf);
-  header("Location: /dashboard/notifications&action=notification-deleted");} 
+            $d=$_SERVER['HTTP_USER_AGENT'];
+           $id=$_COOKIE['emigaUniqID'];
+  header("Location: /dashboard/notifications&action=notification-deleted&id=$id&d=$d");} 
 /*
 *  Edit Department
 */
@@ -76,7 +78,9 @@ if(isset($_POST["edit_notf"]))  {
   
   $update_department =" UPDATE notf SET notf_permission='$notf_permission' , notf_subject='$notf_subject' , notf_text='$notf_text' WHERE notf_id='$notf_id' "; 
   $result_department_inf = mysqli_query($connect, $update_department);
-    header("Location: /dashboard/edit-notification&notf_id=$notf_id");}}//end empty
+            $d=$_SERVER['HTTP_USER_AGENT'];
+           $id=$_COOKIE['emigaUniqID'];
+    header("Location: /dashboard/edit-notification&notf_id=$notf_id&id=$id&d=$d");}}//end empty
 else{die("Heç bir bildiriş seçilmədi.");}
 ?>
 

@@ -4,7 +4,7 @@ $(document).ready(function(){
  function load_unseen_notification(view = '')
  {
   $.ajax({
-   url:"/system.php?process=notf_fetch&limit=10",
+   url:"/system?process=notf_fetch&limit=10",
    method:"POST",
    data:{view:view},
    dataType:"json",
@@ -27,7 +27,7 @@ $(document).ready(function(){
   {
    var form_data = $(this).serialize();
    $.ajax({
-    url:\"/system.php?process=notf_insert\",
+    url:\"/system?process=notf_insert\",
     method:\"POST\",
     data:form_data,
     success:function(data)

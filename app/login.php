@@ -22,8 +22,7 @@
     $update_user =" UPDATE users SET user_agent='$user_agent' , ip='$ip' , token='$token'  WHERE user_id='$u_id' "; 
     $result_update_user = mysqli_query($connect, $update_user);
 
-    session_start();  
-    session_regenerate_id(true); 
+    session_start();
 
     /*Collect Data*/
     $_SESSION['user_id']            = $row['user_id']; 
@@ -39,17 +38,24 @@
     $_SESSION['user_agent']         = $user_agent; 
     $_SESSION['user_mobile']        = $row['user_mobile']; 
     $_SESSION['user_phone']         = $row['user_phone']; 
+    $_SESSION['verified']           = $row['verified'];     
     $_SESSION['emiga_logged_verify']= TRUE;
 
     setcookie("emigaUniqID", $token , time() + (86400 * 7), "/");
+    $d=$_SERVER['HTTP_USER_AGENT'];
+    $id=$_COOKIE['emigaUniqID'];
 
     /*Go*/
-    header("Location: /dashboard/main"); 
+    header("Location: /dashboard/main&id=$id&d=$d"); 
     exit;}//end $result while
     }//end $result if
-     
 
-  else{header("Location: /login?action=wrong_information");;} 
+
+  else{
+      $d=$_SERVER['HTTP_USER_AGENT'];
+      $id=$_COOKIE['emigaUniqID'];
+     header("Location: /login?action=wrong_information&id=$id&d=$d");
+  } 
   }//End Post login
 
 ?>
@@ -90,7 +96,7 @@
 
               <!-- Register -->
               <div class="nav-get-started">
-                <p></i>Hesabın Yoxdur ?</p>
+                <p></i><?php echo $_SESSION["user_name"];?> Hesabın Yoxdur ?</p>
                 <a class="btn get-started-btn" href="/register">Qeydiyyatdan Keç</a>
               </div>
               <!-- End Register -->

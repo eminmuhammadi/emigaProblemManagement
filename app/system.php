@@ -128,5 +128,5 @@ if(!empty($_GET['process'])){
 /*
 *   Process not found
 */
-	else{die();}
+	else{header("Location: /dashboard/main");exit();}
 ?>	

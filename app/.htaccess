@@ -1,25 +1,28 @@
 Options +FollowSymLinks
 RewriteEngine On
 
+ErrorDocument 404 /404
+
+
 # Delete slash
 RewriteCond %{REQUEST_FILENAME} !-d
 RewriteRule ^(.*)/$ /$1 [L,R=301]
 
+
+# Go 404 when use .php
+RewriteCond %{THE_REQUEST} "^[^ ]* .*?\.php[? ].*$"
+RewriteRule .* - [L,R=404]
+
 RewriteRule ^login$          login.php 	   [L]
 RewriteRule ^register$       register.php  [L]
 RewriteRule ^logout$         logout.php    [L]
-RewriteRule ^404$         	 404.php    [L]
+RewriteRule ^404$         	 404.php       [L]
 RewriteRule ^system$         system.php    [L]
 RewriteRule ^verify$         verify.php    [L]
-
-
-ErrorDocument 404 /404
-
-
+RewriteRule ^dashboard$      dashboard.php [L] 
 
 # Admin Pages
 RewriteRule ^dashboard/(.*)$ ./dashboard.php?route=$1
-
 
 #Static Files binding
 RewriteRule ^(.*)-app.js  ./static/js.php?ver=$1

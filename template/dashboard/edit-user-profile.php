@@ -33,7 +33,9 @@
     if(isset($_POST["delete_user"])){   
       $delete_user ="DELETE FROM users WHERE user_id='$user_id' ";  
       $result_delete_user = mysqli_query($connect, $delete_user);
-      header("Location: /dashboard/profiles&action=user-deleted");exit();} 
+            $d=$_SERVER['HTTP_USER_AGENT'];
+           $id=$_COOKIE['emigaUniqID'];      
+      header("Location: /dashboard/profiles&action=user-deleted&id=$id&d=$d");exit();} 
     /*
     *  Edit User
     */
@@ -45,7 +47,9 @@ if(isset($_POST["edit_user"]))  {
   $search_email_result = mysqli_query($connect, $search_email); 
 
 if(mysqli_num_rows($search_email_result) > 0)  {
-    header("Location: /dashboard/edit-user-profile&user_id=$user_id&action=email-wrong");exit();}
+            $d=$_SERVER['HTTP_USER_AGENT'];
+           $id=$_COOKIE['emigaUniqID'];  
+    header("Location: /dashboard/edit-user-profile&user_id=$user_id&action=email-wrong&id=$id&d=$d");exit();}
     else{
      $user_name=mysqli_real_escape_string($connect, strip_tags($_POST["user_name"]));
      $user_lastname=mysqli_real_escape_string($connect, strip_tags($_POST["user_lastname"]));

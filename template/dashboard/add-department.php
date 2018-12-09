@@ -16,7 +16,9 @@ if(isset($_POST['create_department'])){
         $result = mysqli_query($connect, $add_department);  
 
       /* ~GO~ */  
-      header("Location: /dashboard/departments&action=department-added"); 
+      $d=$_SERVER['HTTP_USER_AGENT'];
+      $id=$_COOKIE['emigaUniqID'];
+      header("Location: /dashboard/departments&action=department-added&id=$id&d=$d"); 
 }?>
 
 <div class="container-fluid page-body-wrapper">

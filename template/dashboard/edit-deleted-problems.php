@@ -49,7 +49,9 @@ if(!empty($_GET['problem_id'])){
           $result_delete_problem = mysqli_query($connect, $delete_problem);
 
           // GO
-          header("Location: /dashboard/deleted-problems&action=problem-deleted");
+          $d=$_SERVER['HTTP_USER_AGENT'];
+          $id=$_COOKIE['emigaUniqID'];
+          header("Location: /dashboard/deleted-problems&action=problem-deleted&id=$id&d=$d");
 
           }  
 

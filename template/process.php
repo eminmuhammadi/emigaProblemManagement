@@ -67,6 +67,8 @@
 	   			else if($_GET['route']=="deleted-problems"){$title="Silinmiş Problmelər | ".$powered;}
 	   	/*Edit Deleted problems*/
 	   			else if($_GET['route']=="edit-deleted-problem"){$title="Silinmiş Problmeləri düzəlt | ".$powered;}
+	   	/*Edit Deleted problems*/
+	   			else if($_GET['route']=="my-tasks"){$title="Mənim işlərim | ".$powered;}
 
 	   		/*Main*/
 	   			else if($_GET['route']=="main"){$title="Əsas Panel | ".$powered;}

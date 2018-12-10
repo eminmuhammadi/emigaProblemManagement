@@ -277,6 +277,7 @@ new Chart(document.getElementById("total_chart"), {
     data: {
       labels: ["Gözləmədə", "Ləğv edilən", "Həll edilən", "Görülən"],
       datasets: [{
+        borderColor: ["#c4c4c4","#c4c4c4","#c4c4c4","#c4c4c4"],        
         backgroundColor: ["#b764fc", "#ff5b7f","#63ffa4","#fdffa3"],
         data: [<?php echo emigaStats($total_p).",".emigaStats($total_c).",".emigaStats($total_d).",".emigaStats($total_v);?>]
       }]
@@ -295,6 +296,7 @@ new Chart(document.getElementById("today_chart"), {
     data: {
       labels: ["Gözləmədə", "Ləğv edilən", "Həll edilən", "Görülən"],
       datasets: [{
+        borderColor: ["#c4c4c4","#c4c4c4","#c4c4c4","#c4c4c4"],        
         backgroundColor: ["#b764fc", "#ff5b7f","#63ffa4","#fdffa3"],
         data: [<?php echo emigaStats($today_p).",".emigaStats($today_c).",".emigaStats($today_d).",".emigaStats($today_v);?>]
       }]

@@ -17,16 +17,16 @@
 
     /*Today Charts Statics*/
 
-    $today_p = mysqli_query($connect,"SELECT problem_id FROM posts WHERE problem_status='P' && reg_date > CURDATE() && department_detail='$dep' ");
+    $today_p = mysqli_query($connect,"SELECT problem_id FROM posts WHERE problem_status='P' && (reg_date > CURDATE() || reg_date = CURDATE()) && department_detail='$dep' ");
     $today_p = mysqli_num_rows($today_p);
 
-    $today_d = mysqli_query($connect,"SELECT problem_id FROM posts WHERE problem_status='D' && reg_date > CURDATE() && department_detail='$dep' ");
+    $today_d = mysqli_query($connect,"SELECT problem_id FROM posts WHERE problem_status='D' && (reg_date > CURDATE() || reg_date = CURDATE()) && department_detail='$dep' ");
     $today_d = mysqli_num_rows($today_d);
 
-    $today_c = mysqli_query($connect,"SELECT problem_id FROM posts WHERE problem_status='C' && reg_date > CURDATE() && department_detail='$dep' ");
+    $today_c = mysqli_query($connect,"SELECT problem_id FROM posts WHERE problem_status='C' && (reg_date > CURDATE() || reg_date = CURDATE()) && department_detail='$dep' ");
     $today_c = mysqli_num_rows($today_c);
 
-    $today_v = mysqli_query($connect,"SELECT problem_id FROM posts WHERE problem_status='V' && reg_date > CURDATE() && department_detail='$dep' ");
+    $today_v = mysqli_query($connect,"SELECT problem_id FROM posts WHERE problem_status='V' && (reg_date > CURDATE() || reg_date = CURDATE()) && department_detail='$dep' ");
     $today_v = mysqli_num_rows($today_v);
 
 
@@ -35,10 +35,10 @@
     $all_problems = mysqli_query($connect,"SELECT problem_id FROM posts WHERE department_detail='$dep' ");
     $all_problems = mysqli_num_rows($all_problems);
 
-    $all_problems_today = mysqli_query($connect,"SELECT problem_id FROM posts WHERE reg_date > CURDATE() && department_detail='$dep'");
+    $all_problems_today = mysqli_query($connect,"SELECT problem_id FROM posts WHERE (reg_date > CURDATE() || reg_date = CURDATE()) && department_detail='$dep'");
     $all_problems_today = mysqli_num_rows($all_problems_today);
 
-    $all_problems_month = mysqli_query($connect,"SELECT problem_id FROM posts WHERE reg_date > curdate() - interval 30 day && department_detail='$dep'");
+    $all_problems_month = mysqli_query($connect,"SELECT problem_id FROM posts WHERE ((reg_date > curdate() - interval 30 day)||(reg_date > curdate() - interval 30 day)) && department_detail='$dep'");
     $all_problems_month = mysqli_num_rows($all_problems_month);
 
     $all_users = mysqli_query($connect,"SELECT user_id FROM users WHERE user_department_detail='$dep'");

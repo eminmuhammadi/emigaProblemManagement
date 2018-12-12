@@ -95,7 +95,7 @@ function optimize(){
 $('#no-js').removeClass("no-js");
 $('#loader').addClass("no-js");
 }
-setTimeout(optimize, 0);
+setTimeout(optimize, 1500);
 });
 </script>
 </body>

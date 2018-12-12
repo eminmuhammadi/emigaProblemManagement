@@ -1,3 +1,4 @@
+</emiga::app>
 <script src="/static/app.js"></script>
 <?php 
 if (!empty($_GET['route'])) {
@@ -31,7 +32,11 @@ echo "<script type=\"text/javascript\" src=\"/static/pack/data-table.js\"></scri
 require_once realpath($_SERVER["DOCUMENT_ROOT"])."/template/notifications.php";}
 
  if((!empty($_GET['route'])) && ($_GET['route']=="edit-problem")){
-    if ( ($problem_status!="P") && ($_SESSION['user_permission']=="U" || $_SESSION['user_permission']=="A") ) {
+    if ( 
+           ($problem_status!="P" && $_SESSION['user_permission']=="U")
+        || 
+           ($_SESSION['user_permission']=="A")
+       ){
             if($problem_status=="C"){$problem_css="danger";$problem_status="Ləğv edildi";}
             else if($problem_status=="V"){$problem_css="warning";$problem_status="Görüldü";}
             else if($problem_status=="D"){$problem_css="success";$problem_status="Həll edildi";}
@@ -45,16 +50,19 @@ require_once realpath($_SERVER["DOCUMENT_ROOT"])."/template/notifications.php";}
           $(\"textarea\").prop('disabled', true);
           $(\"#welcome\").html(\"Admin tərəfindən cavab gəldiyinə (və ya problemin statusunun dəyişildiyinə) görə problemi düzəltmək artıq mümkün deyil.\");
           $(\"#title\").html(\"<b>Problem #$problem_id</b>\");
-
           $(\"#buttons\").html(\" \");
           $(`#admin_response`).html(`
                   <ul class=\"bullet-line-list\">
                       <h4 class=\"mb-4\"></h4>
                       <p class=\"mb-2\">Status : <label class=\"badge badge-$problem_css\"><b>$problem_status</b></label></p>
                     <li>
-                      <h6>Cavablandıran şəxs :</h6>
+                      <h6>İnzibatçı :</h6>
                       <p class=\"mb-2\">$problem_admin</p>
                     </li>
+                    <li>
+                      <h6>Yönləndirilən şəxs :</h6>
+                      <p class=\"mb-2\">$user_worker</p>
+                    </li>                    
                     <li>
                       <h6>Açıqlama :</h6>
                       <p class=\"mb-2\">$problem_status_description</p>
@@ -79,9 +87,16 @@ require_once realpath($_SERVER["DOCUMENT_ROOT"])."/template/notifications.php";}
   } 
 ?>
 <script type="text/javascript">
-          $("#print").click(function(){
-          window.print();
-          });  
+$( document ).ready(function() {  
+$("#print").click(function(){
+window.print();
+});  
+function optimize(){
+$('#no-js').removeClass("no-js");
+$('#loader').addClass("no-js");
+}
+setTimeout(optimize, 0);
+});
 </script>
 </body>
 </html>

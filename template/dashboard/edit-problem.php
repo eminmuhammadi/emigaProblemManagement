@@ -31,6 +31,10 @@ if(!empty($_GET['problem_id'])){
             $problem_status_description=$row['problem_status_description'];
             $problem_admin=$row['problem_admin'];
             $reg_date=$row['reg_date'];
+            $department_user_id=$row["department_user_id"];
+
+            $user_worker="ASDASd";
+            
             $user_id=$row['user_id'];
   
 
@@ -67,6 +71,7 @@ if (($department_detail!=$_SESSION['user_department_detail']) && ($_SESSION['use
           $problem_description = mysqli_real_escape_string($connect, strip_tags($_POST["problem_description"]));
           $problem_status = mysqli_real_escape_string($connect, strip_tags($_POST["problem_status"]));
           $problem_status_description = mysqli_real_escape_string($connect, strip_tags($_POST["problem_status_description"]));
+          $department_user_id = mysqli_real_escape_string($connect, strip_tags($_POST["department_user_id"]));          
           $problem_admin    = $_SESSION['user_name']." ".$_SESSION['user_lastname'];
           $reg_date         = mysqli_real_escape_string($connect, strip_tags($_POST["reg_date"]));
 
@@ -74,7 +79,7 @@ if (($department_detail!=$_SESSION['user_department_detail']) && ($_SESSION['use
           /*
           *   SQL
           */
-          $update_problem ="UPDATE posts SET problem_mobile='$problem_mobile' ,department_detail='$department_detail' ,problem_title='$problem_title' , problem_description='$problem_description' , problem_status='$problem_status' , problem_status_description='$problem_status_description' , problem_admin='$problem_admin' , reg_date='$reg_date' WHERE problem_id='$problem_id' ";
+          $update_problem ="UPDATE posts SET problem_mobile='$problem_mobile' ,department_detail='$department_detail' ,problem_title='$problem_title' , problem_description='$problem_description' , problem_status='$problem_status' , problem_status_description='$problem_status_description' , problem_admin='$problem_admin' , reg_date='$reg_date' , department_user_id='$department_user_id' WHERE problem_id='$problem_id' ";
           $result_update_problem = mysqli_query($connect, $update_problem);
 
           // GO
@@ -158,14 +163,14 @@ if (($department_detail!=$_SESSION['user_department_detail']) && ($_SESSION['use
 
      }//end U
 
+/* Changed Admin permission
 
     if (($_SESSION['user_permission']=="A") && ($problem_status=="P")){
 
 
           if(isset($_POST["edit_problem"])){
-            /*
-             *   POST
-             */
+
+
           $problem_mobile   = mysqli_real_escape_string($connect, strip_tags($_POST["problem_mobile"]));
           $department_detail= mysqli_real_escape_string($connect, strip_tags($_POST["department_detail"]));
           $problem_title    = mysqli_real_escape_string($connect, strip_tags($_POST["problem_title"]));
@@ -175,9 +180,8 @@ if (($department_detail!=$_SESSION['user_department_detail']) && ($_SESSION['use
           $problem_admin    = $_SESSION['user_name']." ".$_SESSION['user_lastname'];
 
 
-          /*
-          *   SQL
-          */
+
+
           $update_problem ="UPDATE posts SET problem_mobile='$problem_mobile' ,department_detail='$department_detail' ,problem_title='$problem_title' , problem_description='$problem_description' , problem_status='$problem_status' , problem_status_description='$problem_status_description' , problem_admin='$problem_admin'WHERE problem_id='$problem_id' ";
           $result_update_problem = mysqli_query($connect, $update_problem);
 
@@ -211,7 +215,7 @@ if (($department_detail!=$_SESSION['user_department_detail']) && ($_SESSION['use
 
      }//end A
 
-
+*/
 
 
 
@@ -244,7 +248,7 @@ else{ die("Heç bir problem seçilmədi");}
 
                 <div class="col-4">
                   <?php
-                  if ( ($problem_status!="P") && ($_SESSION['user_permission']=="U" || $_SESSION['user_permission']=="A") ) {  echo"                
+                  if ( ($problem_status!="P" && $_SESSION['user_permission']=="U") || $_SESSION['user_permission']=="A"){  echo"                
                   <button class='btn mr-2 btn-sm btn-primary float-right d-print-none' id='print'><i class='icon-book-open' onclick=\"print()\"></i> Çap et</button> ";}
                   ?>
                 </div>
@@ -288,7 +292,7 @@ else{ die("Heç bir problem seçilmədi");}
               </div>
                
               <?php 
-              if($_SESSION['user_permission']!="U"){
+              if($_SESSION['user_permission']=="GA"){
                   require_once realpath($_SERVER["DOCUMENT_ROOT"])."/template/dashboard/permission/edit-problem-admin-area.php";}
               ?>                        
  
@@ -298,7 +302,7 @@ else{ die("Heç bir problem seçilmədi");}
               <button name="delete_problem" id="check" onclick="return confirm('Silmək istədiyini təsdiqləyirsən?');"  type="submit" class="btn btn-danger">SİL</button>
               <?php
 
-                  if ($_SESSION['user_permission']=="GA" || $_SESSION['user_permission']=="A") {
+                  if ($_SESSION['user_permission']=="GA" /*|| $_SESSION['user_permission']=="A"*/) {
                   
                     if(isset($_POST['send_notf'])){
 
@@ -360,13 +364,9 @@ else{ die("Heç bir problem seçilmədi");}
                   <ul class="bullet-line-list">
                       <h4 class="mb-4">İstifadə qaydaları</h4>
                     <li>
-                      <h6>İstifadəçinin emaili</h6>
-                      <p class="mb-2">email unikal olub yalnız bir dəfə istifadə edilə bilinər</p>
-                    </li>
-                    <li>
-                      <h6>Ad və SoyAdın daxil edilməsi</h6>
-                      <p class="mb-2">ad və soyad ayrılıqda hər biri minimum 4 simvoldan ibarət olmalıdır</p>
-                    </li>                                                     
+                      <h6></h6>
+                      <p class="mb-2"></p>
+                    </li>                                                   
                   </ul>';
           }?>
 

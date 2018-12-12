@@ -6,7 +6,7 @@ require_once realpath($_SERVER["DOCUMENT_ROOT"])."/template/process.php";
 		
 			if ($_SESSION["verified"]=="0") {
 
-			echo "Hesabın təsdiq edilməyib xahis olunur emailini tədiqlə....";
+			echo "Hesabınız administratorlar tərəfindən rədd edilmişdir....";
 			exit();				
 
 

@@ -19,7 +19,7 @@
     $token  = emigaToken();
     $user_agent = $_SERVER['HTTP_USER_AGENT'];
     
-    $update_user =" UPDATE users SET user_agent='$user_agent' , ip='$ip' , token='$token'  WHERE user_id='$u_id' "; 
+    $update_user =" UPDATE users SET user_agent='$user_agent' , ip='$ip' , token='$token' , verified='1' WHERE user_id='$u_id' "; 
     $result_update_user = mysqli_query($connect, $update_user);
 
     session_start();
@@ -59,6 +59,14 @@
   }//End Post login
 
 ?>
+<div id="fb-root"></div>
+<script>(function(d, s, id) {
+  var js, fjs = d.getElementsByTagName(s)[0];
+  if (d.getElementById(id)) return;
+  js = d.createElement(s); js.id = id;
+  js.src = 'https://connect.facebook.net/az_AZ/sdk.js#xfbml=1&version=v3.2';
+  fjs.parentNode.insertBefore(js, fjs);
+}(document, 'script', 'facebook-jssdk'));</script>
 <div class="container-scroller">
     <div class="container-fluid page-body-wrapper full-page-wrapper">
       <div class="content-wrapper auth p-0 theme-two">
@@ -69,24 +77,20 @@
 
             <div class="card fixed-left">
                 <div class="card-body">
-                  <h4 class="card-title"><i class="icon-pin"></i> YENİLƏNMƏLƏR</h4>
-                  <ul class="bullet-line-list">
-
-                    <li>
-                      <h6>v1.0.0</h6>
-                      <p class="mb-0">Yeni versiyaya yeniləndi.Vizual görünüş və 
-                      bəzi problemlər həll edildi</p>
-                      <p class="text-muted">
-                        <i class="icon-clock"></i>
-                        7 dəqiqə əvvəl
-                      </p>
-                    </li>
-
-                  </ul>
-                </div>
-              </div>  
-
-          </div>
+                  <img class="card-title" src="/static/welcome.png" style="width:75%;" alt="AzMIU">
+                    <div class="fb-page col-lg-12" 
+                         data-href="https://www.facebook.com/azmiuikt/" 
+                         data-tabs="messages,timeline,events" 
+                         data-small-header="false"
+                         data-adapt-container-width="true" 
+                         data-hide-cover="false" data-show-facepile="true">
+                              <blockquote cite="https://www.facebook.com/azmiuikt/" class="fb-xfbml-parse-ignore">
+                               <a href="https://www.facebook.com/azmiuikt/">AzMİU İKT Mərkəzi</a>
+                             </blockquote>
+                    </div>
+                  </div>
+                </div>  
+              </div>
           <!-- End  IMG-->
 
 
@@ -95,21 +99,21 @@
             <div class="auto-form-wrapper d-flex align-items-center justify-content-center flex-column">
 
               <!-- Register -->
-              <div class="nav-get-started">
-                <p></i><?php echo $_SESSION["user_name"];?> Hesabın Yoxdur ?</p>
-                <a class="btn get-started-btn" href="/register">Qeydiyyatdan Keç</a>
+              <div class="nav-get-started text-white">
+                <p></i><b>Hesabın Yoxdur ?</b></p>
+                <a class="btn get-started-btn text-white" href="/register">Qeydiyyatdan Keç</a>
               </div>
               <!-- End Register -->
-              <form method="POST">
+              <form method="POST" class="text-white">
                <?php 
                   if (empty($_GET['action'])) {
                   echo "
-                        <h3 class=\"mr-auto\">Salam 👋 gəl başlayaq</h3>
-                        <p class=\"mb-5 mr-auto\">Daxil olmaq üçün bütün xanaları doldur.</p>";}
+                        <h3 class=\"mr-auto text-white\">Salam gəl başlayaq</h3>
+                        <p class=\"mb-5 mr-auto text-white\">Daxil olmaq üçün bütün xanaları doldur.</p>";}
                   else{
                     if($_GET['action']=="wrong_information"){
                     echo "
-                        <div class=\"alert alert-danger alert-dismissible fade show\" role=\"alert\">
+                        <div class=\"alert alert-info alert-dismissible fade show text-white\" role=\"alert\">
                           <strong><i class=\"icon-question\"></i></strong>Daxil etdiyiniz şifrə və ya email səhvdir.
                             <button type=\"button\" class=\"close\" data-dismiss=\"alert\" aria-label=\"Bağla\">
                           <span aria-hidden=\"true\">&times;</span>
@@ -117,18 +121,18 @@
                         </div>";}
                     else if($_GET['action']=="logged_out"){
                     echo  "
-                        <h3 class=\"mr-auto\">Çıxış edildi</h3>
-                        <p class=\"mb-5 mr-auto\">yenidən daxil olmaq üçün xanaları doldurun.</p>";}   
+                        <h3 class=\"mr-auto text-white\">Çıxış edildi</h3>
+                        <p class=\"mb-5 mr-auto text-white\">yenidən daxil olmaq üçün xanaları doldurun.</p>";}   
                       else{                  
                         echo "
-                        <h3 class=\"mr-auto\">Salam! gəl başlayaq</h3>
-                        <p class=\"mb-5 mr-auto\">Daxil olmaq üçün bütün xanaları doldur.</p>";}
+                        <h3 class=\"mr-auto text-white\">Salam! gəl başlayaq</h3>
+                        <p class=\"mb-5 mr-auto text-white\">Daxil olmaq üçün bütün xanaları doldur.</p>";}
                       }  
                 ?>  
                 <div class="form-group">
                   <div class="input-group">
                     <div class="input-group-prepend">
-                      <span class="input-group-text"><i class="icon-user"></i></span>
+                      <span class="input-group-text text-dark"><i class="icon-user"></i></span>
                     </div>
                     <input required type="email" id="email" name="email" class="form-control" placeholder="Emailini daxil et">
                   </div>
@@ -137,9 +141,9 @@
                 <div class="form-group">
                   <div class="input-group">
                     <div class="input-group-prepend">
-                      <span class="input-group-text"><i class="icon-lock"></i></span>
+                      <span class="input-group-text text-dark"><i class="icon-lock"></i></span>
                     </div>
-                    <input autocomplete="off" required type="password" id="password" name="password" class="form-control" placeholder="Şifrəni daxil et">
+                    <input autocomplete="off" required type="password" id="password" name="password" class="text-dark form-control" placeholder="Şifrəni daxil et">
                   </div>
                 </div>
 

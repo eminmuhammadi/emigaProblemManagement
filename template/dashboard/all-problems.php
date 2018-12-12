@@ -48,6 +48,7 @@
                           <th>#</th>                      	
                           <th>Adı</th>
                           <th>İstifadəçi</th>
+                          <th>Yönləndirilən</th>                          
                           <th>Şöbə</th>                                      
                           <th>Status</th>  
                           <th>Qeydiyyat tarixi</th>   
@@ -63,7 +64,7 @@ if (!empty($_GET['order'])) {
           *  SQL
           */ 
 
-          $select_posts ="SELECT problem_id , department_detail , user_detail , problem_title , problem_status , reg_date FROM posts WHERE problem_status='P' ORDER BY problem_id DESC";  
+          $select_posts ="SELECT user_department_id , problem_id , department_detail , user_detail , problem_title , problem_status , reg_date FROM posts WHERE problem_status='P' ORDER BY problem_id DESC";  
            $result = mysqli_query($connect, $select_posts);}
 
 
@@ -73,7 +74,7 @@ if (!empty($_GET['order'])) {
           *  SQL
           */ 
 
-          $select_posts ="SELECT problem_id , department_detail , user_detail , problem_title , problem_status , reg_date  FROM posts WHERE problem_status='C' ORDER BY problem_id DESC";  
+          $select_posts ="SELECT user_department_id , problem_id , department_detail , user_detail , problem_title , problem_status , reg_date  FROM posts WHERE problem_status='C' ORDER BY problem_id DESC";  
           $result = mysqli_query($connect, $select_posts);}
 
           else    if($_GET['order']=="D"){
@@ -82,7 +83,7 @@ if (!empty($_GET['order'])) {
           *  SQL
           */ 
 
-          $select_posts ="SELECT problem_id , department_detail , user_detail , problem_title , problem_status , reg_date  FROM posts WHERE problem_status='D' ORDER BY problem_id DESC";  
+          $select_posts ="SELECT user_department_id , problem_id , department_detail , user_detail , problem_title , problem_status , reg_date  FROM posts WHERE problem_status='D' ORDER BY problem_id DESC";  
           $result = mysqli_query($connect, $select_posts);}
 
 
@@ -91,7 +92,7 @@ if (!empty($_GET['order'])) {
           /*
           *  SQL
           */  
-         $select_posts ="SELECT problem_id , department_detail , user_detail , problem_title , problem_status , reg_date FROM posts WHERE problem_status='V' ORDER BY problem_id DESC";  
+         $select_posts ="SELECT user_department_id , problem_id , department_detail , user_detail , problem_title , problem_status , reg_date FROM posts WHERE problem_status='V' ORDER BY problem_id DESC";  
           $result = mysqli_query($connect, $select_posts);  }
 
 
@@ -108,7 +109,7 @@ else{
        *  SQL
       */
 
-			$select_posts ="SELECT problem_id , department_detail , user_detail , problem_title , problem_status , reg_date FROM posts ORDER BY problem_id DESC";
+			$select_posts ="SELECT department_user_id , problem_id , department_detail , user_detail , problem_title , problem_status , reg_date FROM posts ORDER BY problem_id DESC";
 			$result = mysqli_query($connect, $select_posts);} 
 
 
@@ -123,7 +124,12 @@ else{
           $user_detail          = $row["user_detail"];
           $problem_title        = $row["problem_title"];
           $problem_status       = $row["problem_status"];
+          $department_user_id   = $row["department_user_id"];
           $reg_date             = emigaDateFormatter($row["reg_date"]);
+
+    if (strlen($problem_title) > 20){$problem_title=substr($problem_title, 0,20);$problem_title=$problem_title."...";}
+    else{$problem_title=$problem_title;} 
+
 
       /*
       *       Problem Status -> Cancel , Viewed , Done , Pending 
@@ -134,11 +140,23 @@ else{
             else if($problem_status=="D"){$problem_css="success";$problem_status="Həll edildi";}
             else{$problem_css="info";$problem_status="Gözləmədə";}
 
+            $user_selected ="SELECT user_name , user_lastname FROM users WHERE user_permission!='U' && user_id='$department_user_id' LIMIT 1";
+            $r_user_selected = mysqli_query($connect, $user_selected);  
+
+            if(mysqli_num_rows($r_user_selected) > 0){  
+                  while($row = mysqli_fetch_array($r_user_selected)){ 
+                            $user_worker=$row["user_name"]." ".$row["user_lastname"];
+                            
+                  }
+            }else{$user_worker="Təyin edilməyib";}                        
+                
+            
       echo "
       <tr>
           <td>$problem_id</td>
           <td><a href=\"/dashboard/edit-problem&problem_id=$problem_id\">$problem_title</a></td>
           <td>$user_detail</td>
+          <td>$user_worker</td>
           <td>$department_detail</td>
           <td><label class=\"badge badge-$problem_css\">$problem_status</label></td> 
           <td>$reg_date</td>                                                       

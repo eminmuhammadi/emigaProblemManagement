@@ -32,7 +32,7 @@
                     if ($_SESSION['user_permission']=="U") {
                       echo "problemlərim";
                     }
-                    else{echo "işlərim <h1 class=\"badge badge-primary\"><b> Şöbə : ".$_SESSION["user_department_detail"]."</b></h1>";}
+                    else{echo "işlərim";}
 
                   ?></b></h4>
               </div>
@@ -65,6 +65,7 @@
 
     $user_d=$_SESSION['user_name']." ".$_SESSION['user_lastname'];
     $user_department=$_SESSION['user_department_detail'];
+    $u_id=$_SESSION["user_id"];
 
 if (!empty($_GET['order'])) { 
 
@@ -80,7 +81,7 @@ if (!empty($_GET['order'])) {
           *  SQL
           */ 
 
-          $select_posts ="SELECT problem_id , department_detail , user_detail , problem_title , problem_status , reg_date FROM posts WHERE problem_status='P' && department_detail='$user_department' ORDER BY problem_id DESC";  
+          $select_posts ="SELECT problem_id , department_detail , user_detail , problem_title , problem_status , reg_date FROM posts WHERE problem_status='P' && department_user_id='$u_id' ORDER BY problem_id DESC";  
            $result = mysqli_query($connect, $select_posts);}
 
 
@@ -90,7 +91,7 @@ if (!empty($_GET['order'])) {
           *  SQL
           */ 
 
-          $select_posts ="SELECT problem_id ,   department_detail , user_detail , problem_title , problem_status , reg_date  FROM posts WHERE problem_status='C' && department_detail='$user_department' ORDER BY problem_id DESC";  
+          $select_posts ="SELECT problem_id ,   department_detail , user_detail , problem_title , problem_status , reg_date  FROM posts WHERE problem_status='C' && department_user_id='$u_id' ORDER BY problem_id DESC";  
           $result = mysqli_query($connect, $select_posts);}
 
           else    if($_GET['order']=="D"){
@@ -99,7 +100,7 @@ if (!empty($_GET['order'])) {
           *  SQL
           */ 
 
-          $select_posts ="SELECT problem_id ,   department_detail , user_detail , problem_title , problem_status , reg_date  FROM posts WHERE problem_status='D' && department_detail='$user_department' ORDER BY problem_id DESC";  
+          $select_posts ="SELECT problem_id ,   department_detail , user_detail , problem_title , problem_status , reg_date  FROM posts WHERE problem_status='D' && department_user_id='$u_id' ORDER BY problem_id DESC";  
           $result = mysqli_query($connect, $select_posts);}
 
 
@@ -108,7 +109,7 @@ if (!empty($_GET['order'])) {
           /*
           *  SQL
           */  
-         $select_posts ="SELECT problem_id ,  department_detail , user_detail , problem_title , problem_status , reg_date FROM posts WHERE problem_status='V' && department_detail='$user_department' ORDER BY problem_id DESC";  
+         $select_posts ="SELECT problem_id ,  department_detail , user_detail , problem_title , problem_status , reg_date FROM posts WHERE problem_status='V' && department_user_id='$u_id' ORDER BY problem_id DESC";  
           $result = mysqli_query($connect, $select_posts);  }
 
           /* ~ Permission denied ~*/
@@ -124,7 +125,7 @@ if (!empty($_GET['order'])) {
 else{
 
 
-      $select_posts ="SELECT problem_id ,   department_detail , user_detail , problem_title , problem_status , reg_date FROM posts WHERE department_detail='$user_department' ORDER BY problem_id DESC";
+      $select_posts ="SELECT problem_id ,   department_detail , user_detail , problem_title , problem_status , reg_date FROM posts WHERE department_user_id='$u_id' ORDER BY problem_id DESC";
       $result = mysqli_query($connect, $select_posts);      
 
 } 
@@ -142,6 +143,10 @@ else{
           $problem_title        = $row["problem_title"];
           $problem_status       = $row["problem_status"];
           $reg_date             = emigaDateFormatter($row["reg_date"]);
+
+    if (strlen($problem_title) > 20){$problem_title=substr($problem_title, 0,20);$problem_title=$problem_title."...";}
+    else{$problem_title=$problem_title;} 
+          
 
       /*
       *       Problem Status -> Cancel , Viewed , Done , Pending 

@@ -1,3 +1,4 @@
+<?php if($_SESSION["user_permission"]=="A"){header("Location: /dashboard/main&action=permission_error");} ?>
 <!-- Start Template -->
     <div class="container-fluid page-body-wrapper">
       <div class="main-panel">
@@ -128,6 +129,10 @@ else{
           $problem_title        = $row["problem_title"];
           $problem_status       = $row["problem_status"];
           $reg_date             = emigaDateFormatter($row["reg_date"]);
+
+    if (strlen($problem_title) > 20){$problem_title=substr($problem_title, 0,20);$problem_title=$problem_title."...";}
+    else{$problem_title=$problem_title;} 
+          
 
       /*
       *       Problem Status -> Cancel , Viewed , Done , Pending 

@@ -68,8 +68,8 @@ function emigaCalculateTrend($stats,$selected_stats){
 
     <div class="row">
             <div class="col-6 col-md-6 col-lg-8">
-                <h5>Salam 👋 <b>
-                    <?php echo $_SESSION['user_name']." ".$_SESSION['user_lastname'];?></b>.Problemin var ?
+                <h5>
+                 Problemin var ?
                 </h5>
             </div>
 
@@ -163,14 +163,14 @@ function emigaCalculateTrend($stats,$selected_stats){
     if(mysqli_num_rows($result) > 0)  {  
         while($r = mysqli_fetch_array($result)) {
             
-    if (strlen($r['department_title']) > 21){$d_t=substr($r['department_title'], 0,20)."...";}
+    if (strlen($r['department_title']) > 21){$d_t=substr($r['department_title'], 0,20);$d_t=$d_t."...";}
     else{$d_t=$r['department_title'];}           
     
-    if (strlen($r['department_room']) > 21){$d_r=substr($r['department_room'], 0,20)."...";}       
+    if (strlen($r['department_room']) > 21){$d_r=substr($r['department_room'], 0,20);$d_r=$d_r."...";}       
     else{$d_r=$r['department_room'];}           
     
 
-    if (strlen($r['department_space']) > 21){$d_s=substr($r['department_space'], 0,20)."...";}
+    if (strlen($r['department_space']) > 21){$d_s=substr($r['department_space'], 0,20);$d_s=$d_s."...";}
     else{$d_s=$r['department_space'];}   
 
     echo "
@@ -237,14 +237,14 @@ function emigaCalculateTrend($stats,$selected_stats){
     if(mysqli_num_rows($result) > 0)  {  
         while($r = mysqli_fetch_array($result)) {
 
-    if (strlen($r['problem_title']) > 21){$p_t=substr($r['problem_title'], 0,20)."...";}
+    if (strlen($r['problem_title']) > 21){$p_t=substr($r['problem_title'], 0,20);$p_t=$p_t."...";}
     else{$p_t=$r['problem_title'];}           
     
-    if (strlen($r['problem_description']) > 21){$p_d=substr($r['problem_description'], 0,20)."...";}       
+    if (strlen($r['problem_description']) > 21){$p_d=substr($r['problem_description'], 0,20);$p_d=$p_d."...";}       
     else{$p_d=$r['problem_description'];}           
     
 
-    if (strlen($r['problem_status_description']) > 21){$s_d=substr($r['problem_status_description'], 0,20)."...";}
+    if (strlen($r['problem_status_description']) > 21){$s_d=substr($r['problem_status_description'], 0,20);$s_d=$s_d."...";}
     else{$s_d=$r['problem_status_description'];}           
 
 
@@ -277,7 +277,6 @@ new Chart(document.getElementById("total_chart"), {
     data: {
       labels: ["Gözləmədə", "Ləğv edilən", "Həll edilən", "Görülən"],
       datasets: [{
-        borderColor: ["#c4c4c4","#c4c4c4","#c4c4c4","#c4c4c4"],        
         backgroundColor: ["#b764fc", "#ff5b7f","#63ffa4","#fdffa3"],
         data: [<?php echo emigaStats($total_p).",".emigaStats($total_c).",".emigaStats($total_d).",".emigaStats($total_v);?>]
       }]
@@ -289,14 +288,11 @@ new Chart(document.getElementById("total_chart"), {
       }
     }
 });
-</script>
-<script type="text/javascript">
 new Chart(document.getElementById("today_chart"), {
     type: 'pie',
     data: {
       labels: ["Gözləmədə", "Ləğv edilən", "Həll edilən", "Görülən"],
       datasets: [{
-        borderColor: ["#c4c4c4","#c4c4c4","#c4c4c4","#c4c4c4"],        
         backgroundColor: ["#b764fc", "#ff5b7f","#63ffa4","#fdffa3"],
         data: [<?php echo emigaStats($today_p).",".emigaStats($today_c).",".emigaStats($today_d).",".emigaStats($today_v);?>]
       }]

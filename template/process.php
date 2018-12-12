@@ -16,7 +16,7 @@
 	/*Database*/
 	require_once realpath($_SERVER["DOCUMENT_ROOT"])."/config/emigaDB.php";
 
-	ini_set('display_errors', '0');
+	ini_set('display_errors', '1');
 	if(!isset($_COOKIE['emigaUniqID'])) {
 	setcookie("emigaUniqID",emigaToken(), time() + (86400 * 30), "/");}
 

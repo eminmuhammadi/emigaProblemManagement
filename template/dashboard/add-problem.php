@@ -1,4 +1,5 @@
 <?php
+if($_SESSION["user_permission"]=="A"){header("Location: /dashboard/main&action=permission_error");}
 if(isset($_POST['create_problem'])){ 
 
     /*

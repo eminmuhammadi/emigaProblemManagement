@@ -81,22 +81,22 @@
             <div class="auto-form-wrapper d-flex align-items-center justify-content-center flex-column">
 
               <!-- Register -->
-              <div class="nav-get-started">
-                <p></i>Artıq Hesabın var?</p>
-                <a class="btn get-started-btn" href="/login">Daxil Ol</a>
+              <div class="nav-get-started text-white">
+                <p></i><b>Artıq Hesabın var?</b></p>
+                <a class="btn get-started-btn text-white" href="/login">Daxil Ol</a>
               </div>
               <!-- End Register -->
               <form method="POST"> 
                <?php 
                   if (empty($_GET['action'])) {
                   echo "
-                        <h3 class=\"mr-auto\">Qeydiyyatdan keçmək üçün</h3>
-                        <p class=\"mb-3 mr-auto\">aşağıdakı xanaları doldurun.</p>";}
+                        <h3 class=\"mr-auto text-white\">Qeydiyyatdan keçmək üçün</h3>
+                        <p class=\"mb-3 mr-auto text-white\">aşağıdakı xanaları doldurun.</p>";}
                   else{
 
                     if ($_GET['action']=="wrong_email") {
                       echo "
-                        <div class=\"alert alert-danger alert-dismissible fade show\" role=\"alert\">
+                        <div class=\"alert alert-danger alert-dismissible fade show text-white\" role=\"alert\">
                           <strong><i class=\"icon-question\"></i></strong>Qeyd etdiyiniz email artıq istifadə
                           olunmuşdur.
                             <button type=\"button\" class=\"close\" data-dismiss=\"alert\" aria-label=\"Bağla\">
@@ -105,14 +105,14 @@
                         </div>";}
                       else{
                         echo "
-                        <h3 class=\"mr-auto\">Qeydiyyatdan keçmək üçün</h3>
-                        <p class=\"mb-3 mr-auto\">aşağıdakı xanaları doldurun.</p>";}
+                        <h3 class=\"mr-auto text-white\">Qeydiyyatdan keçmək üçün</h3>
+                        <p class=\"mb-3 mr-auto text-white\">aşağıdakı xanaları doldurun.</p>";}
                       }
                 ?> 
                 <div class="form-group">
                   <div class="input-group">
                     <div class="input-group-prepend">
-                      <span class="input-group-text"><i class="icon-plus"></i></span>
+                      <span class="input-group-text text-dark"><i class="icon-plus"></i></span>
                     </div>
                     <input id="name" minlength="3" maxlength="30" required type="text" name="fname" class="form-control" placeholder="Adını daxil et">
                   </div>
@@ -121,7 +121,7 @@
                 <div class="form-group">
                   <div class="input-group">
                     <div class="input-group-prepend">
-                      <span class="input-group-text"><i class="icon-plus"></i></span>
+                      <span class="input-group-text text-dark"><i class="icon-plus"></i></span>
                     </div>
                     <input minlength="3" maxlength="30" required type="text" name="lname" class="form-control" placeholder="Soy adını daxil et">
                   </div>
@@ -130,7 +130,7 @@
                 <div class="form-group">
                   <div class="input-group">
                     <div class="input-group-prepend">
-                      <span class="input-group-text"><i class="icon-user"></i></span>
+                      <span class="input-group-text text-dark"><i class="icon-user"></i></span>
                     </div>
                     <input required type="email" name="email" class="form-control" placeholder="Emaili daxil edin">
                   </div>
@@ -139,7 +139,7 @@
                 <div class="form-group">
                   <div class="input-group">
                     <div class="input-group-prepend">
-                      <span class="input-group-text"><i class="icon-lock"></i></span>
+                      <span class="input-group-text text-dark"><i class="icon-lock"></i></span>
                     </div>
                     <input autocomplete="off" maxlength="32" minlength="6" required type="password" name="password" class="form-control" id="password" placeholder="Şifrəni daxil et">
                   </div>

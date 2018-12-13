@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: localhost
--- Generation Time: Dec 09, 2018 at 02:57 AM
+-- Generation Time: Dec 13, 2018 at 10:13 PM
 -- Server version: 10.1.36-MariaDB
 -- PHP Version: 7.2.11
 
@@ -38,7 +38,9 @@ CREATE TABLE `del_posts` (
   `problem_status` varchar(2) COLLATE utf8_bin NOT NULL DEFAULT 'P',
   `problem_admin` varchar(60) COLLATE utf8_bin DEFAULT '~',
   `problem_status_description` varchar(999) COLLATE utf8_bin NOT NULL DEFAULT '~',
-  `reg_date` timestamp NULL DEFAULT CURRENT_TIMESTAMP
+  `reg_date` timestamp NULL DEFAULT CURRENT_TIMESTAMP,
+  `department_user_id` int(6) DEFAULT NULL,
+  `user_id` int(6) DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_bin;
 
 -- --------------------------------------------------------
@@ -81,6 +83,7 @@ CREATE TABLE `posts` (
   `department_detail` mediumtext COLLATE utf8_bin NOT NULL,
   `user_detail` mediumtext COLLATE utf8_bin NOT NULL,
   `user_id` int(10) NOT NULL,
+  `department_user_id` int(6) NOT NULL,
   `problem_title` varchar(60) COLLATE utf8_bin DEFAULT NULL,
   `problem_description` mediumtext COLLATE utf8_bin NOT NULL,
   `problem_status` varchar(2) COLLATE utf8_bin NOT NULL DEFAULT 'P',

@@ -59,14 +59,6 @@
   }//End Post login
 
 ?>
-<div id="fb-root"></div>
-<script>(function(d, s, id) {
-  var js, fjs = d.getElementsByTagName(s)[0];
-  if (d.getElementById(id)) return;
-  js = d.createElement(s); js.id = id;
-  js.src = 'https://connect.facebook.net/az_AZ/sdk.js#xfbml=1&version=v3.2';
-  fjs.parentNode.insertBefore(js, fjs);
-}(document, 'script', 'facebook-jssdk'));</script>
 <div class="container-scroller">
     <div class="container-fluid page-body-wrapper full-page-wrapper">
       <div class="content-wrapper auth p-0 theme-two">
@@ -77,17 +69,11 @@
 
             <div class="card fixed-left">
                 <div class="card-body">
-                  <img class="card-title" src="/static/welcome.png" style="width:75%;" alt="AzMIU">
-                    <div class="fb-page col-lg-12" 
-                         data-href="https://www.facebook.com/azmiuikt/" 
-                         data-tabs="messages,timeline,events" 
-                         data-small-header="false"
-                         data-adapt-container-width="true" 
-                         data-hide-cover="false" data-show-facepile="true">
-                              <blockquote cite="https://www.facebook.com/azmiuikt/" class="fb-xfbml-parse-ignore">
-                               <a href="https://www.facebook.com/azmiuikt/">AzMİU İKT Mərkəzi</a>
-                             </blockquote>
-                    </div>
+<p>
+Lorem ipsum dolor sit amet, consectetur adipiscing elit. Pellentesque quis arcu lorem. Donec mattis turpis lectus, quis sollicitudin mauris sollicitudin a. Pellentesque habitant morbi tristique senectus et netus et malesuada fames ac turpis egestas. Maecenas ornare nisi nec sagittis faucibus. Fusce odio elit, laoreet nec urna ac, porttitor tincidunt libero. Praesent tincidunt tortor nunc, eu gravida tortor vestibulum id. Mauris faucibus vulputate finibus.
+
+Duis scelerisque diam dui, sed lobortis enim iaculis a. Donec sit amet blandit diam. Donec iaculis id dolor ut cursus. Sed at dolor diam. Integer fermentum nulla ac neque iaculis, commodo vestibulum ante facilisis. Praesent sit amet consequat massa. Nullam volutpat, leo vitae consectetur mattis, neque nisl sodales odio, eu ultricies leo ligula at velit. Donec fringilla odio in dictum euismod. Vivamus lobortis interdum odio, id scelerisque diam dignissim eu. Morbi tortor eros, rutrum in diam quis, commodo congue nunc.
+</p>
                   </div>
                 </div>  
               </div>
@@ -167,11 +153,3 @@
     <!-- page-body-wrapper ends -->
   </div>
 <?php require_once realpath($_SERVER["DOCUMENT_ROOT"])."/template/foot.php";?>
-    <script type="text/javascript">
-    $(document).ready(function() {
-    $('#email').focus();});
-    window.onload = function() {
-    const password = document.getElementById('password');
-    password.onpaste = function(e) {
-    e.preventDefault();}}
-    </script>

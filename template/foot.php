@@ -94,6 +94,7 @@ window.print();
 function optimize(){
 $('#no-js').removeClass("no-js");
 $('#loader').addClass("no-js");
+
 }
 setTimeout(optimize, 1500);
 });

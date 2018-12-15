@@ -26,7 +26,7 @@
 	/*Cache*/
 	emigaCacheStart('1','1');
 	
-	$powered="AzMIU &mdash; IKT Mərkəzi";
+	$powered="EmiGa Problem Managament";
 
 	if ($emigaFileName=="login.php"){
 		$title="Daxil ol | ".$powered;}

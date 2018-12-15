@@ -25,6 +25,10 @@
 
 	/*Cache*/
 	emigaCacheStart('1','1');
+
+	/*
+	*  Title
+	*/	
 	
 	$powered="EmiGa Problem Managament";
 

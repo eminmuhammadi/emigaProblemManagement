@@ -1,6 +1,9 @@
 # Emiga Problem Management
-### by Emin Muhammadi
 
+## Installing
+```
+git clone https://github.com/eminmuhammadi/emigaproblemmanagement
+```
 
 ## Requiretments
 ```
@@ -211,3 +214,23 @@ GA|xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx
 - [x] User Settings {all information | email | password | mobile}
 - [x] Support {RAM | CPU}
 - [x] Support GA Members
+
+## Authors
+
+* **Emin Muhammadi** - *Initial work* - [EminMuhammadi](https://github.com/eminmuhammadi)
+
+See also the list of [contributors](https://github.com/eminmuhammadi/emigaproblemmanagement/contributors) who participated in this project.
+
+## Update
+
+See Update Changes [UPDATE.txt](UPDATE.txt) file for details
+
+## Supported Languages
+
+* Azerbaijani
+
+## License
+
+This project is licensed under the MIT License - see the [LICENSE.md](LICENSE.md) file for details
+
+### Hire ME [Emin Muhammadi](https://facebook.com/emiga.mohammadi)

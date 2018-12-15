@@ -7,22 +7,6 @@
   <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
 
   <title><?php echo $title;?></title>
-
-
-<link rel="shortcut icon" type="image/png" href="/static/favicon.png"/>
-<link rel="apple-touch-icon" sizes="57x57" href="/static/fav/apple-icon-57x57.png">
-<link rel="apple-touch-icon" sizes="60x60" href="/static/fav/apple-icon-60x60.png">
-<link rel="apple-touch-icon" sizes="72x72" href="/static/fav/apple-icon-72x72.png">
-<link rel="apple-touch-icon" sizes="76x76" href="/static/fav/apple-icon-76x76.png">
-<link rel="apple-touch-icon" sizes="114x114" href="/static/fav/apple-icon-114x114.png">
-<link rel="apple-touch-icon" sizes="120x120" href="/static/fav/apple-icon-120x120.png">
-<link rel="apple-touch-icon" sizes="144x144" href="/static/fav/apple-icon-144x144.png">
-<link rel="apple-touch-icon" sizes="152x152" href="/static/fav/apple-icon-152x152.png">
-<link rel="apple-touch-icon" sizes="180x180" href="/static/fav/apple-icon-180x180.png">
-<link rel="manifest" href="/static/fav/manifest.json">
-<meta name="msapplication-TileColor" content="#090e40">
-<meta name="msapplication-TileImage" content="/static/fav/ms-icon-144x144.png">
-<meta name="theme-color" content="#090e40">
   <?php
 	if($emigaFileName=="login.php"||$emigaFileName=="register.php"){
   			echo "<link rel=\"stylesheet\" type=\"text/css\" href=\"/static/main.css\">";}?>

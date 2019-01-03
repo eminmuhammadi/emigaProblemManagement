@@ -232,5 +232,3 @@ See Update Changes [UPDATE.txt](UPDATE.txt) file for details
 ## License
 
 This project is licensed under the MIT License - see the [LICENSE.md](LICENSE.md) file for details
-
-### Hire Me [Emin Muhammadi](https://facebook.com/emiga.mohammadi)

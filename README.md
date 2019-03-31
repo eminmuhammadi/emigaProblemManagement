@@ -45,7 +45,7 @@ You can change also port and socket
 
 	/*
 	*   1 - Display Errors
-	*	2 - Disable Display Errors
+	*   0 - Disable Display Errors
 	*/	
 20|
 ```
